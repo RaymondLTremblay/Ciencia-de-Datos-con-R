@@ -6,21 +6,21 @@ navbar:
       href: Descripcion.html
       text: Home
     - 
-      href: schedule.html
+      href: B_schedule.html
       text: Calendario
     - 
       menu: 
         - 
-          href: Instalar-R-RStudio.html
+          href: A1_Instalar-R-RStudio.html
           text: "Instalar R y RStudio"
         - 
-          href: Introduccion_RMarkdown.html
+          href: A2_Introduccion_RMarkdown.html
           text: "RMarkdown"
         - 
-          href: Codigos_basicos_en_R.html
+          href: A3_Codigos_basicos_en_R.html
           text: "R y Cheatsheets"
         - 
-          href: R_basico.html
+          href: A4_R_basico.html
           text: "R Básico #2"
       text: "Instalación básica"
     - 

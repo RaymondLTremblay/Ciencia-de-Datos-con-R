@@ -68,13 +68,13 @@ En el primer enlace pueden bajar un pdf del **Base R cheatsheet**
 También lo pueden encontrar aquí como imagen. 
 
 ```{r echo=FALSE, out.width = '100%'}
-knitr::include_graphics("Graficos/rbase.png")
+#knitr::include_graphics("Graficos/rbase.png")
 ```
 La segunda pagina
 
 
 ```{r echo=FALSE, out.width = '100%'}
-knitr::include_graphics("Graficos/rbase2.png")
+#knitr::include_graphics("Graficos/rbase2.png")
 ```
 
 
