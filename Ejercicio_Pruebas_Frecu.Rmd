@@ -1,0 +1,80 @@
+---
+title: "Frequencia_Ejercicios"
+output:
+  html_document:
+    css: tutorial.css
+    fig_caption: yes
+    highlight: pygments
+#    theme: simplex
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message = FALSE)
+
+```
+
+
+```{r, eval=TRUE, echo=FALSE}
+colorize <- function(x, color) {
+  if (knitr::is_latex_output()) {
+    sprintf("\\textcolor{%s}{%s}", color, x)
+  } else if (knitr::is_html_output()) {
+    sprintf("<span style='color: %s;'>%s</span>", color, 
+      x)
+  } else x
+}
+
+#`r colorize("some words in red", "red")`
+
+
+```
+
+Fecha de la ultima revisión
+```{r echo=FALSE}
+
+Sys.Date()
+```
+
+
+```{r, echo=FALSE, fig.show = "hold", out.width = "20%", fig.align = "default"}
+knitr::include_graphics(c("Graficos/hex_ggversa.png", "Graficos/hex_error.png"))
+```
+
+
+
+***
+
+# Ejercicios de Pruebas de Frecuencias 
+## Capitulo 7 
+
+Los ejercicio provienen del Capitulo 7 del libro de la clase Havel et al 2019.  Introductory Biological Ststistics, 4th Edition, Waveland Press, Inc. Long Grove, Illinois. 
+
+## Ejericico de Práctica (no para someter)
+
+Los ejercicio de 7.1 al 7.13. son para practicar. Se encuentra las respuestas al final del libro.
+
+
+## Ejercicio para someter. 
+
+Ud. someterán los las repuestas a los siguientes ejercicios en un documento .html. 
+
+ - Para cada ejercicio siempre tiene que aclarar cual son las hipótesis nula y alterna. 
+ - Tiene que explicar el concepto biológico si la pregunta menciona uno.  
+ - Enseñar los cálculos/script para hacer los análisis. 
+ - Interpretar los resultados basado en la pregunta que se hace en el ejercicio.  
+ 
+ 
+1. Ejercicio 7.17 (5 puntos)
+
+2. Ejercicio 7.18 (5 puntos)
+
+3. Ejercicio 7.21 (5 puntos)
+
+4. Ejercicio 7.27 (5 puntos)
+
+
+- 5 puntos para un trabajo bien presentado y organizado
+
+
