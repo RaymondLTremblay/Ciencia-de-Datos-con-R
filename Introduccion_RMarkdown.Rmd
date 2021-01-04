@@ -30,18 +30,7 @@ Sys.Date()
 ```
 
 
-```{r, eval=TRUE, echo=FALSE}
-colorize <- function(x, color) {
-  if (knitr::is_latex_output()) {
-    sprintf("\\textcolor{%s}{%s}", color, x)
-  } else if (knitr::is_html_output()) {
-    sprintf("<span style='color: %s;'>%s</span>", color, 
-      x)
-  } else x
-}
 
-#`r colorize("some words in red", "red")`
-```
 
 ```{r, echo=FALSE, fig.show = "hold", out.width = "20%", fig.align = "default"}
 #knitr::include_graphics(c("Graficos/hex_ggversa.png", "Graficos/hex_error.png"))
