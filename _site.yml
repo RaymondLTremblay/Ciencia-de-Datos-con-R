@@ -31,7 +31,6 @@ navbar:
         - 
           href: T1a_Poblacion_Muestra.html
           text: "T1a Población, Muestreo y Sesgo"
-    
       text: "Los Temas"
     - 
       menu: 
@@ -41,7 +40,6 @@ navbar:
         - 
           href: Ejerc_2_R4DS.html
           text: "Ejercico Gráficos"
-
       text: Ejercicio
     - 
       menu: 
