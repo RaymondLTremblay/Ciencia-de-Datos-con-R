@@ -13,7 +13,7 @@
 
 <title>T11_ANOVA</title>
 
-<script src="site_libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -25,8 +25,6 @@
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -158,6 +156,7 @@ h6 {
   text-align: left;
 }
 </style>
+
 
 <link rel="stylesheet" href="tutorial.css" type="text/css" />
 
@@ -528,7 +527,7 @@ div.tocify {
       <a href="T15_Selecionar_Pruebas.html">T15 Selección de pruebas corectas</a>
     </li>
     <li>
-      <a href="T16_AKAIKE.html">T16 AIC:Criterio de Información</a>
+      <a href="T16_AKAIKE.html">T16 Criterio de Información</a>
     </li>
   </ul>
 </li>
@@ -566,6 +565,9 @@ div.tocify {
     <li>
       <a href="Ejerc_5_Correlacion.html">Ejercicio de Correlación</a>
     </li>
+    <li>
+      <a href="Ejerc_6_Reg_Logistica.html">Ejercicio de Regressión Logistica</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -601,7 +603,7 @@ div.tocify {
 
 
 <p>Fecha de la ultima revisión</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource numberLines lineAnchors chunkout"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>## [1] &quot;2020-11-14&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource numberLines lineAnchors chunkout"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>## [1] &quot;2021-01-04&quot;</span></code></pre></div>
 <p><img src="Graficos/hex_ggversa.png" width="20%" /><img src="Graficos/hex_error.png" width="20%" /></p>
 <style type="text/css">
 div.sourceCode pre.chunkout {
@@ -995,9 +997,9 @@ div.sourceCode pre.chunkout {
 <span id="cb26-8"><a href="#cb26-8"></a>## </span>
 <span id="cb26-9"><a href="#cb26-9"></a>## Linear Hypotheses:</span>
 <span id="cb26-10"><a href="#cb26-10"></a>##                         Estimate Std. Error t value Pr(&gt;|t|)    </span>
-<span id="cb26-11"><a href="#cb26-11"></a>## DosBocas - Caraizo == 0  -15.800      3.999  -3.951   0.0044 ** </span>
-<span id="cb26-12"><a href="#cb26-12"></a>## Guineo - Caraizo == 0    -37.633      3.828  -9.830   &lt;0.001 ***</span>
-<span id="cb26-13"><a href="#cb26-13"></a>## Guineo - DosBocas == 0   -21.833      3.828  -5.703   &lt;0.001 ***</span>
+<span id="cb26-11"><a href="#cb26-11"></a>## DosBocas - Caraizo == 0  -15.800      3.999  -3.951  0.00431 ** </span>
+<span id="cb26-12"><a href="#cb26-12"></a>## Guineo - Caraizo == 0    -37.633      3.828  -9.830  &lt; 0.001 ***</span>
+<span id="cb26-13"><a href="#cb26-13"></a>## Guineo - DosBocas == 0   -21.833      3.828  -5.703  &lt; 0.001 ***</span>
 <span id="cb26-14"><a href="#cb26-14"></a>## ---</span>
 <span id="cb26-15"><a href="#cb26-15"></a>## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span>
 <span id="cb26-16"><a href="#cb26-16"></a>## (Adjusted p values reported -- single-step method)</span></code></pre></div>

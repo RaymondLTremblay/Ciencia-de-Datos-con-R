@@ -13,7 +13,7 @@
 
 <title>T14_Regression</title>
 
-<script src="site_libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -25,8 +25,6 @@
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -158,6 +156,7 @@ h6 {
   text-align: left;
 }
 </style>
+
 
 <link rel="stylesheet" href="tutorial.css" type="text/css" />
 
@@ -528,7 +527,7 @@ div.tocify {
       <a href="T15_Selecionar_Pruebas.html">T15 Selección de pruebas corectas</a>
     </li>
     <li>
-      <a href="T16_AKAIKE.html">T16 AIC:Criterio de Información</a>
+      <a href="T16_AKAIKE.html">T16 Criterio de Información</a>
     </li>
   </ul>
 </li>
@@ -566,6 +565,9 @@ div.tocify {
     <li>
       <a href="Ejerc_5_Correlacion.html">Ejercicio de Correlación</a>
     </li>
+    <li>
+      <a href="Ejerc_6_Reg_Logistica.html">Ejercicio de Regressión Logistica</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -601,7 +603,7 @@ div.tocify {
 
 
 <p>Fecha de la ultima revisión</p>
-<pre><code>## [1] &quot;2020-11-14&quot;</code></pre>
+<pre><code>## [1] &quot;2021-01-04&quot;</code></pre>
 <p><img src="Graficos/hex_ggversa.png" width="20%" /><img src="Graficos/hex_error.png" width="20%" /></p>
 <hr />
 <p>Activar las librerias, averiguar que TIENE instalado estos paquetes</p>
@@ -675,7 +677,7 @@ div.tocify {
 <th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; font-weight: bold; ">
  
 </th>
-<th colspan="3" style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black;">
+<th colspan="4" style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black;">
 mortalidad
 </th>
 </tr>
@@ -692,6 +694,9 @@ CI
 <td style=" color: red; border-bottom:1px solid black; ">
 p
 </td>
+<td style=" color: red; border-bottom:1px solid black; ">
+df
+</td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; font-weight: bold; ">
@@ -705,6 +710,9 @@ p
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
 <strong>0.005</strong>
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
+6.00
 </td>
 </tr>
 <tr>
@@ -720,12 +728,15 @@ barres
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
 <strong>0.016</strong>
 </td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
+6.00
+</td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; color: blue; border-top:1px solid;">
 Observations
 </td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; color: blue; text-align:center; border-top:1px solid;" colspan="3">
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; color: blue; text-align:center; border-top:1px solid;" colspan="4">
 8
 </td>
 </tr>
@@ -733,7 +744,7 @@ Observations
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; color: blue;">
 R<sup>2</sup> / R<sup>2</sup> adjusted
 </td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; color: blue; text-align:center;" colspan="3">
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; color: blue; text-align:center;" colspan="4">
 0.649 / 0.591
 </td>
 </tr>
@@ -775,7 +786,7 @@ R<sup>2</sup> / R<sup>2</sup> adjusted
 <th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; font-weight: bold; ">
  
 </th>
-<th colspan="3" style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black;">
+<th colspan="4" style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black;">
 mortalidad
 </th>
 </tr>
@@ -792,6 +803,9 @@ CI
 <td style=" color: red; border-bottom:1px solid black; ">
 p
 </td>
+<td style=" color: red; border-bottom:1px solid black; ">
+df
+</td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; font-weight: bold; ">
@@ -805,6 +819,9 @@ p
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
 0.106
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
+6.00
 </td>
 </tr>
 <tr>
@@ -820,12 +837,15 @@ barres
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
 <strong>&lt;0.001
 </td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
+6.00
+</td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; color: blue; border-top:1px solid;">
 Observations
 </td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; color: blue; text-align:center; border-top:1px solid;" colspan="3">
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; color: blue; text-align:center; border-top:1px solid;" colspan="4">
 8
 </td>
 </tr>
@@ -833,7 +853,7 @@ Observations
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; color: blue;">
 R<sup>2</sup> / R<sup>2</sup> adjusted
 </td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; color: blue; text-align:center;" colspan="3">
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; color: blue; text-align:center;" colspan="4">
 0.998 / 0.997
 </td>
 </tr>
@@ -899,7 +919,7 @@ R<sup>2</sup> / R<sup>2</sup> adjusted
 <th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; font-weight: bold; ">
  
 </th>
-<th colspan="3" style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black;">
+<th colspan="4" style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black;">
 sales
 </th>
 </tr>
@@ -916,6 +936,9 @@ CI
 <td style=" color: red; border-bottom:1px solid black; ">
 p
 </td>
+<td style=" color: red; border-bottom:1px solid black; ">
+df
+</td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; font-weight: bold; ">
@@ -929,6 +952,9 @@ p
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
 <strong>&lt;0.001
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
+198.00
 </td>
 </tr>
 <tr>
@@ -944,12 +970,15 @@ adverts
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
 <strong>&lt;0.001
 </td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
+198.00
+</td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; color: blue; border-top:1px solid;">
 Observations
 </td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; color: blue; text-align:center; border-top:1px solid;" colspan="3">
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; color: blue; text-align:center; border-top:1px solid;" colspan="4">
 200
 </td>
 </tr>
@@ -957,7 +986,7 @@ Observations
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; color: blue;">
 R<sup>2</sup> / R<sup>2</sup> adjusted
 </td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; color: blue; text-align:center;" colspan="3">
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; color: blue; text-align:center;" colspan="4">
 0.335 / 0.331
 </td>
 </tr>
@@ -1109,7 +1138,7 @@ R<sup>2</sup> / R<sup>2</sup> adjusted
 <th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; font-weight: bold; ">
  
 </th>
-<th colspan="3" style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black;">
+<th colspan="4" style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black;">
 sales
 </th>
 </tr>
@@ -1126,6 +1155,9 @@ CI
 <td style=" color: red; border-bottom:1px solid black; ">
 p
 </td>
+<td style=" color: red; border-bottom:1px solid black; ">
+df
+</td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; font-weight: bold; ">
@@ -1139,6 +1171,9 @@ p
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
 <strong>&lt;0.001
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
+198.00
 </td>
 </tr>
 <tr>
@@ -1154,12 +1189,15 @@ adverts
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
 <strong>&lt;0.001
 </td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
+198.00
+</td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; color: blue; border-top:1px solid;">
 Observations
 </td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; color: blue; text-align:center; border-top:1px solid;" colspan="3">
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; color: blue; text-align:center; border-top:1px solid;" colspan="4">
 200
 </td>
 </tr>
@@ -1167,7 +1205,7 @@ Observations
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; color: blue;">
 R<sup>2</sup> / R<sup>2</sup> adjusted
 </td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; color: blue; text-align:center;" colspan="3">
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; color: blue; text-align:center;" colspan="4">
 0.335 / 0.331
 </td>
 </tr>

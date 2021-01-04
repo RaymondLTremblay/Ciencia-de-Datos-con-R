@@ -13,7 +13,7 @@
 
 <title>T13_Correlacion</title>
 
-<script src="site_libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -25,8 +25,6 @@
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -158,6 +156,7 @@ h6 {
   text-align: left;
 }
 </style>
+
 
 <link rel="stylesheet" href="tutorial.css" type="text/css" />
 
@@ -528,7 +527,7 @@ div.tocify {
       <a href="T15_Selecionar_Pruebas.html">T15 Selección de pruebas corectas</a>
     </li>
     <li>
-      <a href="T16_AKAIKE.html">T16 AIC:Criterio de Información</a>
+      <a href="T16_AKAIKE.html">T16 Criterio de Información</a>
     </li>
   </ul>
 </li>
@@ -566,6 +565,9 @@ div.tocify {
     <li>
       <a href="Ejerc_5_Correlacion.html">Ejercicio de Correlación</a>
     </li>
+    <li>
+      <a href="Ejerc_6_Reg_Logistica.html">Ejercicio de Regressión Logistica</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -601,7 +603,7 @@ div.tocify {
 
 
 <p>Fecha de la ultima revisión</p>
-<pre><code>## [1] &quot;2020-11-14&quot;</code></pre>
+<pre><code>## [1] &quot;2021-01-04&quot;</code></pre>
 <p><img src="Graficos/hex_ggversa.png" width="20%" /><img src="Graficos/hex_error.png" width="20%" /></p>
 <hr />
 <div id="install-packages" class="section level2">
@@ -1033,10 +1035,10 @@ Sumas
 <span id="cb28-8"><a href="#cb28-8"></a></span>
 <span id="cb28-9"><a href="#cb28-9"></a>xycorD=(<span class="kw">cor</span>(x,y))<span class="op">^</span><span class="dv">2</span></span>
 <span id="cb28-10"><a href="#cb28-10"></a>xycorD</span></code></pre></div>
-<pre><code>## [1] 0.7479009</code></pre>
+<pre><code>## [1] 0.6924712</code></pre>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>xycorD2=(<span class="kw">cor</span>(x,y2))<span class="op">^</span><span class="dv">2</span></span>
 <span id="cb30-2"><a href="#cb30-2"></a>xycorD2</span></code></pre></div>
-<pre><code>## [1] 0.9905026</code></pre>
+<pre><code>## [1] 0.9842226</code></pre>
 <p>La diferencia no es la pendiente es solamente cuan disperso están los datos alrededor de la correlación lineal.</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>R2a=<span class="kw">ggplot</span>(xy, <span class="kw">aes</span>(x,y))<span class="op">+</span></span>
 <span id="cb32-2"><a href="#cb32-2"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> lm)<span class="op">+</span></span>
@@ -1071,13 +1073,13 @@ Sumas
 ##  Pearson&#39;s product-moment correlation
 ## 
 ## data:  x and y
-## t = 17.051, df = 98, p-value &lt; 2.2e-16
+## t = 14.855, df = 98, p-value &lt; 2.2e-16
 ## alternative hypothesis: true correlation is not equal to 0
 ## 95 percent confidence interval:
-##  0.8051635 0.9071396
+##  0.7599423 0.8840668
 ## sample estimates:
 ##       cor 
-## 0.8648126</code></pre>
+## 0.8321486</code></pre>
 <hr />
 </div>
 <div id="el-mejor-mentiroso." class="section level1">
