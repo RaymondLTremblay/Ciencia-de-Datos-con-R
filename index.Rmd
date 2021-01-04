@@ -21,8 +21,6 @@ output:
 
 
 
-
-***
 **Instructor:** Raymond L. Tremblay, PhD   
   
 **Oficina**: NL 104			 		 
@@ -37,6 +35,7 @@ output:
 - A determinar (NL 104) o por MSTeam "Horas de Consulta".    
 
 ***
+
 
 
 ### Libros obligatorios       
