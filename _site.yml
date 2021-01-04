@@ -34,21 +34,11 @@ navbar:
       text: "Los Temas"
     - 
       menu: 
-        - 
-          href: Ejerc_1_R4DS.html
-          text: "Ejercico Introducción"
-        - 
-          href: Ejerc_2_R4DS.html
-          text: "Ejercico Gráficos"
+
       text: Ejercicio
     - 
       menu: 
-        - 
-          href: Archivos_de_Datos.html
-          text: "Archivos de Datos"
-        - 
-          href: COVID-19.html
-          text: COVID-19
+  
       text: "Los Datos"
   title: "BIOL3740:Biometria"
 output_dir: "."
