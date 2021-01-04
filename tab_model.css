@@ -1,8 +1,0 @@
-tab_model{
-  CSS = list(
-    css.depvarhead = 'color: red;',
-    css.centeralign = 'text-align: left;', 
-    css.firsttablecol = 'font-weight: bold;', 
-    css.summary = 'color: blue;'
-  )
-}
