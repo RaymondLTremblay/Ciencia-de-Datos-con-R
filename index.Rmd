@@ -1,5 +1,5 @@
 ---
-title: "Bienvenido a BIOL 3740"
+title: "Bienvenido a BIOL4026"
 author: "BIOMETRIA"
 output:
   html_document:

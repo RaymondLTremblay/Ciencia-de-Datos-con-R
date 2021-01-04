@@ -6,8 +6,8 @@ output:
     fig_caption: yes
     highlight: pygments
 #  theme: simplex   To have the TOC in Red
-     toc: yes
-     toc_float: yes
+    toc: yes
+    toc_float: yes
 ---
 
 ```{r setup, include=FALSE}
