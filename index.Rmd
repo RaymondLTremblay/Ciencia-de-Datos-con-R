@@ -10,26 +10,7 @@ output:
 
 
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message = FALSE)
-```
 
-```{r, eval=TRUE, echo=FALSE}
-colorize <- function(x, color) {
-  if (knitr::is_latex_output()) {
-    sprintf("\\textcolor{%s}{%s}", color, x)
-  } else if (knitr::is_html_output()) {
-    sprintf("<span style='color: %s;'>%s</span>", color, 
-      x)
-  } else x
-}
-
-#`r colorize("some words in red", "red")`
-```
-
-```{r, echo=FALSE, fig.show = "hold", out.width = "20%", fig.align = "default"}
-knitr::include_graphics(c("Graficos/hex_ggversa.png", "Graficos/hex_error.png"))
-```
 
 
 
@@ -140,7 +121,8 @@ Escala de Notas:
 ### Examenes:
 Habrá dos examen parciales y un examen final *comprensivo*.  Estos exámenes serán de selecciones múltiples, pareo, respuesta corta, y análisis de conceptos.  El examen final será comprensivo (incluye todos los temas del semestre).  En este examen final se hará énfasis en la comprensión y aplicaciones de los supuestos de las pruebas y la capacidad de seleccionar la prueba correcta basado en el diseño experimental y los supuestos. 
 
-`r colorize("Es obligatorio tener la camera prendida durante **todo el exámen**. No es permitido usar el celular, Ud. tendrá que demostrar que el celular este detrás de uds antes de comenzar el examen", "red")`   
+
+### Es obligatorio tener la camera prendida durante **todo el exámen**. No es permitido usar el celular, Ud. tendrá que demostrar que el celular este detrás de uds antes de comenzar el examen   
 
 ***
 ### Conferencias
@@ -166,13 +148,13 @@ igualdad en el acceso a la educación y servicios. Estudiantes con impedimentos:
 La Universidad de Puerto Rico promueve los más altos estándares de integridad
 académica y científica. El Artículo 6.2 del Reglamento General de Estudiantes de la
 Universidad de Puerto Rico (Certificación Núm. 13, 2009-2010, de la Junta de Síndicos)
-establece que `r colorize("la deshonestidad académica incluye, pero no se limita a: acciones
+establece que "la deshonestidad académica incluye, pero no se limita a: acciones
 fraudulentas, la obtención de notas o grados académicos valiéndose de falsas o
 fraudulentas simulaciones, copiar total o parcialmente la labor académica de otra persona,
 plagiar total o parcialmente el trabajo de otra persona, copiar total o parcialmente las
 respuestas de otra persona a las preguntas de un examen, haciendo o consiguiendo que
 otro tome en su nombre cualquier prueba o examen oral o escrito, así como la ayuda o
-facilitación para que otra persona incurra en la referida conducta", "red")`. Cualquiera de estas
+facilitación para que otra persona incurra en la referida conducta". Cualquiera de estas
 acciones estará sujeta a sanciones disciplinarias en conformidad con el procedimiento
 disciplinario establecido en el Reglamento General de Estudiantes de la UPR vigente.
 
