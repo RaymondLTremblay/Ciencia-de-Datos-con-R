@@ -1,0 +1,47 @@
+--- 
+name: "BIOL 3740"
+navbar: 
+  left: 
+    - 
+      href: schedule.html
+      text: Calendario
+    - 
+      menu: 
+        - 
+          href: Instalar-R-RStudio.html
+          text: "Instalar R y RStudio"
+        - 
+          href: Introduccion_RMarkdown.html
+          text: RMarkdown
+        - 
+          href: Codigos_basicos_en_R.html
+          text: "R y Cheatsheets"
+        - 
+          href: R_basico.html
+          text: "R Básico #2"
+      text: "Instalación básica"
+    - 
+      menu: 
+        - 
+          href: T1_Intro.html
+          text: "T1 Introducción a la Estadística"
+
+      text: "Los Temas"
+    - 
+      menu: 
+        - 
+          href: Ejerc_1_R4DS.html
+          text: "Ejercico Introducción"
+
+      text: Ejercicio
+    - 
+      menu: 
+        - 
+          href: Archivos_de_Datos.html
+          text: "Archivos de Datos"
+        - 
+          href: COVID-19.html
+          text: COVID-19
+      text: "Los Datos"
+  title: "Ciencia de Datos con R"
+output_dir: "."

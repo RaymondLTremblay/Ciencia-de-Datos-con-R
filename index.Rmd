@@ -1,0 +1,182 @@
+---
+title: "Ciencia De Datos con R"
+author: "Raymond L. Tremblay"
+output:
+  html_document:
+    css: tutorial.css
+    fig_caption: yes
+    highlight: pygments
+#  theme: simplex   To have the TOC in Red
+    toc: yes
+    toc_float: yes
+---
+
+# <meta name="google-site-verification" content="sqB47_Ch7slOBSvYTr_Py8z8e57699jN-QJN7JqdvVI" />
+
+
+```{=html}
+<style>
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+    background-color: #7b802a;
+}
+</style>
+```
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message = FALSE)
+```
+
+```{r, eval=TRUE, echo=FALSE}
+colorize <- function(x, color) {
+  if (knitr::is_latex_output()) {
+    sprintf("\\textcolor{%s}{%s}", color, x)
+  } else if (knitr::is_html_output()) {
+    sprintf("<span style='color: %s;'>%s</span>", color, 
+      x)
+  } else x
+}
+
+#`r colorize("some words in red", "red")`
+```
+
+```{r, echo=FALSE, fig.show = "hold", out.width = "20%", fig.align = "default"}
+#knitr::include_graphics(c("Graficos/hex_ggversa.png", "Graficos/hex_error.png"))
+```
+
+
+
+***
+**Instructor:** Raymond L. Tremblay, PhD   
+  
+**Oficina**: NL 104			 		 
+**Teléfono**: (787) 850-0000 (dept de biología)			  		
+**Coreo electrónico**: raymond.tremblay_at_upr_dot_edu	
+ 
+***
+### Horario de clase
+**Presentación de temas y discusión**: L, M at 1:30-2:50am (NOTE: Necesita traer su laptop!)   
+
+**Hora de consulta con Estudiantes**:    
+- A determinar (NL 104) o por MSTeam "Horas de Consulta".    
+
+***
+
+
+### Libros obligatorios       
+- [Garrett Grolemund, Hadley Wickham. R for Data Science](https://r4ds.had.co.nz) En Ingles. 
+- [Garrett Grolemund, Hadley Wickham. R para Ciencia de Datos](https://es.r4ds.hadley.nz) En Español.
+
+
+### Libros sugerido 
+- [Tremblay y Hernández-Serrano, 2018](https://www.amazon.com/Gráficas-Versátiles-ggplot2-Análisis-Spanish-ebook/dp/B07P2Q87H2/ref=sr_1_1?dchild=1&keywords=Graficas+versatiles&qid=1591404029&sr=8-1).
+
+•	Artículos revisados por pares serán asignados para fomentar el método de utilizar estas herramientas en ciencias. 
+
+***
+### Programados
+- [R- free statistical programming language](https://cran.r-project.org/) 
+- [RStudio](https://rstudio.com)
+- MSExcel, Numbers o Google Sheet para los archivos de datos
+
+***
+
+### Prerequisitos    
+- BIOL 3011-3013: Biología General y Laboratorio primer semestre 
+- BIOL 3012-3014: Biología General y Laboratorio segundo semestre  
+
+***
+### Descripción del curso  
+
+Este sitio es una guia para el curso de Ciencia de Datos con R, BIOL4026 en la Universidad de Puerto Rico en Humacao. El objetivo de este sitio es presentar una organización simple y básica para la munipulación de datos para analisis y vizualización.
+
+El presente curso tiene como objetivo es integrar componente de visualización de datos, manipulación de datos y una introducción a estadistica intermedia con R.
+
+***
+## Manipulando Datos y la plataformas
+
+- Visualización de datos con ggplot2
+- dplyr: Transformación de datos
+- Importar datos de diferentes clases
+- Limpieza de datos con tidyr
+- Trabajando con mapas
+- Datos relacionados con dplyr
+- stringr para datos en string
+- Trabajando con factores con forcats
+- Trabajando con fechas con lubridate
+- El “pipe” con margritt
+- Vectors de datos
+- Modelos basicos con modelr
+- Muchos modelos con purrr and broom
+- El YAML header para modificar la aprencia del documento Estadística intermedia
+- Selección de modelos
+- Regresión multiples
+- Regresión beta
+
+***
+### Puntuación: 
+Este curso sera evaluado con los siguiente items:
+
+
+|Item                    |     Valor              |
+|:--------------------|-------------------:|
+|Ejercicios práctico (10-15total) |	  80% |     
+|Participación en clase           |  20% |  
+
+NOTE: 
+Escala de Notas: 
+
+  * A (100 to 90) 
+  * B (89 to 80) 
+  * C (79 to 70) 
+  * D (69 to 60) 
+  * F (< 60) 
+
+
+***
+### Conferencias
+En la clase las notas serán basado primeramente en la participación y algunas pruebas cortas.  Su participación es esencial para el aprendizaje (y para un ambiente positivo). Aprender *NO* es un proceso pasivo: los estudiantes deben participar haciendo preguntas y discutir el material con su conocimiento anterior (Su bagaje de conocimiento).  
+
+***
+### Ejercicios  
+Los ejercicios están enfocado en la aplicación de conceptos y métodos discutido en la clase y solución de problemas. Se hará un esfuerza de usar datos reales para demostrar como trabajar con los análisis, tablas, y gráficos en R, RStudio y RMarkdown.  Típicamente, tendrán solamente una semana para hacer los ejercicios y entregarlos en formato *.html*.   
+
+***
+### Faltar en someter trabajos a tiempo:
+*Los trabajos cortos y pruebas cortas NO se reponen*.  Si falta a la clase es su responsabilidad hablar con los otros estudiantes para saber lo que se discutió en la clase. Si no se somete a tiempo el trabajo es automatico un cero. 
+
+***
+### Derechos de Estudiantes con Impedimentos
+
+La UPR-Humacao cumple con las leyes ADA (Americans with Disabilities Act) y
+51 (Servicios Educativos Integrales para Personas con Impedimentos) para garantizar
+igualdad en el acceso a la educación y servicios. Estudiantes con impedimentos: informe al (la) profesor(a) de cada curso sobre sus necesidades especiales y/o de acomodo razonable para el curso, en la tarjeta de información de la primera semana y visite la Oficina de Servicios para la Población con Impedimentos (SERPI) a la brevedad posible. Se mantendrá la confidencialidad.
+
+***
+### Integridad académica
+La Universidad de Puerto Rico promueve los más altos estándares de integridad
+académica y científica. El Artículo 6.2 del Reglamento General de Estudiantes de la
+Universidad de Puerto Rico (Certificación Núm. 13, 2009-2010, de la Junta de Síndicos)
+establece que `r colorize("la deshonestidad académica incluye, pero no se limita a: acciones
+fraudulentas, la obtención de notas o grados académicos valiéndose de falsas o
+fraudulentas simulaciones, copiar total o parcialmente la labor académica de otra persona,
+plagiar total o parcialmente el trabajo de otra persona, copiar total o parcialmente las
+respuestas de otra persona a las preguntas de un examen, haciendo o consiguiendo que
+otro tome en su nombre cualquier prueba o examen oral o escrito, así como la ayuda o
+facilitación para que otra persona incurra en la referida conducta", "red")`. Cualquiera de estas
+acciones estará sujeta a sanciones disciplinarias en conformidad con el procedimiento
+disciplinario establecido en el Reglamento General de Estudiantes de la UPR vigente.
+
+***
+### Comentario sobre grabar videos y/o audio de las clases
+Los estudiantes no PUEDEN grabar la clase por forma de video o audio sin el permiso del profesor.  Algunos estudiantes con necesidades especiales pueden hablar con el profesor para pedir el permiso.  La solicitud y aprobación del permiso tiene que ser por escrito (por ejemplo por email).  
+
+***
+### Espacio libre de acoso sexual
+La Universidad de Puerto Rico prohíbe el descrimen por razón de sexo y género en todas sus modalidades, incluyendo el hostigamiento sexual. Según la Política Institucional contra el hostigamiento sexual, en la Universidad de Puerto Rico, Cert. Núm. 130 (2014-2015) de la Junta de Gobierno, si un(a) estudiante está siendo o fue afectado por conductas relacionadas a hostigamiento sexual, puede acudir ante la Oficina del Procurador Estudiantil, el Decanato de Estudiantes o el Coordinador de Cumplimiento con Título IX para una orientación o presentar una querella.
+
+***
+### Protocolo de la Clase
+Los teléfonos mobiles serán apagado durante la clase.  Si necesita una calculadora traerla al salón. El teléfono no debería esta visible durante la clase al menos que pide permiso al instructor. Recuerda que que se usara computadoras portátiles en cada sesión.
+
