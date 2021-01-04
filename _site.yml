@@ -31,6 +31,8 @@ navbar:
         - 
           href: T1a_Poblacion_Muestra.html
           text: "T1a Población, Muestreo y Sesgo"
+
+          
       text: "Los Temas"
     - 
       menu: 
