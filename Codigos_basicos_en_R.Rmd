@@ -10,15 +10,23 @@ output:
     toc_float: yes
 ---
 
+
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+
 
 Fecha de la ultima revisión
 ```{r echo=FALSE}
 
 Sys.Date()
 ```
+
+
+
 
 ```{r, eval=TRUE, echo=FALSE}
 colorize <- function(x, color) {
