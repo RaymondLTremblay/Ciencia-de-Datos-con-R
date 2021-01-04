@@ -43,7 +43,7 @@ Sys.Date()
 ***
 # Responsabilidad del estudiante
 
-`r colorize("EL ESTUDIANTE es COMPLETAMENTE RESPONSABLE","red")` de ver estos videos y entender como usar la plataforma.
+"EL ESTUDIANTE es COMPLETAMENTE RESPONSABLE" de ver estos videos y entender como usar la plataforma.
 
 Mi sugerencias es que deberían ver los vídeos abajo múltiples veces y después compartir con otros estudiantes y hablar de los que entendió y aprendió.  
 
