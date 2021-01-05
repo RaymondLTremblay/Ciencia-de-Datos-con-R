@@ -1,0 +1,74 @@
+---
+title: "C_1_E8_I6_Flujo_Trabajo"
+author: "BIOL 4026"
+
+output:
+  html_document:
+    css: tutorial.css
+    fig_caption: yes
+    highlight: pygments
+#    theme: simplex
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message = FALSE)
+```
+
+```{=html}
+<style>
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+    background-color: #7b802a;
+}
+</style>
+```
+
+
+Fecha de la ultima revisión
+```{r echo=FALSE}
+
+Sys.Date()
+```
+
+
+
+El tema proviene de los siguietes sitios.
+
+English:
+ <https://r4ds.had.co.nz/workflow-projects.html>
+ 
+Español:
+ <https://es.r4ds.hadley.nz/flujo-de-trabajo-proyectos.html>
+ 
+ 
+***
+
+
+## Temas:
+
+  - Reduciendo Errores
+  - getwd()
+  - setwd()
+  - Su Proyecto
+  
+  
+  
+  
+## Creación de un proyecto:
+
+  - crear un proyecto para cada curso
+  - crear un proyecto para cada investigación
+  - No se te olvidar de añadir tu archivos de datos en el proyecto
+  - Describe claramente todos tus análisis y donde conseguiste la información
+  - Correr los scripts uno a la vez para asegurar que funcione
+  - knit el proyecto para asegurar que no falte nada.
+  - no mezclar proyectos de investigación
+  
+  
+  
+  
+
+
+
+

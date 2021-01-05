@@ -26,8 +26,8 @@ navbar:
     - 
       menu: 
         - 
-          href: T1_Intro.html
-          text: "T1 Introducción a la Estadística"
+          href: C_1_E8_I6_Flujo_Trabajo.html
+          text: "C1 Flujo del Trabajo"
         - 
           href: T1a_Poblacion_Muestra.html
           text: "T1a Población, Muestreo y Sesgo"
