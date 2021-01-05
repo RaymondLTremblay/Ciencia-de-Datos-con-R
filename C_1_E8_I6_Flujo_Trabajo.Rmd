@@ -1,6 +1,7 @@
 ---
 title: "C_1_E8_I6_Flujo_Trabajo"
-author: "BIOL 4026"
+subtitle: "BIOL4026"
+author: "Raymond L. Tremblay"
 
 output:
   html_document:
@@ -53,20 +54,21 @@ Español:
   - Su Proyecto
   
   
-  
+*** 
   
 ## Creación de un proyecto:
 
   - crear un proyecto para cada curso
   - crear un proyecto para cada investigación
-  - No se te olvidar de añadir tu archivos de datos en el proyecto
+  - No se te olvida de añadir tu archivos de datos en el proyecto
   - Describe claramente todos tus análisis y donde conseguiste la información
-  - Correr los scripts uno a la vez para asegurar que funcione
-  - knit el proyecto para asegurar que no falte nada.
-  - no mezclar proyectos de investigación
+  - Describe tu interpretación de los análisis o gráficos
+  - Correr los "scripts" uno a la vez para asegurar que funcione
+  - knit el archivo .rmd para asegurar que no falte nada.
+  - no mezclar proyectos de investigación en un mismo proyecto
   
   
-  
+***
   
 
 

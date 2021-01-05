@@ -1,5 +1,7 @@
 ---
 title: "RMarkdown"
+subtitle: "BIOL4026"
+author: "Raymond L. Tremblay"
 output:
   html_document:
     css: tutorial.css
