@@ -32,9 +32,9 @@ Fecha de la ultima revisión
 Sys.Date()
 ```
 
+***
 
-
-El tema proviene de los siguietes sitios.
+El tema proviene de los siguientes sitios.
 
 English:
  <https://r4ds.had.co.nz/workflow-projects.html>

@@ -31,6 +31,10 @@ navbar:
         - 
           href: C_2_E8_I1_Visualizacion_Datos.html
           text: "C2 Visualización de Datos"
+        - 
+          href: C_3_E4_I2_Flujo_Trabajo_Basico.html
+          text: "C3 Flujo del Trabajo Básico"  
+          
 
           
       text: "Los Temas"
@@ -42,5 +46,5 @@ navbar:
       menu: 
   
       text: "Los Datos"
-  title: "BIOL3740:Biometria"
+  title: "BIOL4026: Ciencia de Datos"
 output_dir: "."

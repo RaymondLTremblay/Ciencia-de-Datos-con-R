@@ -32,8 +32,9 @@ Sys.Date()
 ```
 
 
+***
 
-El tema proviene de los siguietes sitios.
+El tema proviene de los siguientes sitios.
 
 English:
  <https://r4ds.had.co.nz/data-visualisation.html>

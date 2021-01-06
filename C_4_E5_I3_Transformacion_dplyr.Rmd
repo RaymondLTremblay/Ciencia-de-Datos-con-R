@@ -1,5 +1,5 @@
 ---
-title: "C_3_E4_I2_Flujo_Trabajo_Basico"
+title: "C_4_E5_I3_Transformacion_dplyr"
 subtitle: "BIOL4026"
 author: "Raymond L. Tremblay"
 
@@ -38,20 +38,10 @@ Sys.Date()
 El tema proviene de los siguientes sitios.
 
 English:
- <https://r4ds.had.co.nz/workflow-basics.html>
+ <https://r4ds.had.co.nz/transform.html>
  
 Español:
- <https://es.r4ds.hadley.nz/flujo-de-trabajo-conocimientos-básicos.html>
+ <https://es.r4ds.hadley.nz/transform.html>
  
  
 ***
-
-
-
-## Temas:
-
-  - Conocimiento básicos de programación
-  - La importancia de los nombres
-  - Usando funciones
-    - Ejercicio
-
