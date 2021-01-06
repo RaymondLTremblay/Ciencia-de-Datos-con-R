@@ -33,7 +33,11 @@ navbar:
           text: "C2 Visualización de Datos"
         - 
           href: C_3_E4_I2_Flujo_Trabajo_Basico.html
-          text: "C3 Flujo del Trabajo Básico"  
+          text: "C3 Flujo del Trabajo Básico" 
+        - 
+          href: C_4_E5_I3_Transformacion_dplyr.html
+          text: "C4 Transformación: dplyr"  
+          
           
 
           
