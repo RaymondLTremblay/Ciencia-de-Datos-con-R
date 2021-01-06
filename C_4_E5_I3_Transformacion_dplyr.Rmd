@@ -45,3 +45,140 @@ Español:
  
  
 ***
+
+
+## Temas: Reconocer y aplicar las diferentes funciones
+
+- Tipos de variables:
+  
+    - int
+    - dbl
+    - chr
+    - dttm
+    - lgl
+    -fctr
+    -date
+ 
+ *** 
+- Funciones de dplyr:
+  
+   - filter()
+   - arrange()
+   - select()
+   - summarize()
+   - group_by()
+   
+***  
+- Operaciones lógicas boolean:
+  
+   - &
+   - |
+   - !
+   - %in%
+   - ==
+   - "<"
+   - ">"
+   
+ 
+***
+
+- Ejercicios
+
+***
+
+- Otra función
+
+  - desc()
+   
+
+***
+
+- Ejercicios
+
+***
+
+- Otras funciones:
+
+  - starts_with()
+  - ends_with()
+  - contains()
+  - matches("(.)\\1")
+  - rename()
+  - everything()
+ 
+ 
+***
+
+- Ejercicios
+
+***
+
+- Otras funciones:
+ 
+  - mutate()
+  - transmute()
+  - lag()
+  - lead()
+  - cumsum()
+  - cummean()
+  - min_rank()
+  - max_rank(desc())
+  - row_number()
+  - dense_rank()
+  - percent_rank()
+  - cume_dist()
+  
+  
+***
+
+- Ejercicios
+
+***
+
+- Otras funciones:
+
+ - summarise()
+ - group_by()
+ 
+
+***
+
+- Ejercicios
+
+***
+
+- Otras funciones:
+
+ - %>%  "El pipe"
+ 
+
+***
+
+- Otras funciones:
+ 
+ - na.rm=TRUE
+ - !is.na()
+ 
+
+***
+
+- Otras funciones:
+
+  - mean()
+  - sd()
+  - IQR()
+  - mad()
+  - min()
+  - max()
+  - first()
+  - last()
+  
+  
+  
+ 
+ 
+ 
+ 
+   
+
+    
