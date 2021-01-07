@@ -1,5 +1,5 @@
 --- 
-name: "BIOL4026"
+name: BIOL4026
 navbar: 
   left: 
     - 
@@ -15,7 +15,7 @@ navbar:
           text: "Instalar R y RStudio"
         - 
           href: A2_Introduccion_RMarkdown.html
-          text: "RMarkdown"
+          text: RMarkdown
         - 
           href: A3_Codigos_basicos_en_R.html
           text: "R y Cheatsheets"
@@ -33,7 +33,7 @@ navbar:
           text: "C2 Visualización de Datos"
         - 
           href: C_3_E4_I2_Flujo_Trabajo_Basico.html
-          text: "C3 Flujo del Trabajo Básico" 
+          text: "C3 Flujo del Trabajo Básico"
         - 
           href: C_4_E5_I3_Transformacion_dplyr.html
           text: "C4 Transformación: dplyr"
@@ -42,17 +42,13 @@ navbar:
           text: "C5 Scripts"
         - 
           href: C_6_E7_I7_Analisis_Exploratorio.html
-          text: "C6 Analisis Exploratorio"
-          
-          
+          text: "C6 Análisis Exploratorio"
       text: "Los Temas"
     - 
-      menu: 
-
+      menu: ~
       text: Ejercicio
     - 
-      menu: 
-  
+      menu: ~
       text: "Los Datos"
   title: "BIOL4026: Ciencia de Datos"
 output_dir: "."
