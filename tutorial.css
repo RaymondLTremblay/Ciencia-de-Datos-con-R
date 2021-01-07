@@ -82,7 +82,7 @@ ol > li {
     padding:10px 80px; /* Add some spacing around the content */
     list-style:none; /* Disable the normal item numbering */
     border-top:2px solid #7b802a;
-    background:rgba(49, 126, 172, 0.1);
+    background:#c8cc83;
 }
 ol > li:before {
     content:"" counter(li); /* Use the counter as content */

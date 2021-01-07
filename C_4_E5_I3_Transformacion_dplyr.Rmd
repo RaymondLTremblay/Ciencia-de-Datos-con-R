@@ -56,8 +56,8 @@ Español:
     - chr
     - dttm
     - lgl
-    -fctr
-    -date
+    - fctr
+    - date
  
  *** 
 - Funciones de dplyr:
@@ -72,7 +72,7 @@ Español:
 - Operaciones lógicas boolean:
   
    - &
-   - |
+   - "|"
    - !
    - %in%
    - ==
@@ -82,7 +82,12 @@ Español:
  
 ***
 
-- Ejercicios
+1. **Ejercicios**:
+
+ Hacer los ejercicios en la sección 5.2.4 del libro en español
+ 
+ 
+   
 
 ***
 
@@ -93,7 +98,9 @@ Español:
 
 ***
 
-- Ejercicios
+2. **Ejercicios**:
+
+Hacer los ejercicios en la sección 5.3.1 del libro en español
 
 ***
 
@@ -109,7 +116,9 @@ Español:
  
 ***
 
-- Ejercicios
+3.  **Ejercicios**:
+
+Hacer los ejercicios en la sección 5.4.1 del libro en español
 
 ***
 
@@ -131,7 +140,9 @@ Español:
   
 ***
 
-- Ejercicios
+4.  **Ejercicios**:
+
+Hacer los ejercicios en la sección 5.5.2 del libro en español
 
 ***
 
@@ -143,21 +154,23 @@ Español:
 
 ***
 
-- Ejercicios
+5.  **Ejercicios**:
+
+Hacer los ejercicios en la sección 5.6.7 del libro en español
 
 ***
 
 - Otras funciones:
 
- - %>%  "El pipe"
+  - %>%  "El pipe"
  
 
 ***
 
 - Otras funciones:
  
- - na.rm=TRUE
- - !is.na()
+  - na.rm=TRUE
+  - !is.na()
  
 
 ***
@@ -174,7 +187,14 @@ Español:
   - last()
   
   
-  
+***
+
+1.  **Ejercicios**:
+
+
+Hacer los ejercicios en la sección 5.7.1 del libro en español
+
+***
  
  
  

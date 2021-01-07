@@ -1,5 +1,5 @@
 ---
-title: "C_2_E8_I1_Visualizacion_Datos"
+title: "C_2_E3_I1_Visualizacion_Datos"
 subtitle: "BIOL4026"
 author: "Raymond L. Tremblay"
 output:
@@ -53,26 +53,87 @@ Español:
   - datos de "mgp"
   - ggplot2
   - El concepto de la gramática de gráficos
-    - Ejercicios
+  
+
+***
+
+1.  **Ejercicios**:
+
+
+Hacer los ejercicios en la sección 3.2.4 del libro en español
+
+***
+
   - Aestética 
-    - Ejercicios de practica
+  
+  ***
+
+2.  **Ejercicios**:
+
+
+Hacer los ejercicios en la sección 3.3.1 del libro en español
+
+***
+
   - Problemas comunes
   - Separar en facetas
-    - Ejercicios de practica
-  - Objetos geométricos
-    - Ejercicios de practica
-  - Transformación estadísticas
-    - Ejercicios de practica
-  - Ajuste de posición
-    - Ejercicios de practica
-  - Sistema de coordenadas
-    - Ejercicios de practica
- 
   
-*** 
-Trabajo
+***
+3.  **Ejercicios**:
 
-- Ejercicios para someter
+
+Hacer los ejercicios en la sección 3.5.1 del libro en español
+
+***
+
+
+  - Objetos geométricos
+***
+
+4.  **Ejercicios**:
+
+
+Hacer los ejercicios en la sección 3.6.1 del libro en español
+
+***
+
+
+  - Transformación estadísticas
+
+***
+
+5.  **Ejercicios**:
+
+
+Hacer los ejercicios en la sección 3.7.1 del libro en español
+
+***
+  - Ajuste de posición
+
+***
+
+6.  **Ejercicios**:
+
+
+Hacer los ejercicios en la sección 3.8.1 del libro en español
+
+***
+
+  - Sistema de coordenadas
+
+
+***
+
+7.  **Ejercicios**:
+
+
+Hacer los ejercicios en la sección 3.9.1 del libro en español
+
+***
+ 
+
+
+
 
 
 

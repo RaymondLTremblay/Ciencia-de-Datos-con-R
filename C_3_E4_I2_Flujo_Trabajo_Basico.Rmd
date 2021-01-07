@@ -53,5 +53,8 @@ Español:
   - Conocimiento básicos de programación
   - La importancia de los nombres
   - Usando funciones
-    - Ejercicio
+  
+1.  **Ejercicios**:
+  
+Hacer los ejercicios en la sección 4.4 del libro en español
 
