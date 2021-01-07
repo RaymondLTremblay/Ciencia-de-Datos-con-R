@@ -12,7 +12,7 @@
 <meta name="author" content="Raymond L. Tremblay" />
 
 
-<title>C_4_E5_I3_Transformacion_dplyr</title>
+<title>C5_E6_I6_Scripts</title>
 
 <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -412,7 +412,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">C_4_E5_I3_Transformacion_dplyr</h1>
+<h1 class="title toc-ignore">C5_E6_I6_Scripts</h1>
 <h3 class="subtitle">BIOL4026</h3>
 <h4 class="author">Raymond L. Tremblay</h4>
 
@@ -428,150 +428,22 @@ div.tocify {
 <pre><code>## [1] &quot;2021-01-07&quot;</code></pre>
 <hr />
 <p>El tema proviene de los siguientes sitios.</p>
-<p>English: <a href="https://r4ds.had.co.nz/transform.html" class="uri">https://r4ds.had.co.nz/transform.html</a></p>
-<p>Español: <a href="https://es.r4ds.hadley.nz/transform.html" class="uri">https://es.r4ds.hadley.nz/transform.html</a></p>
+<p>English: <a href="https://r4ds.had.co.nz/workflow-scripts.html" class="uri">https://r4ds.had.co.nz/workflow-scripts.html</a></p>
+<p>Español: <a href="https://es.r4ds.hadley.nz/flujo-de-trabajo-scripts.html" class="uri">https://es.r4ds.hadley.nz/flujo-de-trabajo-scripts.html</a></p>
 <hr />
-<div id="temas-reconocer-y-aplicar-las-diferentes-funciones" class="section level2">
-<h2>Temas: Reconocer y aplicar las diferentes funciones</h2>
+<div id="temas" class="section level2">
+<h2>Temas:</h2>
+</div>
+<div id="scripts" class="section level2">
+<h2>Scripts:</h2>
 <ul>
-<li><p>Tipos de variables:</p>
-<ul>
-<li>int</li>
-<li>dbl</li>
-<li>chr</li>
-<li>dttm</li>
-<li>lgl</li>
-<li>fctr</li>
-<li>date</li>
-</ul></li>
+<li>Ejecutando códigos</li>
+<li>Diagnostico de Rstudio</li>
 </ul>
-<hr />
-<ul>
-<li><p>Funciones de dplyr:</p>
-<ul>
-<li>filter()</li>
-<li>arrange()</li>
-<li>select()</li>
-<li>summarize()</li>
-<li>group_by()</li>
-</ul></li>
-</ul>
-<hr />
-<ul>
-<li><p>Operaciones lógicas boolean:</p>
-<ul>
-<li>&amp;</li>
-<li>“|”</li>
-<li>!</li>
-<li>%in%</li>
-<li>==</li>
-<li>“&lt;”</li>
-<li>“&gt;”</li>
-</ul></li>
-</ul>
-<hr />
 <ol style="list-style-type: decimal">
 <li><strong>Ejercicios</strong>:</li>
 </ol>
-<p>Hacer los ejercicios en la sección 5.2.4 del libro en español</p>
-<hr />
-<ul>
-<li><p>Otra función</p>
-<ul>
-<li>desc()</li>
-</ul></li>
-</ul>
-<hr />
-<ol start="2" style="list-style-type: decimal">
-<li><strong>Ejercicios</strong>:</li>
-</ol>
-<p>Hacer los ejercicios en la sección 5.3.1 del libro en español</p>
-<hr />
-<ul>
-<li><p>Otras funciones:</p>
-<ul>
-<li>starts_with()</li>
-<li>ends_with()</li>
-<li>contains()</li>
-<li>matches(“(.)\1”)</li>
-<li>rename()</li>
-<li>everything()</li>
-</ul></li>
-</ul>
-<hr />
-<ol start="3" style="list-style-type: decimal">
-<li><strong>Ejercicios</strong>:</li>
-</ol>
-<p>Hacer los ejercicios en la sección 5.4.1 del libro en español</p>
-<hr />
-<ul>
-<li><p>Otras funciones:</p>
-<ul>
-<li>mutate()</li>
-<li>transmute()</li>
-<li>lag()</li>
-<li>lead()</li>
-<li>cumsum()</li>
-<li>cummean()</li>
-<li>min_rank()</li>
-<li>max_rank(desc())</li>
-<li>row_number()</li>
-<li>dense_rank()</li>
-<li>percent_rank()</li>
-<li>cume_dist()</li>
-</ul></li>
-</ul>
-<hr />
-<ol start="4" style="list-style-type: decimal">
-<li><strong>Ejercicios</strong>:</li>
-</ol>
-<p>Hacer los ejercicios en la sección 5.5.2 del libro en español</p>
-<hr />
-<ul>
-<li><p>Otras funciones:</p></li>
-<li><p>summarise()</p></li>
-<li><p>group_by()</p></li>
-</ul>
-<hr />
-<ol start="5" style="list-style-type: decimal">
-<li><strong>Ejercicios</strong>:</li>
-</ol>
-<p>Hacer los ejercicios en la sección 5.6.7 del libro en español</p>
-<hr />
-<ul>
-<li><p>Otras funciones:</p>
-<ul>
-<li>%&gt;% “El pipe”</li>
-</ul></li>
-</ul>
-<hr />
-<ul>
-<li><p>Otras funciones:</p>
-<ul>
-<li>na.rm=TRUE</li>
-<li>!is.na()</li>
-</ul></li>
-</ul>
-<hr />
-<ul>
-<li><p>Otras funciones:</p>
-<ul>
-<li>mean()</li>
-<li>sd()</li>
-<li>IQR()</li>
-<li>mad()</li>
-<li>min()</li>
-<li>max()</li>
-<li>first()</li>
-<li>last()</li>
-</ul></li>
-</ul>
-<hr />
-<ol style="list-style-type: decimal">
-<li><strong>Ejercicios</strong>:</li>
-</ol>
-<p>Hacer los ejercicios en la sección 5.7.1 del libro en español</p>
-<hr />
+<p>Hacer los ejercicios en la sección 6.3 del libro en español</p>
 </div>
 
 

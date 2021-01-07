@@ -12,7 +12,7 @@
 <meta name="author" content="Raymond L. Tremblay" />
 
 
-<title>C_4_E5_I3_Transformacion_dplyr</title>
+<title>C6_E7_I7_Scripts</title>
 
 <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -412,7 +412,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">C_4_E5_I3_Transformacion_dplyr</h1>
+<h1 class="title toc-ignore">C6_E7_I7_Scripts</h1>
 <h3 class="subtitle">BIOL4026</h3>
 <h4 class="author">Raymond L. Tremblay</h4>
 
@@ -428,150 +428,104 @@ div.tocify {
 <pre><code>## [1] &quot;2021-01-07&quot;</code></pre>
 <hr />
 <p>El tema proviene de los siguientes sitios.</p>
-<p>English: <a href="https://r4ds.had.co.nz/transform.html" class="uri">https://r4ds.had.co.nz/transform.html</a></p>
-<p>Español: <a href="https://es.r4ds.hadley.nz/transform.html" class="uri">https://es.r4ds.hadley.nz/transform.html</a></p>
+<p>English: <a href="https://r4ds.had.co.nz/exploratory-data-analysis.html" class="uri">https://r4ds.had.co.nz/exploratory-data-analysis.html</a></p>
+<p>Español: <a href="https://es.r4ds.hadley.nz/an%C3%A1lisis-exploratorio-de-datos-eda.html" class="uri">https://es.r4ds.hadley.nz/an%C3%A1lisis-exploratorio-de-datos-eda.html</a></p>
 <hr />
-<div id="temas-reconocer-y-aplicar-las-diferentes-funciones" class="section level2">
-<h2>Temas: Reconocer y aplicar las diferentes funciones</h2>
+<div id="temas" class="section level2">
+<h2>Temas</h2>
 <ul>
-<li><p>Tipos de variables:</p>
-<ul>
-<li>int</li>
-<li>dbl</li>
-<li>chr</li>
-<li>dttm</li>
-<li>lgl</li>
-<li>fctr</li>
-<li>date</li>
-</ul></li>
+<li>Variación</li>
+<li>Valores faltantes</li>
+<li>Covariación</li>
+<li>Patrones y modelos</li>
+<li>Argumentos en ggplot2</li>
 </ul>
 <hr />
+</div>
+<div id="terminos-importantes" class="section level2">
+<h2>Terminos importantes</h2>
 <ul>
-<li><p>Funciones de dplyr:</p>
-<ul>
-<li>filter()</li>
-<li>arrange()</li>
-<li>select()</li>
-<li>summarize()</li>
-<li>group_by()</li>
-</ul></li>
+<li>variable</li>
+<li>valor</li>
+<li>observación</li>
+<li>datos tabulados</li>
 </ul>
 <hr />
+<div id="variación" class="section level3">
+<h3>Variación</h3>
 <ul>
-<li><p>Operaciones lógicas boolean:</p>
-<ul>
-<li>&amp;</li>
-<li>“|”</li>
-<li>!</li>
-<li>%in%</li>
-<li>==</li>
-<li>“&lt;”</li>
-<li>“&gt;”</li>
-</ul></li>
+<li>visualización de las distribuciones</li>
+<li>count()</li>
+<li>cut_width()</li>
+<li>valores típicos</li>
+<li>valores inusuales o atípicos</li>
 </ul>
 <hr />
 <ol style="list-style-type: decimal">
 <li><strong>Ejercicios</strong>:</li>
 </ol>
-<p>Hacer los ejercicios en la sección 5.2.4 del libro en español</p>
+<p>Hacer los ejercicios en la sección 7.3.4 del libro en español</p>
 <hr />
+</div>
+<div id="valores-faltantes" class="section level3">
+<h3>Valores faltantes</h3>
 <ul>
-<li><p>Otra función</p>
-<ul>
-<li>desc()</li>
-</ul></li>
+<li>between()</li>
+<li>ifelse()</li>
 </ul>
 <hr />
 <ol start="2" style="list-style-type: decimal">
 <li><strong>Ejercicios</strong>:</li>
 </ol>
-<p>Hacer los ejercicios en la sección 5.3.1 del libro en español</p>
+<p>Hacer los ejercicios en la sección 7.4.1 del libro en español</p>
 <hr />
+</div>
+<div id="covariación" class="section level3">
+<h3>Covariación</h3>
 <ul>
-<li><p>Otras funciones:</p>
+<li>geom_boxplot</li>
+<li>IQR()</li>
+</ul>
+<hr />
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Ejercicios</strong>:</li>
+</ol>
+<p>Hacer los ejercicios en la sección 7.5.1.1 del libro en español</p>
+<hr />
+</div>
+<div id="dos-variables-categóricas" class="section level3">
+<h3>Dos variables categóricas</h3>
 <ul>
-<li>starts_with()</li>
-<li>ends_with()</li>
-<li>contains()</li>
-<li>matches(“(.)\1”)</li>
-<li>rename()</li>
-<li>everything()</li>
-</ul></li>
+<li>geom_count()</li>
+<li>geom_tile()</li>
+</ul>
+<hr />
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Ejercicios</strong>:</li>
+</ol>
+<p>Hacer los ejercicios en la sección 7.5.2.1 del libro en español</p>
+<hr />
+</div>
+<div id="dos-variables-continuas" class="section level3">
+<h3>Dos variables continuas</h3>
+<ul>
+<li>geom_point()</li>
+<li>geom_hex()</li>
+<li>geopm_boxplot()</li>
 </ul>
 <hr />
 <ol start="3" style="list-style-type: decimal">
 <li><strong>Ejercicios</strong>:</li>
 </ol>
-<p>Hacer los ejercicios en la sección 5.4.1 del libro en español</p>
+<p>Hacer los ejercicios en la sección 7.5.3.1 del libro en español</p>
 <hr />
+</div>
+<div id="patrones-y-modelos" class="section level3">
+<h3>Patrones y modelos</h3>
 <ul>
-<li><p>Otras funciones:</p>
-<ul>
-<li>mutate()</li>
-<li>transmute()</li>
-<li>lag()</li>
-<li>lead()</li>
-<li>cumsum()</li>
-<li>cummean()</li>
-<li>min_rank()</li>
-<li>max_rank(desc())</li>
-<li>row_number()</li>
-<li>dense_rank()</li>
-<li>percent_rank()</li>
-<li>cume_dist()</li>
-</ul></li>
+<li>construir un modelo estádistico</li>
 </ul>
-<hr />
-<ol start="4" style="list-style-type: decimal">
-<li><strong>Ejercicios</strong>:</li>
-</ol>
-<p>Hacer los ejercicios en la sección 5.5.2 del libro en español</p>
-<hr />
-<ul>
-<li><p>Otras funciones:</p></li>
-<li><p>summarise()</p></li>
-<li><p>group_by()</p></li>
-</ul>
-<hr />
-<ol start="5" style="list-style-type: decimal">
-<li><strong>Ejercicios</strong>:</li>
-</ol>
-<p>Hacer los ejercicios en la sección 5.6.7 del libro en español</p>
-<hr />
-<ul>
-<li><p>Otras funciones:</p>
-<ul>
-<li>%&gt;% “El pipe”</li>
-</ul></li>
-</ul>
-<hr />
-<ul>
-<li><p>Otras funciones:</p>
-<ul>
-<li>na.rm=TRUE</li>
-<li>!is.na()</li>
-</ul></li>
-</ul>
-<hr />
-<ul>
-<li><p>Otras funciones:</p>
-<ul>
-<li>mean()</li>
-<li>sd()</li>
-<li>IQR()</li>
-<li>mad()</li>
-<li>min()</li>
-<li>max()</li>
-<li>first()</li>
-<li>last()</li>
-</ul></li>
-</ul>
-<hr />
-<ol style="list-style-type: decimal">
-<li><strong>Ejercicios</strong>:</li>
-</ol>
-<p>Hacer los ejercicios en la sección 5.7.1 del libro en español</p>
-<hr />
+</div>
 </div>
 
 

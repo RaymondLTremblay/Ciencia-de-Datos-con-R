@@ -36,10 +36,14 @@ navbar:
           text: "C3 Flujo del Trabajo Básico" 
         - 
           href: C_4_E5_I3_Transformacion_dplyr.html
-          text: "C4 Transformación: dplyr"  
+          text: "C4 Transformación: dplyr"
+        - 
+          href: C_5_E6_I6_Scripts.html
+          text: "C5 Scripts"
+        - 
+          href: C_6_E7_I7_Analisis_Exploratorio.html
+          text: "C6 Analisis Exploratorio"
           
-          
-
           
       text: "Los Temas"
     - 

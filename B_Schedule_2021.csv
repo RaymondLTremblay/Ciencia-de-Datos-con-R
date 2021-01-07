@@ -1,18 +1,18 @@
-﻿Semana,Tópico,Asignación de Lectura website,r4ds Español,r4ds English
+﻿Semana,Tópico, Paquete_principal,r4ds_Español,r4ds_English
 Semana 1,"R y Rstudio, El ambiente de trabajo",Instalar R y Rstudio,Netflix video,
 ,"RStudio y RMarkdown, knit",Rmarkdown,Netflix video,
 ,Organizando los datos en R,Codigos Básicos en R y R Básico #2,Netflix video,
 ,Flujo de trabajo,,"r4ds, cap_8",Chap_6
-Semana 2,Visualización de Datos,,"r4ds, cap_3",Chap_1
+Semana 2-3,Visualización de Datos,ggplot2,"r4ds, cap_3",Chap_1
 ,,,,
 Semana 3,Flujo de trabajo Básico,,"r4ds, cap_4",Chap_2
 ,,,,
-Semana 4,Transformacion de datos,,"r4ds, cap_5",Chap_3
+Semana 3-4,Transformacion de datos,dplyr,"r4ds, cap_5",Chap_3
 ,,,,
 ,,,,
-Semana 5,Flujo de trabajo : scripts,,"r4ds, cap_6",Chap_4
+Semana 5,Flujo de trabajo : scripts,,"r4ds, cap_6",Chap_6
 ,,,,
-Semana 6,Analisis exploratorio,,"r4ds, cap_7",Chap_5
+Semana 6,Analisis exploratorio,,"r4ds, cap_7",Chap_7
 ,,,,
 Semana 7,Pipes,,"r4ds, cap_18",Chap_14
 ,Tibbles,,"r4ds, cap_9 y 10",Chap_7
