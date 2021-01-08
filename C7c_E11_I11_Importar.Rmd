@@ -1,0 +1,156 @@
+---
+title: "C7c_E11_I11_Importar"
+subtitle: "BIOL4026"
+author: "Raymond L. Tremblay"
+
+output:
+  html_document:
+    css: tutorial.css
+    fig_caption: yes
+    highlight: pygments
+#    theme: simplex
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message = FALSE)
+```
+
+```{=html}
+<style>
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+    background-color: #7b802a;
+}
+</style>
+```
+
+
+Fecha de la ultima revisión
+```{r echo=FALSE}
+
+Sys.Date()
+```
+
+***
+
+El tema proviene de los siguientes sitios.
+
+English:
+ <https://r4ds.had.co.nz/data-import.html>
+ 
+Español:
+ <https://es.r4ds.hadley.nz/importaci%C3%B3n-de-datos.html>
+ 
+ 
+***
+
+## Temas: Funciones para importar datos con el paquete readr
+
+ - read_csv()
+ - read_csv2()
+ - read_tsv()
+ - read_delim()
+ - read_fwf()
+ - read_width()
+ - read_positions()
+ - read_table()
+
+
+ ***
+ 
+## Comparar con base R
+ 
+ ***
+ 
+ 1.  **Ejercicios**:
+
+Hacer los ejercicios en la sección 11.2.2 del libro en español
+
+***
+
+## Segmentar un vector
+
+ - str(parse_logical())
+ - str(parse_integer())
+ - str(parse_date())
+ 
+ 
+***
+
+## Números
+
+ - parse_double()
+ - parse_number()
+ - parse_number(locale=locale(grouping_mark = "."))
+ 
+
+
+***
+
+## Caderna de texto
+
+  - parse_character()
+  
+  - charToRaw()
+
+```{r} 
+x1 <- "El Ni\xf1o was particularly bad this year"
+x2 <- "\x82\xb1\x82\xf1\x82\xc9\x82\xbf\x82\xcd"
+x3 <- "The boy was particularly bad this year"
+
+library(readr)
+  parse_character(x1, locale = locale(encoding = "Latin1"))
+#> [1] "El Niño was particularly bad this year"
+parse_character(x2, locale = locale(encoding = "Shift-JIS"))
+#> [1] "こんにちは"
+```  
+ 
+ 
+  - guess_encoding(charToRaw())
+  
+  
+```{r}
+guess_encoding(charToRaw(x3))
+```
+  
+## Factores
+
+ - parse_factor()
+ 
+ 
+## Fechas, fechas-horas, horas
+
+ - parse_datetime()
+ 
+ - library(hms)
+  - parse_time()
+  
+  
+  
+ 2.  **Ejercicios**:
+
+Hacer los ejercicios en la sección 11.3.5 del libro en español 
+
+
+## Segmentar un archivo
+
+ - guess_parser
+ 
+## Escribir un Archivo
+
+  - write_csv()
+  - write_tsv()
+  
+## Otro tipos de datos
+
+  - library(haven) # SPSS, Stata y SAS
+  - readxl() lee archivo Excel en formato .xls, xlsx
+  - BDI lee archivo RMySQL y otros
+  
+  
+  
+  
+
+
+
