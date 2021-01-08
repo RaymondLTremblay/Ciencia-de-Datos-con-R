@@ -50,7 +50,7 @@ navbar:
           href: C8_E10_I10_Tibbles.html
           text: "C7b Tibbles"           
         - 
-          href: C7c_E11_I11_Importar_Datos.html
+          href: C7c_E11_I11_Importar.html
           text: "C7c Importar Datos"         
           
       text: "Los Temas"
