@@ -16,7 +16,7 @@ Semana 6,Analisis exploratorio,,"r4ds, cap_7",Chap_7
 ,,,,
 Semana 7,Pipes,magrittr,"r4ds, cap_18",Chap_14
 ,Tibbles,tibbles,"r4ds, cap_9 y 10",Chap_7
-,Importar Datos,,"r4ds, cap_11",Chap_8
+,Importar Datos,readr,"r4ds, cap_11",Chap_8
 Semana 8,Datos ordenados,,"r4ds, cap_12",Chap_9
 ,,,,
 Semana 9,Datos relacionados,,"r4ds, cap_13",Chap_10
