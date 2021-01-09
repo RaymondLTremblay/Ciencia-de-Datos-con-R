@@ -111,6 +111,7 @@ Hacer los ejercicios en la sección 12.4.3 del libro en español
 
 ### Funciones
 
+  - drop_na()
   - values_drop_na = TRUE
   - complete()
   - fill()
@@ -133,7 +134,15 @@ Hacer los ejercicios en la sección 12.6.1 del libro en español
 ## Datos no ordenados
 
 
+***
 
+## Otras functiones de tidyr:
+
+6.  **Ejercicios**:
+
+Que otra función hay en el paquete tidyr?
+
+Buscar por lo menos 2 funciones en este paquete y enseña como utilizar la con un ejemplo explicito. 
 
 
 
