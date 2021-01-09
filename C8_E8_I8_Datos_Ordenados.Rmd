@@ -1,0 +1,153 @@
+---
+title: "C8_E8_I8_Datos_Ordenados"
+subtitle: "BIOL4026"
+author: "Raymond L. Tremblay"
+
+output:
+  html_document:
+    css: tutorial.css
+    fig_caption: yes
+    highlight: pygments
+#    theme: simplex
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message = FALSE)
+```
+
+```{=html}
+<style>
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+    background-color: #7b802a;
+}
+</style>
+```
+
+
+Fecha de la ultima revisión
+```{r echo=FALSE}
+
+Sys.Date()
+```
+
+***
+
+El tema proviene de los siguientes sitios.
+
+English:
+ <https://r4ds.had.co.nz/tidy-data.html>
+ 
+Español:
+ <https://es.r4ds.hadley.nz/datos-ordenados.html>
+ 
+ 
+***
+
+## Temas: Datos Ordenados
+
+ - tidyr
+
+ - Pivotar
+   - Datos "largos"
+   - Datos "anchos"
+ - Separar y Unir
+ - Valores faltantes
+ - Estudio de casos
+ - Datos no ordenados
+ 
+ 
+***
+
+## Datos Ordenados
+
+
+
+ 1.  **Ejercicios**:
+
+Hacer los ejercicios en la sección 12.2.1 del libro en español
+
+***
+
+## Pivotar
+
+   - Datos "largos"
+   - Datos "anchos"
+
+### Funciones
+
+  - pivot_longer()
+  - left_join()
+  - pivot_wider()
+  
+2.  **Ejercicios**:
+
+***
+
+Hacer los ejercicios en la sección 12.3.3 del libro en español 
+
+
+
+## Separar y Unir
+
+### Funciones
+
+  - separate()
+  - unite()
+  
+
+3.  **Ejercicios**:
+
+Hacer los ejercicios en la sección 12.4.3 del libro en español 
+
+***
+
+## Valores faltantes, NA
+
+ - Explícita los NA
+ - Implícita los NA
+ 
+
+### Funciones
+
+  - values_drop_na = TRUE
+  - complete()
+  - fill()
+  
+4.  **Ejercicios**:
+
+Hacer los ejercicios en la sección 12.5.1 del libro en español 
+
+***
+
+## Estudio de Caso
+
+5.  **Ejercicios**:
+
+Hacer los ejercicios en la sección 12.6.1 del libro en español 
+
+***
+
+
+## Datos no ordenados
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+   
+
+
+

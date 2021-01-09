@@ -51,7 +51,10 @@ navbar:
           text: "C7b Tibbles"           
         - 
           href: C7c_E11_I11_Importar.html
-          text: "C7c Importar Datos"         
+          text: "C7c Importar Datos"
+        - 
+          href: C8_E8_I8_Datos_Ordenados.html
+          text: "C78 Datos Ordenados: tidyr"
           
       text: "Los Temas"
 
