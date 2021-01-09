@@ -54,7 +54,7 @@ navbar:
           text: "C7c Importar Datos"
         - 
           href: C8_E8_I8_Datos_Ordenados.html
-          text: "C78 Datos Ordenados: tidyr"
+          text: "C8 Datos Ordenados: tidyr"
           
       text: "Los Temas"
 
