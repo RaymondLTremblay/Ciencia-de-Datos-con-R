@@ -1,0 +1,134 @@
+---
+title: "C9_E13_I13_Datos_Relacionados"
+subtitle: "BIOL4026"
+author: "Raymond L. Tremblay"
+
+output:
+  html_document:
+    css: tutorial.css
+    fig_caption: yes
+    highlight: pygments
+#    theme: simplex
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message = FALSE)
+```
+
+```{=html}
+<style>
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+    background-color: #7b802a;
+}
+</style>
+```
+
+
+Fecha de la ultima revisión
+```{r echo=FALSE}
+
+Sys.Date()
+```
+
+***
+
+El tema proviene de los siguientes sitios.
+
+English:
+ <https://r4ds.had.co.nz/relational-data.html>
+ 
+Español:
+ <https://es.r4ds.hadley.nz/datos-relacionales.html>
+ 
+ 
+***
+
+## Temas: Datos Relacionados
+
+  - mutating joins
+  - filtering joins
+  - operations
+  
+### Los datos de vuelos
+
+ 1.  **Ejercicios**:
+
+Hacer los ejercicios en la sección 13.2.1 del libro en español
+
+***
+
+
+## Claves
+
+ 2.  **Ejercicios**:
+
+Hacer los ejercicios en la sección 13.3.1 del libro en español
+
+***
+
+## Uniones de transformaciones
+
+ - mutating join
+ - mutate()
+ - select()
+ - left_join()
+ - match()
+
+
+***
+
+## Entendiendo las uniones
+
+***
+
+### Unión interiores
+
+
+### Unión exteriores
+
+
+### Claves duplicadas
+
+
+***
+
+## Definiendo las columnas clave
+
+3.  **Ejercicios**:
+
+Hacer los ejercicios en la sección 13.4.6 del libro en español
+
+***
+
+
+## Otras implementaciones
+
+ - merge()
+ 
+***
+
+## Uniones de filtro
+
+ - semi_join()
+ - anti_join()
+ 
+4.  **Ejercicios**:
+
+Hacer los ejercicios en la sección 13.5.1 del libro en español
+
+***
+
+## Problemas con las uniones
+
+
+
+
+ 
+ 
+
+
+***
+
+

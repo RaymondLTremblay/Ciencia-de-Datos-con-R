@@ -47,7 +47,7 @@ navbar:
           href: C7_E18_I18_Pipes.html
           text: "C7a Pipes" 
         - 
-          href: C8_E10_I10_Tibbles.html
+          href: C7b_E10_I10_Tibbles.html
           text: "C7b Tibbles"           
         - 
           href: C7c_E11_I11_Importar.html
@@ -55,6 +55,9 @@ navbar:
         - 
           href: C8_E8_I8_Datos_Ordenados.html
           text: "C8 Datos Ordenados: tidyr"
+        - 
+          href: C9_E13_I13_Datos_Relacionados.html
+          text: "C9 Datos Relacionados"
           
       text: "Los Temas"
 

@@ -12,7 +12,7 @@
 <meta name="author" content="Raymond L. Tremblay" />
 
 
-<title>C8_E10_I10_Tibbles</title>
+<title>C9_E13_I13_Datos_Relacionados</title>
 
 <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -400,13 +400,16 @@ div.tocify {
       <a href="C7_E18_I18_Pipes.html">C7a Pipes</a>
     </li>
     <li>
-      <a href="C8_E10_I10_Tibbles.html">C7b Tibbles</a>
+      <a href="C7b_E10_I10_Tibbles.html">C7b Tibbles</a>
     </li>
     <li>
       <a href="C7c_E11_I11_Importar.html">C7c Importar Datos</a>
     </li>
     <li>
       <a href="C8_E8_I8_Datos_Ordenados.html">C8 Datos Ordenados: tidyr</a>
+    </li>
+    <li>
+      <a href="C9_E13_I13_Datos_Relacionados.html">C9 Datos Relacionados</a>
     </li>
   </ul>
 </li>
@@ -423,7 +426,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">C8_E10_I10_Tibbles</h1>
+<h1 class="title toc-ignore">C9_E13_I13_Datos_Relacionados</h1>
 <h3 class="subtitle">BIOL4026</h3>
 <h4 class="author">Raymond L. Tremblay</h4>
 
@@ -436,39 +439,91 @@ div.tocify {
 }
 </style>
 <p>Fecha de la ultima revisión</p>
-<pre><code>## [1] &quot;2021-01-09&quot;</code></pre>
+<pre><code>## [1] &quot;2021-01-11&quot;</code></pre>
 <hr />
 <p>El tema proviene de los siguientes sitios.</p>
-<p>English: <a href="https://r4ds.had.co.nz/tibbles.html" class="uri">https://r4ds.had.co.nz/tibbles.html</a></p>
-<p>Español: <a href="https://es.r4ds.hadley.nz/tibbles.html" class="uri">https://es.r4ds.hadley.nz/tibbles.html</a></p>
+<p>English: <a href="https://r4ds.had.co.nz/relational-data.html" class="uri">https://r4ds.had.co.nz/relational-data.html</a></p>
+<p>Español: <a href="https://es.r4ds.hadley.nz/datos-relacionales.html" class="uri">https://es.r4ds.hadley.nz/datos-relacionales.html</a></p>
 <hr />
-<div id="temas-el-paquete-tibble" class="section level2">
-<h2>Temas: El paquete Tibble</h2>
+<div id="temas-datos-relacionados" class="section level2">
+<h2>Temas: Datos Relacionados</h2>
 <ul>
-<li>as_tibble()</li>
+<li>mutating joins</li>
+<li>filtering joins</li>
+<li>operations</li>
 </ul>
-<hr />
-</div>
-<div id="crear-un-tibble" class="section level2">
-<h2>Crear un tibble</h2>
-<ul>
-<li>tibble()</li>
-</ul>
-<hr />
-</div>
-<div id="crear-un-tribble" class="section level2">
-<h2>Crear un tribble</h2>
-<ul>
-<li>tribble()</li>
-</ul>
-<hr />
-</div>
-<div id="tibble-vs.-data.frame" class="section level2">
-<h2>tibble vs. data.frame</h2>
+<div id="los-datos-de-vuelos" class="section level3">
+<h3>Los datos de vuelos</h3>
 <ol style="list-style-type: decimal">
 <li><strong>Ejercicios</strong>:</li>
 </ol>
-<p>Hacer los ejercicios en la sección 10.5 del libro en español</p>
+<p>Hacer los ejercicios en la sección 13.2.1 del libro en español</p>
+<hr />
+</div>
+</div>
+<div id="claves" class="section level2">
+<h2>Claves</h2>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Ejercicios</strong>:</li>
+</ol>
+<p>Hacer los ejercicios en la sección 13.3.1 del libro en español</p>
+<hr />
+</div>
+<div id="uniones-de-transformaciones" class="section level2">
+<h2>Uniones de transformaciones</h2>
+<ul>
+<li>mutating join</li>
+<li>mutate()</li>
+<li>select()</li>
+<li>left_join()</li>
+<li>match()</li>
+</ul>
+<hr />
+</div>
+<div id="entendiendo-las-uniones" class="section level2">
+<h2>Entendiendo las uniones</h2>
+<hr />
+<div id="unión-interiores" class="section level3">
+<h3>Unión interiores</h3>
+</div>
+<div id="unión-exteriores" class="section level3">
+<h3>Unión exteriores</h3>
+</div>
+<div id="claves-duplicadas" class="section level3">
+<h3>Claves duplicadas</h3>
+<hr />
+</div>
+</div>
+<div id="definiendo-las-columnas-clave" class="section level2">
+<h2>Definiendo las columnas clave</h2>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Ejercicios</strong>:</li>
+</ol>
+<p>Hacer los ejercicios en la sección 13.4.6 del libro en español</p>
+<hr />
+</div>
+<div id="otras-implementaciones" class="section level2">
+<h2>Otras implementaciones</h2>
+<ul>
+<li>merge()</li>
+</ul>
+<hr />
+</div>
+<div id="uniones-de-filtro" class="section level2">
+<h2>Uniones de filtro</h2>
+<ul>
+<li>semi_join()</li>
+<li>anti_join()</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Ejercicios</strong>:</li>
+</ol>
+<p>Hacer los ejercicios en la sección 13.5.1 del libro en español</p>
+<hr />
+</div>
+<div id="problemas-con-las-uniones" class="section level2">
+<h2>Problemas con las uniones</h2>
+<hr />
 </div>
 
 
