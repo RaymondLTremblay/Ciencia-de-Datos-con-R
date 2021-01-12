@@ -58,7 +58,9 @@ navbar:
         - 
           href: C9_E13_I13_Datos_Relacionados.html
           text: "C9 Datos Relacionados"
-          
+        - 
+          href: C10_E10_I10_Stringr.html
+          text: "C10 Cadenas de Caracteres"  
       text: "Los Temas"
 
     - 
