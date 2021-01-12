@@ -60,7 +60,10 @@ navbar:
           text: "C9 Datos Relacionados"
         - 
           href: C10_E10_I10_Stringr.html
-          text: "C10 Cadenas de Caracteres"  
+          text: "C10 Cadenas de Caracteres" 
+        - 
+          href: C11_E15_I15_Factores.html
+          text: "C11 Factores" 
       text: "Los Temas"
 
     - 
