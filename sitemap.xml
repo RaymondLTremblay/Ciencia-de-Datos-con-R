@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/index.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/Descripcion.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/B_schedule.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/A1_Instalar-R-RStudio.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/A2_Introduccion_RMarkdown.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/A3_Codigos_basicos_en_R.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/A4_R_basico.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/C_1_E8_I6_Flujo_Trabajo.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/C_2_E3_I1_Visualizacion_Datos.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/C_3_E4_I2_Flujo_Trabajo_Basico.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/C_4_E5_I3_Transformacion_dplyr.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/C5_E6_I6_Scripts.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/C6_E7_I7_Analisis_Exploratorio.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/C7_E18_I18_Pipes.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/C7b_E10_I10_Tibbles.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/C7c_E11_I11_Importar.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/C8_E8_I8_Datos_Ordenados.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/C9_E13_I13_Datos_Relacionados.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/C10_E10_I10_Stringr.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/C11_E15_I15_Factores.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+
+</urlset>
