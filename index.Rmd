@@ -12,6 +12,10 @@ output:
     toc_float: yes
 ---
 
+
+
+
+
 ```{=html}
 <style>
 .list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
@@ -21,7 +25,6 @@ output:
 ```
 
 
-<meta name="google-site-verification" content="sqB47_Ch7slOBSvYTr_Py8z8e57699jN-QJN7JqdvVI" />
 
 
 
