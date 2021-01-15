@@ -12,7 +12,7 @@
 <meta name="author" content="Raymond L. Tremblay" />
 
 
-<title>C_2_E3_I1_Visualizacion_Datos</title>
+<title>C12_E16_I16_Fechas_Horas</title>
 
 <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -432,7 +432,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">C_2_E3_I1_Visualizacion_Datos</h1>
+<h1 class="title toc-ignore">C12_E16_I16_Fechas_Horas</h1>
 <h3 class="subtitle">BIOL4026</h3>
 <h4 class="author">Raymond L. Tremblay</h4>
 
@@ -448,77 +448,72 @@ div.tocify {
 <pre><code>## [1] &quot;2021-01-14&quot;</code></pre>
 <hr />
 <p>El tema proviene de los siguientes sitios.</p>
-<p>English: <a href="https://r4ds.had.co.nz/data-visualisation.html" class="uri">https://r4ds.had.co.nz/data-visualisation.html</a></p>
-<p>Español: <a href="https://es.r4ds.hadley.nz/visualización-de-datos.html" class="uri">https://es.r4ds.hadley.nz/visualización-de-datos.html</a></p>
+<p>English: <a href="https://r4ds.had.co.nz/dates-and-times.html" class="uri">https://r4ds.had.co.nz/dates-and-times.html</a></p>
+<p>Español: <a href="https://es.r4ds.hadley.nz/fechas-y-horas.html" class="uri">https://es.r4ds.hadley.nz/fechas-y-horas.html</a></p>
 <hr />
 <div id="temas" class="section level2">
 <h2>Temas:</h2>
 <ul>
-<li>Introducción</li>
-<li>paquete “tidyverse”</li>
-<li>datos de “mgp”</li>
-<li>ggplot2</li>
-<li>El concepto de la gramática de gráficos</li>
+<li>library(lubridate)</li>
+<li>library(datos)</li>
+<li>library(tidyverse)</li>
 </ul>
+</div>
+<div id="creando-fechashoras" class="section level2">
+<h2>Creando fechas/horas</h2>
+<ul>
+<li>date, <date></li>
+<li>time, <time></li>
+<li>date-time, <dttm></li>
+</ul>
+<div id="funciones" class="section level3">
+<h3>Funciones</h3>
+<ul>
+<li>today()</li>
+<li>now()</li>
+</ul>
+</div>
+<div id="fechas-con-cednas-de-caracteres" class="section level3">
+<h3>Fechas con cednas de caracteres</h3>
+<ul>
+<li>ymd()</li>
+<li>ydm()</li>
+<li>mdy()</li>
+<li>myd()</li>
+<li>dmy()</li>
+<li>dym()</li>
+</ul>
+</div>
+<div id="fechas-con-horas" class="section level3">
+<h3>Fechas con horas</h3>
+<ul>
+<li><p>ymd_hms()</p></li>
+<li><p>ymd_hm()</p></li>
+<li><p>ymd_h()</p></li>
+<li><p>ydm_hms()</p></li>
+<li><p>ydm_hm()</p></li>
+<li><p>etc</p></li>
+</ul>
+</div>
+<div id="fechas" class="section level3">
+<h3>Fechas</h3>
+<ul>
+<li>yq()</li>
+</ul>
+<p>Cuidado con el paquete hms que tiene funciones igual como lubridate (hms, hm, y ms)</p>
 <hr />
+</div>
+</div>
+<div id="crear-una-fecha-desde-componentescolumnas-individuales" class="section level2">
+<h2>Crear una fecha desde componentes/columnas individuales</h2>
+<ul>
+<li>make_date()</li>
+<li>make_datetime()</li>
+</ul>
 <ol style="list-style-type: decimal">
 <li><strong>Ejercicios</strong>:</li>
 </ol>
-<p>Hacer los ejercicios en la sección 3.2.4 del libro en español</p>
-<hr />
-<ul>
-<li>Aestética</li>
-</ul>
-<hr />
-<ol start="2" style="list-style-type: decimal">
-<li><strong>Ejercicios</strong>:</li>
-</ol>
-<p>Hacer los ejercicios en la sección 3.3.1 del libro en español</p>
-<hr />
-<ul>
-<li>Problemas comunes</li>
-<li>Separar en facetas</li>
-</ul>
-<hr />
-<ol start="3" style="list-style-type: decimal">
-<li><strong>Ejercicios</strong>:</li>
-</ol>
-<p>Hacer los ejercicios en la sección 3.5.1 del libro en español</p>
-<hr />
-<ul>
-<li>Objetos geométricos ***</li>
-</ul>
-<ol start="4" style="list-style-type: decimal">
-<li><strong>Ejercicios</strong>:</li>
-</ol>
-<p>Hacer los ejercicios en la sección 3.6.1 del libro en español</p>
-<hr />
-<ul>
-<li>Transformación estadísticas</li>
-</ul>
-<hr />
-<ol start="5" style="list-style-type: decimal">
-<li><strong>Ejercicios</strong>:</li>
-</ol>
-<p>Hacer los ejercicios en la sección 3.7.1 del libro en español</p>
-<hr />
-<ul>
-<li>Ajuste de posición</li>
-</ul>
-<hr />
-<ol start="6" style="list-style-type: decimal">
-<li><strong>Ejercicios</strong>:</li>
-</ol>
-<p>Hacer los ejercicios en la sección 3.8.1 del libro en español</p>
-<hr />
-<ul>
-<li>Sistema de coordenadas</li>
-</ul>
-<hr />
-<ol start="7" style="list-style-type: decimal">
-<li><strong>Ejercicios</strong>:</li>
-</ol>
-<p>Hacer los ejercicios en la sección 3.9.1 del libro en español</p>
+<p>Hacer los ejercicios en la sección 16.2.4 del libro en español</p>
 <hr />
 </div>
 

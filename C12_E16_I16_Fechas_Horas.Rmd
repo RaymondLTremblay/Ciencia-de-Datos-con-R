@@ -1,0 +1,105 @@
+---
+title: "C12_E16_I16_Fechas_Horas"
+subtitle: "BIOL4026"
+author: "Raymond L. Tremblay"
+
+output:
+  html_document:
+    css: tutorial.css
+    fig_caption: yes
+    highlight: pygments
+#    theme: simplex
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message = FALSE)
+```
+
+```{=html}
+<style>
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+    background-color: #11c1d9;
+}
+</style>
+```
+
+
+Fecha de la ultima revisión
+```{r echo=FALSE}
+
+Sys.Date()
+```
+
+***
+
+El tema proviene de los siguientes sitios.
+
+English:
+ <https://r4ds.had.co.nz/dates-and-times.html>
+ 
+Español:
+ <https://es.r4ds.hadley.nz/fechas-y-horas.html>
+ 
+ 
+***
+
+## Temas:
+
+  - library(lubridate)
+  - library(datos)
+  - library(tidyverse)
+  
+  
+## Creando fechas/horas
+
+  - date, <date>
+  - time, <time>
+  - date-time, <dttm>
+  
+  
+###  Funciones
+  
+   - today()
+   - now()
+   
+### Fechas con cednas de caracteres
+
+  - ymd()
+  - ydm()
+  - mdy()
+  - myd()
+  - dmy()
+  - dym()
+  
+  
+### Fechas con horas
+
+ - ymd_hms()
+ - ymd_hm()
+ - ymd_h()
+ 
+  - ydm_hms()
+  - ydm_hm()
+  - etc
+  
+### Fechas 
+  - yq()
+  
+Cuidado con el paquete hms que tiene funciones igual como lubridate (hms, hm, y ms)  
+
+***
+
+## Crear una fecha desde componentes/columnas individuales
+
+ - make_date()
+ - make_datetime()
+ 
+ 
+1.  **Ejercicios**:
+
+Hacer los ejercicios en la sección 16.2.4 del libro en español
+
+***  
+  

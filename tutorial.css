@@ -1,13 +1,13 @@
 
 .nav {
-   background-color: #f2f2eb;
+   background-color: #88d8e3;
 }
 
 
 
 /* Style The Dropdown Button */
 .dropbtn {
-  background-color: #4CAF50;
+  background-color: #11c1d9;
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -25,7 +25,7 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #c2c76f;
+  background-color: #11c1d9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -40,7 +40,7 @@
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #c2c76f}
+.dropdown-content a:hover {background-color: #11c1d9}
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
@@ -49,7 +49,7 @@
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-  background-color: #c2c76f;
+  background-color: #11c1d9;
 }
 
 body {
@@ -81,8 +81,8 @@ ol > li {
     margin:0 0 10px 2em; /* Give each list item a left margin to make room for the numbers */
     padding:10px 80px; /* Add some spacing around the content */
     list-style:none; /* Disable the normal item numbering */
-    border-top:2px solid #7b802a;
-    background:#c8cc83;
+    border-top:2px solid #11c1d9;
+    background:#88d8e3;
 }
 ol > li:before {
     content:"" counter(li); /* Use the counter as content */
@@ -99,9 +99,9 @@ ol > li:before {
        generated content but not positioning it (Camino 2 is one example) */
     margin-right:8px;
     padding:4px;
-    border-top:2px solid #7b802a;
+    border-top:2px solid #11c1d9;
     color:#fff;
-    background:#7b802a;
+    background:#11c1d9;
     font-weight:bold;
     font-family:"Helvetica Neue", Arial, sans-serif;
     text-align:center;
@@ -112,7 +112,7 @@ li ul {margin-top:6px;}
 li a {
   display: block;
   padding: 8px;
-  background-color: #c2c76f;
+  background-color: #88d8e3;
 }
 
 
@@ -123,11 +123,11 @@ ol ol li:last-child {margin-bottom:0;}
 }
 
 hr {
-    border: 5px solid #7b802a;
+    border: 5px solid #11c1d9;
 }
 
 div#boxedtext {
-    background-color: rgba(86, 155, 189, 0.2);
+    background-color: rgba(17, 193,217, 0.2);
     padding: 20px;
     margin-bottom: 20px;
     font-size: 10pt;
@@ -149,7 +149,7 @@ div#license {
     color: #4C721D;
     border:1px solid #4C721D;
     padding: 30px 30px;
-    background-color: rgba(76, 114, 29, 0.2);
+    background-color: rgba(17, 193,217, 0.2);
     border-radius: 5px;
 }
 

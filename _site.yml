@@ -45,13 +45,13 @@ navbar:
           text: "C6 Análisis Exploratorio"
         - 
           href: C7_E18_I18_Pipes.html
-          text: "C7a Pipes" 
+          text: "C7a Pipes: %>%" 
         - 
           href: C7b_E10_I10_Tibbles.html
           text: "C7b Tibbles"           
         - 
           href: C7c_E11_I11_Importar.html
-          text: "C7c Importar Datos"
+          text: "C7c Importar Datos, readr"
         - 
           href: C8_E8_I8_Datos_Ordenados.html
           text: "C8 Datos Ordenados: tidyr"
@@ -60,10 +60,13 @@ navbar:
           text: "C9 Datos Relacionados"
         - 
           href: C10_E10_I10_Stringr.html
-          text: "C10 Cadenas de Caracteres" 
+          text: "C10 Cadenas de Caracteres: stringr" 
         - 
           href: C11_E15_I15_Factores.html
-          text: "C11 Factores"
+          text: "C11 Factores: forcats"
+        - 
+          href: C12_E16_I16_Fechas_Horas.html
+          text: "C12 Fechas y Horas: lubridate"
       text: "Los Temas"
 
     - 
