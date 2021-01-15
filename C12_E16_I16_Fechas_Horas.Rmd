@@ -91,7 +91,7 @@ Cuidado con el paquete hms que tiene funciones igual como lubridate (hms, hm, y 
 
 ***
 
-## Crear una fecha desde componentes/columnas individuales
+## Crear una fecha desde columnas individuales
 
  - make_date()
  - make_datetime()

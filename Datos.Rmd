@@ -1,0 +1,83 @@
+---
+title: "DATOS"
+subtitle: "BIOL4026"
+author: "Raymond L. Tremblay"
+
+output:
+  html_document:
+    css: tutorial.css
+    fig_caption: yes
+    highlight: pygments
+#    theme: simplex
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message = FALSE)
+```
+
+```{=html}
+<style>
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+    background-color: #11c1d9;
+}
+</style>
+```
+
+
+Fecha de la ultima revisión
+```{r echo=FALSE}
+
+Sys.Date()
+```
+
+***
+
+## Aceso a datos de los vuelos que salen del aeropuesto de San Juan
+
+https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236
+
+
+
+
+
+
+***
+
+Another package to get information about flights but it does not include SJU.
+
+
+
+```{r}
+library(anyflights)
+```
+
+
+
+```{r}
+
+#get_airports(dir = NULL)
+
+
+#pdxflightsSJU <- anyflights("RIL", 2019, 1)
+
+#get_airlines(flights_data = get_flights("LMM", 2018,1))
+
+airports=get_airports(dir = NULL)
+head(airports)
+
+
+#airports %>% select(faa) %>% 
+#  filter(faa=="MIA")
+
+
+
+
+
+
+  
+  
+#head(pdxflightsSJU)
+```
+
