@@ -103,3 +103,98 @@ Hacer los ejercicios en la sección 16.2.4 del libro en español
 
 ***  
   
+  
+## Extrayendo parte de las fecha-hora 
+
+ - year()
+ - month()
+ - mday()
+ - yday()
+ - wday()
+ 
+ - ceiling_date()
+ - floor_date()
+ - round_date()
+
+ 
+ 
+2.  **Ejercicios**:
+
+Hacer los ejercicios en la sección 16.3.4 del libro en español
+
+***  
+
+## Lapso de tiempo
+
+ - duraciones
+ - períodos
+ - intervalos
+ 
+### Duraciones
+
+  - Calcular la cantidad dias desde tu dia de nacimiento
+  - Calcular la cantidad de segundos
+  
+  - dseconds()
+  - dminutes()
+  - ddays()
+  - dweeks()
+  - dyears()
+  
+### Multiplicaciones y sumas de fechas
+
+
+
+## Períodos
+
+  - seconds()
+  - minutes()
+  - hours()
+  - days()
+  - months()
+  - weeks()
+  - years()
+  
+### Multiplicaciones y sumas de periodos 
+
+
+## Intervalos
+
+  - %--%  start end
+  
+## Resumen
+
+
+2.  **Ejercicios**:
+
+Hacer los ejercicios en la sección 16.4.5 del libro en español
+
+***   
+
+## Time zones
+
+ - Sys.timezone()
+ - head(OlsonNames())
+ - tz= ""
+ 
+
+2.  **Ejercicios**:
+
+Seleccionar 3 archivos de los vuelos que salen o llegan a PR, (el codigo del aeropuerto es "SJU") de la base de datos de <https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236>
+  Pueden ser el mismo mes en 3 diferente años o 3 diferentes mese en el mismo año.
+  
+  
+  - Repite la mayoría de los análisis enseñado arriba (como practica).
+  
+  - Evaluar el tiempo de retrazo de los vuelos que salen de SJU en cada periodo seleccionado, y haz *una* gráfica para visualizar el patrón
+  
+  - Cual es el diá preferible para no tener retraso
+  - Cual es la mejor hora de salida para no tener retraso
+  - Compara por lo menos 3 diferentes lineas saliendo de SJU y el periodo de retrazo.  
+  
+  
+  
+
+*** 
+
+
