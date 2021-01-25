@@ -40,7 +40,7 @@ English:
  <https://r4ds.had.co.nz/workflow-scripts.html>
  
 Español:
- <https://es.r4ds.hadley.nz/flujo-de-trabajo-scripts.html>
+ <https://r4ds-en-espaniol.netlify.app/flujo-de-trabajo-scripts.html>
  
  
 ***
