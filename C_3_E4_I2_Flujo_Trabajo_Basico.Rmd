@@ -41,7 +41,7 @@ English:
  <https://r4ds.had.co.nz/workflow-basics.html>
  
 Español:
- <https://es.r4ds.hadley.nz/flujo-de-trabajo-conocimientos-básicos.html>
+ <https://r4ds-en-espaniol.netlify.app/flujo-de-trabajo-conocimientos-básicos.html>
  
  
 ***

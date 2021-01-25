@@ -40,9 +40,9 @@ English:
  <https://r4ds.had.co.nz/workflow-projects.html>
  
 Español:
- <https://es.r4ds.hadley.nz/flujo-de-trabajo-proyectos.html>
- 
- 
+ <https://r4ds-en-espaniol.netlify.app/flujo-de-trabajo-conocimientos-básicos.html>
+
+
 ***
 
 
