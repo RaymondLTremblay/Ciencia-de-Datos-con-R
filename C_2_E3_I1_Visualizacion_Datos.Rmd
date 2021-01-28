@@ -132,12 +132,65 @@ Hacer los ejercicios en la sección 3.9.1 del libro en español
 ***
  
 
+Ejercicio para entregar  ( 6 puntos) 
+
+1. Activa el paquete "ggversa"
+2. Activa el paquete "tidyverse"
+3. Utiliza los datos "PartosInfantes". Leen la información sobre el archivo
+Son tres graficas que tendrán que someter
+4. Hacer un gráfico de puntos entre el número de muertes de infante y la cantidad de madres que mueren en el parto. (1 punto)
+5. Añadir al gráfico anterior un modelo lineal (linear model). Y Demostrando todos los datos con un color por region geografica, o sea añadir un color a los puntos por Grupo "region geográfica". AM=America, EU= Union Europea, AF= Africa, O=Oceania, AS=Asia, Medio Oriente, (2 puntos)
+6. Enseña el modelo de regresion lineal solamente para AFRICA y ASIA (en la misma gráfica) (3 puntos)
+
+Someter las tres gráficas en formato .jpeg o .png en el portal.  
 
 
 
 
+```{r}
+library(ggplot2)
+library(tidyverse)
+library(ggversa)
+?PartosInfantes
+```
 
 
+```{r}
+head(PartosInfantes)
+#unique(PartosInfantes$Pais)
+```
+Hacer un grafico de puntos entre el numero de muertes por infante y la cantidad la cantidad de madres que mueren en el parto
+```{r}
+ggplot(PartosInfantes, aes(NMI, NMP))+
+  geom_point()
+```
 
 
+Añadir al grafico anterior un modelo lineal (linear model)
+
+
+```{r}
+ggplot(PartosInfantes, aes(NMI, NMP))+
+  geom_point()+
+  geom_smooth(method=lm)
+```
+
+
+Añadir un color a los puntos por grupo "region". AM=America, EU= Union Europea, AF= Africa, O=Oceania, AS=Asia, Medio Oriente, 
+
+```{r}
+#PartosInfantes
+unique(PartosInfantes$Grupo)
+```
+
+Demostrando todos los datos con un color por region geografica, enseña el modelo de regresion lineal solamente para AFRICA
+
+```{r}
+ggplot(PartosInfantes, aes(NMI, NMP, colour=Grupo))+
+  geom_point()+
+  geom_smooth(method=lm, data = filter(PartosInfantes, Grupo == "AF"), se=FALSE)+
+  geom_smooth(method=lm, data = filter(PartosInfantes, Grupo == "AS"), se=FALSE)
+
+
+```
 
