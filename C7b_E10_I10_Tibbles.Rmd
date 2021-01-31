@@ -15,6 +15,7 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message = FALSE)
+options(tibble.width=Inf)
 ```
 
 ```{=html}
@@ -56,15 +57,81 @@ Español:
 
  - tibble()
  
+# Crear un tibble con la siguiente información.  Una columna que tiene los valores del 1 al 8 que se llama "secuencia", una segunda columna que tiene los siguientes valores 23,26, 24,26,27, 11,20,21 que se llama edad y una tercera columna con la siguiente información, Jose, Maria, Carol, Moncho, Liz, Maria, Jorge, Miguel, que ser llama Nombre 
+ 
+```{r}
+library(tidyverse)
+library(datos)
+
+tibble(
+  secuencia = c(1:8),
+  edad = c(23,26, 24,26,27, 11,20,21),
+  nombre =c("Jose", "Maria", "Carol", "Moncho", "Liz", "Maria", "Jorge", "Miguel")
+)
+
+```
+ 
+ 
 ***
 
 ## Crear un tribble
 
  - tribble()
+ 
+ Haga un tribble con las primera 3 lineas del tibble anterior
+ 
+```{r}
+tribble(
+  ~secuencia, ~edad, ~nombre,
+  1, 23, "Jose",
+  2, 26, "Maria",
+  3, 23, "Carol"
+  
+  
+)
+```
+
 
 ***
 
 ## tibble vs. data.frame
+
+
+```{r}
+tb=tibble(
+  a = lubridate::now() + runif(1e3) * 86400,
+  b = lubridate::today() + runif(1e3) * 30,
+  c = 1:1e3,
+  d = runif(1e3),
+  e = sample(letters, 1e3, replace = TRUE)
+)
+tb
+```
+
+
+```{r}
+vuelos
+```
+
+
+
+```{r}
+class(as.data.frame(tb))
+```
+
+
+## Seleccion de subconjuntos 
+
+```{r}
+vuelos$mes
+vuelos[["mes"]]
+
+#Usar esta función dentro de pipe
+
+vuelos %>% .$mes
+
+vuelos %>% .[["mes"]]
+```
 
 
 1.  **Ejercicios**:

@@ -58,3 +58,19 @@ Español:
   
 Hacer los ejercicios en la sección 4.4 del libro en español
 
+
+Cual son los errores
+
+
+```{r}
+library(tidyverse)
+
+ggplot(dota = millas) + 
+  geom_point(mapping = aes(x = cilindrada, y = autopista))
+
+fliter(millas, cilindros = 8)
+filter(diamante, quilate > 3)
+```
+
+
+

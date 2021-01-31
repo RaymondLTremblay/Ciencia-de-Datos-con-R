@@ -85,9 +85,59 @@ Español:
 1. **Ejercicios**:
 
  Hacer los ejercicios en la sección 5.2.4 del libro en español
- 
- 
-   
+
+5.2.4 Ejercicios
+ - Encuentra todos los vuelos que:
+
+ - Tuvieron un retraso de llegada de dos o más horas
+
+ - Volaron a Houston (IAH oHOU)
+
+ - Fueron operados por United, American o Delta
+
+ - Partieron en invierno del hemisferio sur (julio, agosto y septiembre)
+
+ - Llegaron más de dos horas tarde, pero no salieron tarde
+
+ - Se retrasaron por lo menos una hora, pero repusieron más de 30 minutos en vuelo
+
+ - Partieron entre la medianoche y las 6 a.m. (incluyente)
+
+ - Otra función de dplyr que es útil para usar filtros es between(). ¿Qué hace? ¿Puedes usarla para simplificar el código necesario para responder a los desafíos anteriores?
+
+ - ¿Cuántos vuelos tienen datos faltantes en horario_salida? ¿Qué otras variables tienen valores faltantes? ¿Qué representan estas filas?
+
+***
+
+
+Use data from a link on the web
+
+```{r}
+library(tidyverse)
+library(data.table)
+url<-fread("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/us_state_vaccinations.csv")
+head(url)
+```
+  
+*** filter for  Puerto Rico only
+
+```{r}
+url %>% 
+  filter(location=="Puerto Rico")
+```
+
+
+
+```{r}
+url_COVID=fread("https://covid.ourworldindata.org/data/owid-covid-data.csv")
+head(url_COVID)
+
+head(unique(url_COVID$location))
+
+url_COVID %>% 
+  filter(location=="United States")
+```
+
 
 ***
 
