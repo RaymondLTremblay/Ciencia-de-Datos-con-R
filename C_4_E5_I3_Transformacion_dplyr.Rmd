@@ -49,7 +49,7 @@ Español:
 ```{r}
 library(tidyverse)
 library(datos)
-vuelos
+head(vuelos)
 ```
 
 
@@ -129,7 +129,7 @@ vuelos %>%
 
 Use data from a link on the web
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 library(tidyverse)
 library(data.table)
 url<-fread("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/us_state_vaccinations.csv")
@@ -138,14 +138,14 @@ head(url)
   
 *** filter for  Puerto Rico only
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 url %>% 
   filter(location=="Puerto Rico")
 ```
 
 
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 url_COVID=fread("https://covid.ourworldindata.org/data/owid-covid-data.csv")
 head(url_COVID)
 
@@ -158,7 +158,7 @@ url_COVID %>%
 
 COVID_PR
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 url_COVID_PR=fread("https://raw.githubusercontent.com/rafalab/pr-covid/master/dashboard/data/DatosMortalidad.csv")
 
 names(url_COVID_PR)
