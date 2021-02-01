@@ -46,6 +46,23 @@ Español:
  
 ***
 
+```{r}
+library(tidyverse)
+library(datos)
+vuelos
+```
+
+
+
+
+```{r}
+unique(vuelos$destino)
+
+
+vuelos %>% 
+  filter(destino=="SJU")
+```
+
 
 ## Temas: Reconocer y aplicar las diferentes funciones
 

@@ -541,12 +541,63 @@ div.tocify {
 }
 </style>
 <p>Fecha de la ultima revisión</p>
-<pre><code>## [1] &quot;2021-01-31&quot;</code></pre>
+<pre><code>## [1] &quot;2021-02-01&quot;</code></pre>
 <hr />
 <p>El tema proviene de los siguientes sitios.</p>
 <p>English: <a href="https://r4ds.had.co.nz/transform.html" class="uri">https://r4ds.had.co.nz/transform.html</a></p>
 <p>Español: <a href="https://r4ds-en-espaniol.netlify.app/transform.html" class="uri">https://r4ds-en-espaniol.netlify.app/transform.html</a></p>
 <hr />
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(datos)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>vuelos</span></code></pre></div>
+<pre><code>## # A tibble: 336,776 x 19
+##     anio   mes   dia horario_salida salida_programa… atraso_salida
+##    &lt;int&gt; &lt;int&gt; &lt;int&gt;          &lt;int&gt;            &lt;int&gt;         &lt;dbl&gt;
+##  1  2013     1     1            517              515             2
+##  2  2013     1     1            533              529             4
+##  3  2013     1     1            542              540             2
+##  4  2013     1     1            544              545            -1
+##  5  2013     1     1            554              600            -6
+##  6  2013     1     1            554              558            -4
+##  7  2013     1     1            555              600            -5
+##  8  2013     1     1            557              600            -3
+##  9  2013     1     1            557              600            -3
+## 10  2013     1     1            558              600            -2
+## # … with 336,766 more rows, and 13 more variables: horario_llegada &lt;int&gt;,
+## #   llegada_programada &lt;int&gt;, atraso_llegada &lt;dbl&gt;, aerolinea &lt;chr&gt;,
+## #   vuelo &lt;int&gt;, codigo_cola &lt;chr&gt;, origen &lt;chr&gt;, destino &lt;chr&gt;,
+## #   tiempo_vuelo &lt;dbl&gt;, distancia &lt;dbl&gt;, hora &lt;dbl&gt;, minuto &lt;dbl&gt;,
+## #   fecha_hora &lt;dttm&gt;</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(vuelos<span class="sc">$</span>destino)</span></code></pre></div>
+<pre><code>##   [1] &quot;IAH&quot; &quot;MIA&quot; &quot;BQN&quot; &quot;ATL&quot; &quot;ORD&quot; &quot;FLL&quot; &quot;IAD&quot; &quot;MCO&quot; &quot;PBI&quot; &quot;TPA&quot; &quot;LAX&quot; &quot;SFO&quot;
+##  [13] &quot;DFW&quot; &quot;BOS&quot; &quot;LAS&quot; &quot;MSP&quot; &quot;DTW&quot; &quot;RSW&quot; &quot;SJU&quot; &quot;PHX&quot; &quot;BWI&quot; &quot;CLT&quot; &quot;BUF&quot; &quot;DEN&quot;
+##  [25] &quot;SNA&quot; &quot;MSY&quot; &quot;SLC&quot; &quot;XNA&quot; &quot;MKE&quot; &quot;SEA&quot; &quot;ROC&quot; &quot;SYR&quot; &quot;SRQ&quot; &quot;RDU&quot; &quot;CMH&quot; &quot;JAX&quot;
+##  [37] &quot;CHS&quot; &quot;MEM&quot; &quot;PIT&quot; &quot;SAN&quot; &quot;DCA&quot; &quot;CLE&quot; &quot;STL&quot; &quot;MYR&quot; &quot;JAC&quot; &quot;MDW&quot; &quot;HNL&quot; &quot;BNA&quot;
+##  [49] &quot;AUS&quot; &quot;BTV&quot; &quot;PHL&quot; &quot;STT&quot; &quot;EGE&quot; &quot;AVL&quot; &quot;PWM&quot; &quot;IND&quot; &quot;SAV&quot; &quot;CAK&quot; &quot;HOU&quot; &quot;LGB&quot;
+##  [61] &quot;DAY&quot; &quot;ALB&quot; &quot;BDL&quot; &quot;MHT&quot; &quot;MSN&quot; &quot;GSO&quot; &quot;CVG&quot; &quot;BUR&quot; &quot;RIC&quot; &quot;GSP&quot; &quot;GRR&quot; &quot;MCI&quot;
+##  [73] &quot;ORF&quot; &quot;SAT&quot; &quot;SDF&quot; &quot;PDX&quot; &quot;SJC&quot; &quot;OMA&quot; &quot;CRW&quot; &quot;OAK&quot; &quot;SMF&quot; &quot;TUL&quot; &quot;TYS&quot; &quot;OKC&quot;
+##  [85] &quot;PVD&quot; &quot;DSM&quot; &quot;PSE&quot; &quot;BHM&quot; &quot;CAE&quot; &quot;HDN&quot; &quot;BZN&quot; &quot;MTJ&quot; &quot;EYW&quot; &quot;PSP&quot; &quot;ACK&quot; &quot;BGR&quot;
+##  [97] &quot;ABQ&quot; &quot;ILM&quot; &quot;MVY&quot; &quot;SBN&quot; &quot;LEX&quot; &quot;CHO&quot; &quot;TVC&quot; &quot;ANC&quot; &quot;LGA&quot;</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>vuelos <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(destino<span class="sc">==</span><span class="st">&quot;SJU&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 5,819 x 19
+##     anio   mes   dia horario_salida salida_programa… atraso_salida
+##    &lt;int&gt; &lt;int&gt; &lt;int&gt;          &lt;int&gt;            &lt;int&gt;         &lt;dbl&gt;
+##  1  2013     1     1            615              615             0
+##  2  2013     1     1            628              630            -2
+##  3  2013     1     1            701              700             1
+##  4  2013     1     1            711              715            -4
+##  5  2013     1     1            820              820             0
+##  6  2013     1     1            820              820             0
+##  7  2013     1     1            840              845            -5
+##  8  2013     1     1            926              929            -3
+##  9  2013     1     1           1202             1159             3
+## 10  2013     1     1           1245             1249            -4
+## # … with 5,809 more rows, and 13 more variables: horario_llegada &lt;int&gt;,
+## #   llegada_programada &lt;int&gt;, atraso_llegada &lt;dbl&gt;, aerolinea &lt;chr&gt;,
+## #   vuelo &lt;int&gt;, codigo_cola &lt;chr&gt;, origen &lt;chr&gt;, destino &lt;chr&gt;,
+## #   tiempo_vuelo &lt;dbl&gt;, distancia &lt;dbl&gt;, hora &lt;dbl&gt;, minuto &lt;dbl&gt;,
+## #   fecha_hora &lt;dttm&gt;</code></pre>
 <div id="temas-reconocer-y-aplicar-las-diferentes-funciones" class="section level2">
 <h2>Temas: Reconocer y aplicar las diferentes funciones</h2>
 <ul>
@@ -604,10 +655,10 @@ div.tocify {
 </ul>
 <hr />
 <p>Use data from a link on the web</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>url<span class="ot">&lt;-</span><span class="fu">fread</span>(<span class="st">&quot;https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/us_state_vaccinations.csv&quot;</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(url)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>url<span class="ot">&lt;-</span><span class="fu">fread</span>(<span class="st">&quot;https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/us_state_vaccinations.csv&quot;</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(url)</span></code></pre></div>
 <pre><code>##          date location total_distributed total_vaccinations
 ## 1: 2021-01-12  Alabama            377025              78134
 ## 2: 2021-01-13  Alabama            378975              84040
@@ -644,8 +695,8 @@ div.tocify {
 ## 5:               7498                           1529               NA
 ## 6:               7509                           1531               NA</code></pre>
 <p>*** filter for Puerto Rico only</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>url <span class="sc">%&gt;%</span> </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(location<span class="sc">==</span><span class="st">&quot;Puerto Rico&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>url <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(location<span class="sc">==</span><span class="st">&quot;Puerto Rico&quot;</span>)</span></code></pre></div>
 <pre><code>##           date    location total_distributed total_vaccinations
 ##  1: 2021-01-12 Puerto Rico            277200              74559
 ##  2: 2021-01-13 Puerto Rico            305475              84432
@@ -667,6 +718,8 @@ div.tocify {
 ## 18: 2021-01-29 Puerto Rico            530850             224303
 ## 19: 2021-01-30 Puerto Rico            530950             236060
 ## 20: 2021-01-31 Puerto Rico            530950             249394
+## 21: 2021-02-01 Puerto Rico            530950             253439
+##           date    location total_distributed total_vaccinations
 ##     distributed_per_hundred total_vaccinations_per_hundred people_vaccinated
 ##  1:                    8.68                           2.34             61486
 ##  2:                    9.56                           2.64             67475
@@ -688,6 +741,8 @@ div.tocify {
 ## 18:                   16.62                           7.02            174840
 ## 19:                   16.62                           7.39            183630
 ## 20:                   16.62                           7.81            193842
+## 21:                   16.62                           7.94            197187
+##     distributed_per_hundred total_vaccinations_per_hundred people_vaccinated
 ##     people_vaccinated_per_hundred people_fully_vaccinated
 ##  1:                          1.92                    7666
 ##  2:                          2.11                   11550
@@ -709,6 +764,8 @@ div.tocify {
 ## 18:                          5.48                   48196
 ## 19:                          5.75                   51159
 ## 20:                          6.07                   54276
+## 21:                          6.17                   54972
+##     people_vaccinated_per_hundred people_fully_vaccinated
 ##     people_fully_vaccinated_per_hundred daily_vaccinations_raw
 ##  1:                                0.24                     NA
 ##  2:                                0.36                9873.00
@@ -730,6 +787,8 @@ div.tocify {
 ## 18:                                1.51               12124.00
 ## 19:                                1.60               11757.00
 ## 20:                                1.70               13334.00
+## 21:                                1.72                4045.00
+##     people_fully_vaccinated_per_hundred daily_vaccinations_raw
 ##     daily_vaccinations daily_vaccinations_per_million share_doses_used
 ##  1:                 NA                             NA            0.269
 ##  2:               9873                           3091            0.276
@@ -750,9 +809,11 @@ div.tocify {
 ## 17:               9198                           2880            0.404
 ## 18:               8968                           2808            0.423
 ## 19:               8974                           2810            0.445
-## 20:               9317                           2917            0.470</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>url_COVID<span class="ot">=</span><span class="fu">fread</span>(<span class="st">&quot;https://covid.ourworldindata.org/data/owid-covid-data.csv&quot;</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(url_COVID)</span></code></pre></div>
+## 20:               9317                           2917            0.470
+## 21:               9403                           2944            0.477
+##     daily_vaccinations daily_vaccinations_per_million share_doses_used</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>url_COVID<span class="ot">=</span><span class="fu">fread</span>(<span class="st">&quot;https://covid.ourworldindata.org/data/owid-covid-data.csv&quot;</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(url_COVID)</span></code></pre></div>
 <pre><code>##    iso_code continent    location       date total_cases new_cases
 ## 1:      AFG      Asia Afghanistan 2020-02-24           1         1
 ## 2:      AFG      Asia Afghanistan 2020-02-25           1         0
@@ -879,11 +940,11 @@ div.tocify {
 ## 4:           64.83                   0.498
 ## 5:           64.83                   0.498
 ## 6:           64.83                   0.498</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">unique</span>(url_COVID<span class="sc">$</span>location))</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">unique</span>(url_COVID<span class="sc">$</span>location))</span></code></pre></div>
 <pre><code>## [1] &quot;Afghanistan&quot;         &quot;Albania&quot;             &quot;Algeria&quot;            
 ## [4] &quot;Andorra&quot;             &quot;Angola&quot;              &quot;Antigua and Barbuda&quot;</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>url_COVID <span class="sc">%&gt;%</span> </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(location<span class="sc">==</span><span class="st">&quot;United States&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>url_COVID <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(location<span class="sc">==</span><span class="st">&quot;United States&quot;</span>)</span></code></pre></div>
 <pre><code>##      iso_code     continent      location       date total_cases new_cases
 ##   1:      USA North America United States 2020-01-22           1        NA
 ##   2:      USA North America United States 2020-01-23           1         0
@@ -895,7 +956,7 @@ div.tocify {
 ## 373:      USA North America United States 2021-01-28    25766681    168620
 ## 374:      USA North America United States 2021-01-29    25932794    166113
 ## 375:      USA North America United States 2021-01-30    26074885    142091
-## 376:      USA North America United States 2021-01-31          NA        NA
+## 376:      USA North America United States 2021-01-31    26186781    111896
 ##      new_cases_smoothed total_deaths new_deaths new_deaths_smoothed
 ##   1:                 NA           NA         NA                  NA
 ##   2:                 NA           NA         NA                  NA
@@ -907,7 +968,7 @@ div.tocify {
 ## 373:           158576.4       433195       4000            3258.286
 ## 374:           155159.4       436799       3604            3236.000
 ## 375:           151152.7       439530       2731            3150.571
-## 376:                 NA           NA         NA                  NA
+## 376:           148412.9       441324       1794            3153.286
 ##      total_cases_per_million new_cases_per_million
 ##   1:                   0.003                    NA
 ##   2:                   0.003                 0.000
@@ -919,7 +980,7 @@ div.tocify {
 ## 373:               77844.335               509.422
 ## 374:               78346.183               501.848
 ## 375:               78775.458               429.275
-## 376:                      NA                    NA
+## 376:               79113.509               338.052
 ##      new_cases_smoothed_per_million total_deaths_per_million
 ##   1:                             NA                       NA
 ##   2:                             NA                       NA
@@ -931,7 +992,7 @@ div.tocify {
 ## 373:                        479.079                 1308.736
 ## 374:                        468.756                 1319.624
 ## 375:                        456.651                 1327.875
-## 376:                             NA                       NA
+## 376:                        448.374                 1333.294
 ##      new_deaths_per_million new_deaths_smoothed_per_million reproduction_rate
 ##   1:                     NA                              NA                NA
 ##   2:                     NA                              NA                NA
@@ -943,7 +1004,7 @@ div.tocify {
 ## 373:                 12.084                           9.844                NA
 ## 374:                 10.888                           9.776                NA
 ## 375:                  8.251                           9.518                NA
-## 376:                     NA                              NA                NA
+## 376:                  5.420                           9.526                NA
 ##      icu_patients icu_patients_per_million hosp_patients
 ##   1:           NA                       NA            NA
 ##   2:           NA                       NA            NA
@@ -987,9 +1048,9 @@ div.tocify {
 ##   4:                                 NA          NA        NA
 ##   5:                                 NA          NA        NA
 ##  ---                                                         
-## 372:                                 NA          NA        NA
-## 373:                                 NA          NA        NA
-## 374:                                 NA          NA        NA
+## 372:                                 NA   294322355   1552110
+## 373:                                 NA   295571129   1248774
+## 374:                                 NA   296510667    939538
 ## 375:                                 NA          NA        NA
 ## 376:                                 NA          NA        NA
 ##      total_tests_per_thousand new_tests_per_thousand new_tests_smoothed
@@ -999,130 +1060,130 @@ div.tocify {
 ##   4:                       NA                     NA                 NA
 ##   5:                       NA                     NA                 NA
 ##  ---                                                                   
-## 372:                       NA                     NA                 NA
-## 373:                       NA                     NA                 NA
-## 374:                       NA                     NA                 NA
+## 372:                  889.184                  4.689            1490341
+## 373:                  892.957                  3.773            1389588
+## 374:                  895.795                  2.838            1260726
 ## 375:                       NA                     NA                 NA
 ## 376:                       NA                     NA                 NA
-##      new_tests_smoothed_per_thousand positive_rate tests_per_case tests_units
-##   1:                              NA            NA             NA            
-##   2:                              NA            NA             NA            
-##   3:                              NA            NA             NA            
-##   4:                              NA            NA             NA            
-##   5:                              NA            NA             NA            
-##  ---                                                                         
-## 372:                              NA            NA             NA            
-## 373:                              NA            NA             NA            
-## 374:                              NA            NA             NA            
-## 375:                              NA            NA             NA            
-## 376:                              NA            NA             NA            
-##      total_vaccinations people_vaccinated people_fully_vaccinated
-##   1:                 NA                NA                      NA
-##   2:                 NA                NA                      NA
-##   3:                 NA                NA                      NA
-##   4:                 NA                NA                      NA
-##   5:                 NA                NA                      NA
+##      new_tests_smoothed_per_thousand positive_rate tests_per_case
+##   1:                              NA            NA             NA
+##   2:                              NA            NA             NA
+##   3:                              NA            NA             NA
+##   4:                              NA            NA             NA
+##   5:                              NA            NA             NA
 ##  ---                                                             
-## 372:           24652634          20687970                 3801053
-## 373:           26193682          21698606                 4263056
-## 374:           27884661          22858318                 4780888
-## 375:           29577902          24064165                 5259693
-## 376:           31123299          25201143                 5657142
-##      new_vaccinations new_vaccinations_smoothed total_vaccinations_per_hundred
-##   1:               NA                        NA                             NA
-##   2:               NA                        NA                             NA
-##   3:               NA                        NA                             NA
-##   4:               NA                        NA                             NA
-##   5:               NA                        NA                             NA
+## 372:                           4.503            NA             NA
+## 373:                           4.198            NA             NA
+## 374:                           3.809            NA             NA
+## 375:                              NA            NA             NA
+## 376:                              NA            NA             NA
+##          tests_units total_vaccinations people_vaccinated
+##   1:                                 NA                NA
+##   2:                                 NA                NA
+##   3:                                 NA                NA
+##   4:                                 NA                NA
+##   5:                                 NA                NA
+##  ---                                                     
+## 372: tests performed           24652634          20687970
+## 373: tests performed           26193682          21698606
+## 374: tests performed           27884661          22858318
+## 375:                           29577902          24064165
+## 376:                           31123299          25201143
+##      people_fully_vaccinated new_vaccinations new_vaccinations_smoothed
+##   1:                      NA               NA                        NA
+##   2:                      NA               NA                        NA
+##   3:                      NA               NA                        NA
+##   4:                      NA               NA                        NA
+##   5:                      NA               NA                        NA
+##  ---                                                                   
+## 372:                 3801053          1111640                   1161050
+## 373:                 4263056          1541048                   1235330
+## 374:                 4780888          1690979                   1253815
+## 375:                 5259693          1693241                   1291416
+## 376:                 5657142          1545397                   1324949
+##      total_vaccinations_per_hundred people_vaccinated_per_hundred
+##   1:                             NA                            NA
+##   2:                             NA                            NA
+##   3:                             NA                            NA
+##   4:                             NA                            NA
+##   5:                             NA                            NA
+##  ---                                                             
+## 372:                           7.45                          6.25
+## 373:                           7.91                          6.56
+## 374:                           8.42                          6.91
+## 375:                           8.94                          7.27
+## 376:                           9.40                          7.61
+##      people_fully_vaccinated_per_hundred new_vaccinations_smoothed_per_million
+##   1:                                  NA                                    NA
+##   2:                                  NA                                    NA
+##   3:                                  NA                                    NA
+##   4:                                  NA                                    NA
+##   5:                                  NA                                    NA
 ##  ---                                                                          
-## 372:          1111640                   1161050                           7.45
-## 373:          1541048                   1235330                           7.91
-## 374:          1690979                   1253815                           8.42
-## 375:          1693241                   1291416                           8.94
-## 376:          1545397                   1324949                           9.40
-##      people_vaccinated_per_hundred people_fully_vaccinated_per_hundred
-##   1:                            NA                                  NA
-##   2:                            NA                                  NA
-##   3:                            NA                                  NA
-##   4:                            NA                                  NA
-##   5:                            NA                                  NA
-##  ---                                                                  
-## 372:                          6.25                                1.15
-## 373:                          6.56                                1.29
-## 374:                          6.91                                1.44
-## 375:                          7.27                                1.59
-## 376:                          7.61                                1.71
-##      new_vaccinations_smoothed_per_million stringency_index population
-##   1:                                    NA                0  331002647
-##   2:                                    NA                0  331002647
-##   3:                                    NA                0  331002647
-##   4:                                    NA                0  331002647
-##   5:                                    NA                0  331002647
-##  ---                                                                  
-## 372:                                  3508               NA  331002647
-## 373:                                  3732               NA  331002647
-## 374:                                  3788               NA  331002647
-## 375:                                  3902               NA  331002647
-## 376:                                  4003               NA  331002647
-##      population_density median_age aged_65_older aged_70_older gdp_per_capita
-##   1:             35.608       38.3        15.413         9.732       54225.45
-##   2:             35.608       38.3        15.413         9.732       54225.45
-##   3:             35.608       38.3        15.413         9.732       54225.45
-##   4:             35.608       38.3        15.413         9.732       54225.45
-##   5:             35.608       38.3        15.413         9.732       54225.45
-##  ---                                                                         
-## 372:             35.608       38.3        15.413         9.732       54225.45
-## 373:             35.608       38.3        15.413         9.732       54225.45
-## 374:             35.608       38.3        15.413         9.732       54225.45
-## 375:             35.608       38.3        15.413         9.732       54225.45
-## 376:             35.608       38.3        15.413         9.732       54225.45
-##      extreme_poverty cardiovasc_death_rate diabetes_prevalence female_smokers
-##   1:             1.2               151.089               10.79           19.1
-##   2:             1.2               151.089               10.79           19.1
-##   3:             1.2               151.089               10.79           19.1
-##   4:             1.2               151.089               10.79           19.1
-##   5:             1.2               151.089               10.79           19.1
-##  ---                                                                         
-## 372:             1.2               151.089               10.79           19.1
-## 373:             1.2               151.089               10.79           19.1
-## 374:             1.2               151.089               10.79           19.1
-## 375:             1.2               151.089               10.79           19.1
-## 376:             1.2               151.089               10.79           19.1
-##      male_smokers handwashing_facilities hospital_beds_per_thousand
-##   1:         24.6                     NA                       2.77
-##   2:         24.6                     NA                       2.77
-##   3:         24.6                     NA                       2.77
-##   4:         24.6                     NA                       2.77
-##   5:         24.6                     NA                       2.77
-##  ---                                                               
-## 372:         24.6                     NA                       2.77
-## 373:         24.6                     NA                       2.77
-## 374:         24.6                     NA                       2.77
-## 375:         24.6                     NA                       2.77
-## 376:         24.6                     NA                       2.77
-##      life_expectancy human_development_index
-##   1:           78.86                   0.924
-##   2:           78.86                   0.924
-##   3:           78.86                   0.924
-##   4:           78.86                   0.924
-##   5:           78.86                   0.924
-##  ---                                        
-## 372:           78.86                   0.924
-## 373:           78.86                   0.924
-## 374:           78.86                   0.924
-## 375:           78.86                   0.924
-## 376:           78.86                   0.924</code></pre>
+## 372:                                1.15                                  3508
+## 373:                                1.29                                  3732
+## 374:                                1.44                                  3788
+## 375:                                1.59                                  3902
+## 376:                                1.71                                  4003
+##      stringency_index population population_density median_age aged_65_older
+##   1:                0  331002647             35.608       38.3        15.413
+##   2:                0  331002647             35.608       38.3        15.413
+##   3:                0  331002647             35.608       38.3        15.413
+##   4:                0  331002647             35.608       38.3        15.413
+##   5:                0  331002647             35.608       38.3        15.413
+##  ---                                                                        
+## 372:               NA  331002647             35.608       38.3        15.413
+## 373:               NA  331002647             35.608       38.3        15.413
+## 374:               NA  331002647             35.608       38.3        15.413
+## 375:               NA  331002647             35.608       38.3        15.413
+## 376:               NA  331002647             35.608       38.3        15.413
+##      aged_70_older gdp_per_capita extreme_poverty cardiovasc_death_rate
+##   1:         9.732       54225.45             1.2               151.089
+##   2:         9.732       54225.45             1.2               151.089
+##   3:         9.732       54225.45             1.2               151.089
+##   4:         9.732       54225.45             1.2               151.089
+##   5:         9.732       54225.45             1.2               151.089
+##  ---                                                                   
+## 372:         9.732       54225.45             1.2               151.089
+## 373:         9.732       54225.45             1.2               151.089
+## 374:         9.732       54225.45             1.2               151.089
+## 375:         9.732       54225.45             1.2               151.089
+## 376:         9.732       54225.45             1.2               151.089
+##      diabetes_prevalence female_smokers male_smokers handwashing_facilities
+##   1:               10.79           19.1         24.6                     NA
+##   2:               10.79           19.1         24.6                     NA
+##   3:               10.79           19.1         24.6                     NA
+##   4:               10.79           19.1         24.6                     NA
+##   5:               10.79           19.1         24.6                     NA
+##  ---                                                                       
+## 372:               10.79           19.1         24.6                     NA
+## 373:               10.79           19.1         24.6                     NA
+## 374:               10.79           19.1         24.6                     NA
+## 375:               10.79           19.1         24.6                     NA
+## 376:               10.79           19.1         24.6                     NA
+##      hospital_beds_per_thousand life_expectancy human_development_index
+##   1:                       2.77           78.86                   0.924
+##   2:                       2.77           78.86                   0.924
+##   3:                       2.77           78.86                   0.924
+##   4:                       2.77           78.86                   0.924
+##   5:                       2.77           78.86                   0.924
+##  ---                                                                   
+## 372:                       2.77           78.86                   0.924
+## 373:                       2.77           78.86                   0.924
+## 374:                       2.77           78.86                   0.924
+## 375:                       2.77           78.86                   0.924
+## 376:                       2.77           78.86                   0.924</code></pre>
 <p>COVID_PR</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>url_COVID_PR<span class="ot">=</span><span class="fu">fread</span>(<span class="st">&quot;https://raw.githubusercontent.com/rafalab/pr-covid/master/dashboard/data/DatosMortalidad.csv&quot;</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(url_COVID_PR)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>url_COVID_PR<span class="ot">=</span><span class="fu">fread</span>(<span class="st">&quot;https://raw.githubusercontent.com/rafalab/pr-covid/master/dashboard/data/DatosMortalidad.csv&quot;</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(url_COVID_PR)</span></code></pre></div>
 <pre><code>##  [1] &quot;Fecha&quot;              &quot;Muertes&quot;            &quot;IncrementoMuertes&quot; 
 ##  [4] &quot;CasosPCR_Salud&quot;     &quot;IncCasosPCR_Salud&quot;  &quot;CasosSaludNuevo&quot;   
 ##  [7] &quot;IncCasosSaludNuevo&quot; &quot;HospitCOV19&quot;        &quot;CamasICU&quot;          
 ## [10] &quot;CamasICU_disp&quot;      &quot;Ventiladores&quot;       &quot;MuertesSalud&quot;      
 ## [13] &quot;IncMueSalud&quot;        &quot;VacDoses&quot;           &quot;VacAdm&quot;            
 ## [16] &quot;N1MoreDoses&quot;        &quot;N2Doses&quot;</code></pre>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(url_COVID_PR)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(url_COVID_PR)</span></code></pre></div>
 <pre><code>##      Fecha Muertes IncrementoMuertes CasosPCR_Salud IncCasosPCR_Salud
 ## 1: 3/12/20       0                 0             NA                NA
 ## 2: 3/13/20       0                 0             NA                NA
@@ -1144,28 +1205,28 @@ div.tocify {
 ## 4:           NA            0           0       NA     NA          NA      NA
 ## 5:           NA            0           0       NA     NA          NA      NA
 ## 6:           NA            1           1       NA     NA          NA      NA</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(url_COVID_PR)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(url_COVID_PR)</span></code></pre></div>
 <pre><code>##      Fecha Muertes IncrementoMuertes CasosPCR_Salud IncCasosPCR_Salud
-## 1: 1/25/21    1783                 5          85551               437
-## 2: 1/26/21    1794                11          85694               143
-## 3: 1/27/21    1801                 7          85954               260
-## 4: 1/28/21    1812                11          86302               348
-## 5: 1/29/21    1823                11          86713               411
-## 6: 1/30/21    1829                 6          86891               178
+## 1: 1/26/21    1794                11          85694               143
+## 2: 1/27/21    1801                 7          85954               260
+## 3: 1/28/21    1812                11          86302               348
+## 4: 1/29/21    1823                11          86713               411
+## 5: 1/30/21    1829                 6          86891               178
+## 6: 1/31/21    1836                 7          87440               549
 ##    CasosSaludNuevo IncCasosSaludNuevo HospitCOV19 CamasICU CamasICU_disp
-## 1:           86655                405         312       54           219
-## 2:           86837                182         301       50           223
-## 3:           86884                 47         293       55           208
-## 4:           86891                  7         280       54           216
-## 5:              NA                 NA         279       57           190
-## 6:              NA                 NA         285       50           202
+## 1:           87047                335         301       50           223
+## 2:           87323                276         293       55           208
+## 3:           87422                 99         280       54           216
+## 4:           87440                 18         279       57           190
+## 5:              NA                 NA         285       50           202
+## 6:              NA                 NA         282       55           211
 ##    Ventiladores MuertesSalud IncMueSalud VacDoses VacAdm N1MoreDoses N2Doses
-## 1:           43         1805           4   416900 188681      147910   39522
-## 2:           35         1811           6   506425 199762      156071   42437
-## 3:           37         1818           7   525000 212179      165862   45057
-## 4:           36         1825           7   530850 224303      174840   48196
-## 5:           38         1829           4   530950 236060      183630   51159
-## 6:           40           NA          NA   530950 249394      193842   54276</code></pre>
+## 1:           35         1814           7   506425 199762      156071   42437
+## 2:           37         1822           8   525000 212179      165862   45057
+## 3:           36         1829           7   530850 224303      174840   48196
+## 4:           38         1835           6   530950 236060      183630   51159
+## 5:           40         1836           1   530950 249394      193842   54276
+## 6:           40           NA          NA       NA     NA          NA      NA</code></pre>
 <hr />
 <ul>
 <li><p>Otra función</p>

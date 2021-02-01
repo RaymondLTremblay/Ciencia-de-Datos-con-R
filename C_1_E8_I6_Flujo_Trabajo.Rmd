@@ -247,8 +247,8 @@ ggplot(data = millas, mapping = aes(x = clase, y = autopista)) +
   coord_flip()
 ```
 
-```{r}
-maps::france()
+```{r eval=FALSE, include=FALSE}
+
 
 usa <- map_data("cd")
 
