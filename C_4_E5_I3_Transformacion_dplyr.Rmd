@@ -139,6 +139,17 @@ url_COVID %>%
 ```
 
 
+COVID_PR
+
+```{r}
+url_COVID_PR=fread("https://raw.githubusercontent.com/rafalab/pr-covid/master/dashboard/data/DatosMortalidad.csv")
+
+names(url_COVID_PR)
+head(url_COVID_PR)
+tail(url_COVID_PR)
+```
+
+
 ***
 
 - Otra función

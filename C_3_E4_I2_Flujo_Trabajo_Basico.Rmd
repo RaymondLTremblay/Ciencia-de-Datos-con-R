@@ -62,7 +62,7 @@ Hacer los ejercicios en la sección 4.4 del libro en español
 Cual son los errores
 
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 library(tidyverse)
 
 ggplot(dota = millas) + 
@@ -72,5 +72,9 @@ fliter(millas, cilindros = 8)
 filter(diamante, quilate > 3)
 ```
 
+
+```{r}
+
+```
 
 
