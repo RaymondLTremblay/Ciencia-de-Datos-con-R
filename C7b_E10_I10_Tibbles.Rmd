@@ -110,7 +110,7 @@ tb
 
 
 ```{r}
-vuelos
+head(vuelos)
 ```
 
 
