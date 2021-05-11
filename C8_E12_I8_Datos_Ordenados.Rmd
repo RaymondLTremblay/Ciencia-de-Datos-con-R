@@ -1,0 +1,563 @@
+---
+title: "C8_E12_I12_Datos_Ordenados, Tidyr"
+subtitle: "BIOL4026"
+author: "Raymond L. Tremblay"
+
+output:
+  html_document:
+    css: tutorial.css
+    fig_caption: yes
+    highlight: pygments
+#    theme: simplex
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message = FALSE)
+```
+
+```{=html}
+<style>
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+    background-color: #11c1d9;
+}
+</style>
+```
+
+
+Fecha de la ultima revisión
+```{r echo=FALSE}
+
+Sys.Date()
+```
+
+***
+
+El tema proviene de los siguientes sitios.
+
+English:
+ <https://r4ds.had.co.nz/tidy-data.html>
+ 
+Español:
+ <https://es.r4ds.hadley.nz/datos-ordenados.html>
+ 
+ 
+***
+
+## Temas: Datos Ordenados
+
+### El paquete tidyr
+
+Ver vignettes  
+
+
+
+```{r} 
+ library(tidyverse)
+library(datos)
+``` 
+ 
+ 
+```{r}
+tabla1
+
+tabla2
+
+tabla3
+
+tabla4a
+
+tabla4b
+```
+ 
+ 
+```{r}
+tabla1 %>%
+  mutate(tasa = casos/poblacion * 10000) 
+```
+
+
+```{r}
+tabla1 %>%
+  count(anio, wt = casos)
+```
+
+
+```{r}
+# Visualizar cambios en el tiempo
+library(ggplot2)
+ggplot(tabla1, aes(x=anio, y=casos)) +
+  geom_line(aes(group = pais), colour = "grey50") +
+  geom_point(aes(colour = pais))
+```
+
+Recrea el gráfico que muestra el cambio en el número de casos usando la tabla2 en lugar de la tabla1. ¿Qué necesitas hacer en primero?
+
+Student results
+
+```{r}
+
+```
+
+
+
+
+```{r}
+tabla2
+tabla1
+tabla2 %>%
+  select(tipo, pais, anio, cuenta) %>% 
+  group_by(pais)%>% 
+  filter(tipo=="casos")%>% 
+ggplot(aes(anio, cuenta)) +
+  geom_line(aes(group = pais), colour = "grey50") +
+  geom_point(aes(colour = pais))
+```
+
+ 
+
+ - Pivotar
+   - Datos "largos"
+   
+```{r}
+tabla4a
+```
+  
+
+pivot_longer
+
+```{r}
+tabla4a %>% 
+  pivot_longer(cols = c('1999', '2000'), 
+               names_to = "anio", 
+               values_to = "Num_bacteria")
+
+```
+
+
+## Haz pivot table para la tabla4b
+
+
+
+
+
+
+```{r}
+tidy4a <- tabla4a %>%
+  pivot_longer(cols = c(`1999`, `2000`), names_to = "anio", values_to = "casos")
+tidy4a
+tidy4b <- tabla4b %>%
+  pivot_longer(cols = c(`1999`, `2000`), names_to = "anio", values_to = "poblacion")
+
+left_join(tidy4a, tidy4b)
+
+```
+   
+   
+##   - Datos "anchos"
+   
+   Pivot ancho
+   
+   
+```{r}
+tabla2
+```
+   
+```{r}
+tabla2 %>%
+  pivot_wider(names_from = tipo, values_from = cuenta)
+```
+   
+
+
+Ejercicio
+
+¿Por qué falla el siguiente código?
+Busca una solución.  
+
+```{r}
+tabla4a
+tabla4a %>%
+  pivot_longer(c('1999', '2000'), names_to = "anio", values_to = "casos")
+```
+
+
+¿Qué pasaría si trataras de pivotar esta tabla a lo ancho? ¿Por qué? ¿Cómo podrías agregar una nueva columna que identifique de manera única cada valor?
+
+```{r}
+personas <- tribble(
+  ~nombre, ~nombres, ~valores,
+  #-----------------|--------|------
+  "Phillip Woods", "edad", 45,
+  "Phillip Woods", "estatura", 186,
+  "Phillip Woods", "edad", 50,
+  "Jessica Cordero", "edad", 37,
+  "Jessica Cordero", "estatura", 156
+)
+personas
+
+personas %>%
+  pivot_wider(names_from = nombres, values_from = valores)
+```
+
+
+```{r}
+personas2 <- tribble(
+  ~nombre, ~nombres, ~valores, ~tiempo,
+  #-----------------|--------|------|----
+  "Phillip Woods", "edad", 45, "t1",
+  "Phillip Woods", "estatura", 186, "t1",
+  "Phillip Woods", "edad", 50, "t2",
+  "Jessica Cordero", "edad", 37, "t1",
+  "Jessica Cordero", "estatura", 156, "t1",
+)
+personas2 %>%
+  pivot_wider(names_from = nombres, values_from = valores)
+```
+
+
+ - Separar y Unir
+ - Valores faltantes
+ - Estudio de casos
+ - Datos no ordenados
+ 
+ 
+***
+
+## Datos Ordenados
+
+
+
+ 1.  **Ejercicios**:
+
+Hacer los ejercicios en la sección 12.2.1 del libro en español
+
+***
+
+## Pivotar
+
+   - Datos "largos"
+   - Datos "anchos"
+
+### Funciones
+
+  - pivot_longer()
+  - left_join()
+  - pivot_wider()
+  
+2.  **Ejercicios**:
+
+***
+
+Hacer los ejercicios en la sección 12.3.3 del libro en español 
+
+
+
+## Separar y Unir
+
+### Funciones
+
+  - separate()
+
+```{r}  
+tabla3
+
+
+```
+
+El default es que weste sepeardo por "/".  
+```{r}
+tabla3
+
+tabla3 %>%
+  separate(tasa, into = c("casos", "poblacion"))
+```
+
+
+```{r}
+tabla3 %>%
+  separate(tasa, into = c("casos", "poblacion"), sep = "/")
+
+
+```
+ 
+ 
+```{r}
+personas2 <- tribble(
+  ~nombre, ~nombres, ~edad_ninos, ~tiempo,
+  #-----------------|--------|------|----
+  "Phillip Woods", "edad", "45;5", "t1",
+  "Phillip Woods", "estatura", "186;6", "t1"
+)
+personas2
+
+
+```
+ 
+ 
+ 
+```{r}
+personas2 %>%
+  separate(edad_ninos, into = c("edad", "ninos"), sep = ";")
+```
+ 
+# unite() 
+  - unite() funcion para unir dos columnas
+
+
+```{r}
+tabla5 
+
+tabla5 %>%
+  unite(nueva, siglo, anio)
+
+tabla5 %>%
+  unite(nueva, siglo, anio, sep="/")
+
+# que pasa si pones sep=";"?
+
+```
+  
+
+3.  **Ejercicios**:
+
+Hacer los ejercicios en la sección 12.4.3 del libro en español 
+
+
+
+```{r}
+tibble(x = c("a,b,c", "d,e,f,g",   "h,i,j")) 
+
+tibble(x = c("a,b,c", "d,e,f,g",   "h,i,j")) %>%
+  separate(x, c("one", "two",       "three", "four"))
+
+tibble(x = c("a,b,c", "d,e",   "f,g,i")) %>%
+  separate(x, c("one", "two",     "three"))
+```
+
+***
+
+## Valores faltantes, NA
+
+
+ - Explícita los NA
+ - Implícita los NA
+
+```{r}
+
+# Explicito versus Implicito
+acciones <- tibble(
+  anio = c(2015, 2015, 2015, 2015, 2016, 2016, 2016),
+  trimestre = c(1, 2, 3, 4, 2, 3, 4),
+  retorno = c(1.88, 0.59, 0.35, NA, 0.92, 0.17, 2.66)
+)
+acciones
+
+acciones1 <- tibble(
+  anio = c(2015, 2015, 2015, 2015, 2016, 2016, 2016, 2016),
+  trimestre = c(1, 2, 3, 4, NA, 2, 3, 4),
+  retorno = c(1.88, 0.59, 0.35, NA, NA,  0.92, 0.17, 2.66)
+)
+acciones1
+
+
+```
+
+
+### Funciones
+
+  - drop_na()
+  - values_drop_na = TRUE
+  - complete()
+  - fill()
+  
+  
+  
+
+```{r}
+acciones %>%
+  spread(anio, retorno)
+```
+
+```{r}
+tratamiento <- tribble(
+  ~sujeto, ~tratamiento, ~respuesta,
+  "Derrick Whitmore", 1, 7,
+  NA, 2, 10,
+  NA, 3, 9,
+  "Katherine Burke", 1, 4,
+  NA, 3,4
+)
+tratamiento
+
+tratamiento %>%
+  fill(sujeto)
+```
+
+```{r}
+acciones %>%
+  pivot_wider(names_from = anio, values_from = retorno) %>% 
+  pivot_longer(
+    cols = c(`2015`, `2016`), 
+    names_to = "anio", 
+    values_to = "retorno", 
+    values_drop_na = TRUE
+  )
+```
+ 
+
+
+```{r}
+acciones %>%
+  complete(anio, trimestre)
+```
+
+
+  
+  
+  
+  
+  
+4.  **Ejercicios**:
+
+Hacer los ejercicios en la sección 12.5.1 del libro en español 
+
+***
+
+## Estudio de Caso
+
+5.  **Ejercicios**:
+
+Hacer los ejercicios en la sección 12.6.1 del libro en español 
+
+```{r}
+oms
+```
+
+***
+
+
+```{r}
+oms1 <- oms %>%
+  pivot_longer(
+    cols = nuevos_fpp_h014:nuevosrecaida_m65, 
+    names_to = "clave", 
+    values_to = "casos", 
+    values_drop_na = TRUE
+  )
+
+
+oms1
+
+oms1 %>%
+  separate(iso3, c("dos", "uno"), sep = 1)
+```
+
+Usar los datos de OMS del banco de datos. Esto representa la cantidad de personas con Tuberculosis en diferentes paises y años.
+
+Total de puntos 30
+
+1. filtrar para Puerto Rico (1 puntos)
+2. remover las variables (iso2 y iso3) del data.frame ( 2 puntos) ****
+3. seperate la variable "clave" en tres componentes y separar por sexo.  ( 5 puntos)
+4. contabilizar cuantos casos de tuberculosis hubo por grupo de edad y sexo (2 puntos)
+5. contabilizar cuantos casos de tuberculosis hubo por año y haz una gráfico de linea conectando los puntos de cada año (20 puntos)
+  a. En la gráfica enseña tanto los puntos y la linea 
+  b. Cambiar la información de los ejes a  "Cantidad de Casos de tuberculosis por año" y "Año". 
+  c. En el eje que esta "Cantidad de Casos de tuberculosis por año"  pon la información que se vea asi (esto no se enseño busca en la web para "wrap text" *****).  Hay multiples maneras, pero hay una manera muy sencilla. 
+       "Cantidad de Casos de tuberculosis 
+                   por año".
+  d. Cambie el color de la linea
+  e. Cambie la linea a entrecortada
+
+BONO: Con la misma gráfica enseña la curva para cada grupo de edad. (3 puntos)
+      Cual grupo de edad tiene más frecuencia de tuberculosis?
+
+
+```{r}
+unique(oms1$pais)
+
+omsPR=oms1 %>% 
+  select(-iso2, -iso3) %>% 
+  filter(pais == "Puerto Rico")
+```
+
+
+
+```{r}
+oms3 <- omsPR %>%
+  separate(clave, c("nuevos", "tipo", "sexo_edad"), sep = "_")
+oms3
+```
+
+
+
+
+
+```{r}
+oms4 <- oms3 %>%
+  separate(sexo_edad, c("sexo", "edad"), sep =1)
+oms4
+```
+
+
+```{r}
+oms4 %>% 
+  group_by(anio) %>% 
+  summarize(sumT=sum(casos)) %>% 
+  ggplot(aes(anio, sumT)) +
+  geom_line(colour="blue", linetype="dotted") +
+  geom_point()+
+  ylab("Cantidad de Casos de tubercolosis \n por año") +
+  xlab("Año")
+``` 
+
+```{r}
+oms4
+oms4 %>% 
+  group_by(anio, edad) %>% 
+  summarize(sumT=sum(casos)) %>% 
+  ggplot(aes(anio, sumT, group=edad, colour=edad)) +
+  geom_line( linetype="dotted") +
+  geom_point()+
+  ylab("Cantidad de Casos de tubercolosis \n por año") +
+  xlab("Año")
+```
+
+```{r}
+oms4 %>% 
+  group_by(sexo, edad) %>% 
+  summarize(sumT=sum(casos))
+```
+
+
+## Datos no ordenados
+
+
+***
+
+## Otras functiones de tidyr:
+
+6.  **Ejercicios**:
+
+Que otra función hay en el paquete tidyr?
+
+Buscar por lo menos 2 funciones en este paquete y enseña como utilizar la con un ejemplo explicito. 
+
+
+
+  
+
+
+
+
+
+
+
+
+
+   
+
+
+

@@ -55,7 +55,7 @@ Español:
 
 
 ## Alternativas a los pipes
- -  Pasos intermedios
+ - Pasos intermedios
  - Sobre escribir el original
  
 ## Composición de funciones

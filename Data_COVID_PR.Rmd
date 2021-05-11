@@ -58,7 +58,7 @@ url_COVID_PR=fread("https://raw.githubusercontent.com/rafalab/pr-covid/master/da
 ## This is too save the file to your computer
 #head(url_COVID_PR)
 library(utils)
-#write.csv(url_COVID_PR, "Datos/url_COVID_PR.csv")
+write.csv(url_COVID_PR, "Datos/url_COVID_PR.csv")
 ```
 
 # Upload file from your computer (you may not need this)

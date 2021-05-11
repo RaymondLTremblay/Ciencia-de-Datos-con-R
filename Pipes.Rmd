@@ -1,0 +1,139 @@
+---
+title: "PIPES"
+author: "Raymond L. Tremblay"
+date: "4/26/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(magrittr)
+```
+
+Pipe an object forward into a function or call expression.
+
+```{r}
+iris
+```
+
+# Exposition pipe
+
+Expose the names in lhs to the rhs expression. This is useful when functions do not have a built-in data argument.
+
+
+```{r}
+
+iris %>%
+  subset(Sepal.Length > mean(Sepal.Length)) 
+
+iris %>%
+  subset(Sepal.Length > mean(Sepal.Length)) %$%
+  cor(Sepal.Length, Sepal.Width)
+
+
+iris %>%
+  filter(Sepal.Length > 1.6 ) %$%
+  cor(Sepal.Length, Sepal.Width)
+
+
+```
+
+## Second Example of Exposition Pipe
+
+```{r}
+
+#set.seed(1234)
+data.frame(z = rnorm(100)) %$% 
+  ts.plot(z)
+```
+
+
+
+
+# Assignment pipe
+
+Pipe an object forward into a function or call expression and update the lhs object with the resulting value.
+
+
+
+```{r}
+
+x <- rnorm(100)
+x
+x2= data.frame(x)
+x2
+
+df= x %<>% abs %>% mean
+df
+
+x2 %>% select(x) %>% 
+  mutate(sqrtt= sqrt(x))
+  
+
+df2=x %<>% abs %>% sort
+df2
+```
+
+# Tee pipe
+
+Pipe a value forward into a function- or call expression and return the original value instead of the result. This is useful when an expression is used for its side-effect, say plotting or printing.
+
+
+
+```{r}
+rnorm(200) %>%
+matrix(ncol = 2)%T>%
+plot %>% # plot usually does not return anything. 
+colSums
+
+
+
+```
+
+
+# Other margrittr function
+
+is_greater_than, ">"
+
+```{r}
+iris %>% 
+  select(Sepal.Width) %>% 
+  is_greater_than(3.5) %>% 
+  head()
+```
+
+```{r}
+iris %>% 
+  select(Sepal.Width) %>% 
+  divide_by(3)
+```
+# PIPES
+## Ejercicio con el packete "maggritr" 
+
+Este paquete proporciona un mecanismo para encadenar comandos con un
+    nuevo operador de tubería hacia adelante,%>%. Este operador enviará un valor, o
+    el resultado de una expresión, en la siguiente llamada / expresión de función. 
+    
+En el mismo paquete hay múltiples otras funciones como
+
+"%<>%", "%$%, "%T>%", "is_less_than" y otros.
+
+El trabajo consistente en que tiene que seleccionar dos de las funciones en el paquete *Excluyendo* "%>%" y solamente una de las siguientes ("%<>%", "%$%, "%T>%"), y para cada uno dar 2 ejemplos como utilizar esa función. Tiene que ser EXPLICITO de como funciona las funciones que enseñan y su interpretación.   Puede ser que tiene que demostrar el resultado si no los usa correctamente. Pon se el lugar de una persona que no sabe nada de R, que tiene que explicar paso a paso como funciona las funciones. Usa datos sencillo, crea unos data frame en RMarkdown (no importa los datos).  
+
+Para ver la lista de funciones en el paquete vea
+
+
+```{r}
+library(magrittr)
+help(package=magrittr)
+```
+
+Puntuación (30 puntos total)
+Cada función bien explicada y con unos ejemplos sencillos, 15 puntos (10 puntos por las explicaciones y 5 puntos por los scripts correctos).  
+
+
+

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>MAP_Exercise_#1</title>
+
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">BIOL4026: Ciencia de Datos</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="Descripcion.html">Home</a>
+</li>
+<li>
+  <a href="B_schedule.html">Calendario</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Instalación básica
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="A1_Instalar-R-RStudio.html">Instalar R y RStudio</a>
+    </li>
+    <li>
+      <a href="A2_Introduccion_RMarkdown.html">RMarkdown</a>
+    </li>
+    <li>
+      <a href="A3_Codigos_basicos_en_R.html">R y Cheatsheets</a>
+    </li>
+    <li>
+      <a href="A4_R_basico.html">R Básico #2</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Los Temas
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="C_1_E8_I6_Flujo_Trabajo.html">C1 Flujo del Trabajo</a>
+    </li>
+    <li>
+      <a href="C_2_E3_I1_Visualizacion_Datos.html">C2 Visualización de Datos</a>
+    </li>
+    <li>
+      <a href="C_3_E4_I2_Flujo_Trabajo_Basico.html">C3 Flujo del Trabajo Básico</a>
+    </li>
+    <li>
+      <a href="C_4_E5_I3_Transformacion_dplyr.html">C4 Transformación: dplyr</a>
+    </li>
+    <li>
+      <a href="C5_E6_I6_Scripts.html">C5 Scripts</a>
+    </li>
+    <li>
+      <a href="C6_E7_I7_Analisis_Exploratorio.html">C6 Análisis Exploratorio</a>
+    </li>
+    <li>
+      <a href="C7_E18_I18_Pipes.html">C7a Pipes: %&gt;%</a>
+    </li>
+    <li>
+      <a href="C7b_E10_I10_Tibbles.html">C7b Tibbles</a>
+    </li>
+    <li>
+      <a href="C7c_E11_I11_Importar.html">C7c Importar Datos, readr</a>
+    </li>
+    <li>
+      <a href="C8_E8_I8_Datos_Ordenados.html">C8 Datos Ordenados: tidyr</a>
+    </li>
+    <li>
+      <a href="C9_E13_I13_Datos_Relacionados.html">C9 Datos Relacionados</a>
+    </li>
+    <li>
+      <a href="C10_E10_I10_Stringr.html">C10 Cadenas de Caracteres: stringr</a>
+    </li>
+    <li>
+      <a href="C11_E15_I15_Factores.html">C11 Factores: forcats</a>
+    </li>
+    <li>
+      <a href="C12_E16_I16_Fechas_Horas.html">C12 Fechas y Horas: lubridate</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="Datos.html">Datos</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">MAP_Exercise_#1</h1>
+
+</div>
+
+
+<div id="trabajo-de-producción-de-graficos." class="section level1">
+<h1>Trabajo de producción de graficos.</h1>
+<ul>
+<li>Cada pregunta equivale a 5 puntos</li>
+</ul>
+</div>
+<div id="datos" class="section level1">
+<h1>Datos</h1>
+<p>Los datos provienen de este website</p>
+<p><a href="https://www.kaggle.com" class="uri">https://www.kaggle.com</a></p>
+</div>
+<div id="paso-1" class="section level1">
+<h1>Paso #1</h1>
+<p>Seleccionar el data set de Las ciudades del mundo y haga un mapa de los tamaños de la ciudades.</p>
+<pre class="r"><code>library(tidyverse)
+library(lubridate)
+library(leaflet)</code></pre>
+<pre class="r"><code>library(readr)
+worldcities_lat_long_pop &lt;- read_csv(&quot;Datos/worldcities_lat_long_pop.csv&quot;)</code></pre>
+<pre><code>## 
+## ── Column specification ────────────────────────────────────────────────────────
+## cols(
+##   city = col_character(),
+##   city_ascii = col_character(),
+##   lat = col_double(),
+##   lng = col_double(),
+##   country = col_character(),
+##   iso2 = col_character(),
+##   iso3 = col_character(),
+##   admin_name = col_character(),
+##   capital = col_character(),
+##   population = col_double(),
+##   id = col_double()
+## )</code></pre>
+<pre class="r"><code>WC = worldcities_lat_long_pop
+head(WC)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["city"],"name":[1],"type":["chr"],"align":["left"]},{"label":["city_ascii"],"name":[2],"type":["chr"],"align":["left"]},{"label":["lat"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["lng"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["country"],"name":[5],"type":["chr"],"align":["left"]},{"label":["iso2"],"name":[6],"type":["chr"],"align":["left"]},{"label":["iso3"],"name":[7],"type":["chr"],"align":["left"]},{"label":["admin_name"],"name":[8],"type":["chr"],"align":["left"]},{"label":["capital"],"name":[9],"type":["chr"],"align":["left"]},{"label":["population"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["id"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"Tokyo","2":"Tokyo","3":"35.6897","4":"139.6922","5":"Japan","6":"JP","7":"JPN","8":"Tōkyō","9":"primary","10":"37977000","11":"1392685764"},{"1":"Jakarta","2":"Jakarta","3":"-6.2146","4":"106.8451","5":"Indonesia","6":"ID","7":"IDN","8":"Jakarta","9":"primary","10":"34540000","11":"1360771077"},{"1":"Delhi","2":"Delhi","3":"28.6600","4":"77.2300","5":"India","6":"IN","7":"IND","8":"Delhi","9":"admin","10":"29617000","11":"1356872604"},{"1":"Mumbai","2":"Mumbai","3":"18.9667","4":"72.8333","5":"India","6":"IN","7":"IND","8":"Mahārāshtra","9":"admin","10":"23355000","11":"1356226629"},{"1":"Manila","2":"Manila","3":"14.5958","4":"120.9772","5":"Philippines","6":"PH","7":"PHL","8":"Manila","9":"primary","10":"23088000","11":"1608618140"},{"1":"Shanghai","2":"Shanghai","3":"31.1667","4":"121.4667","5":"China","6":"CN","7":"CHN","8":"Shanghai","9":"admin","10":"22120000","11":"1156073548"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="paso-2" class="section level1">
+<h1>Paso #2</h1>
+<ul>
+<li>Limpia los nombres de las columnas</li>
+<li>Cambia los nombres de las columnas correspondiente a longitud y latitud</li>
+</ul>
+<p>El paquete <code>janitor</code> se puede usar para limpiar los nombres de las columnas</p>
+</div>
+<div id="paso-3" class="section level1">
+<h1>Paso #3</h1>
+<p>Haga un geom_point de todas las ciudades de todo el data set</p>
+</div>
+<div id="paso-4" class="section level1">
+<h1>Paso #4</h1>
+<p>Usa la función <code>map_data()</code>, del paquete <code>ggplot2</code>, contiene el mapa mundial. El mapa de “world” se puede acceder usando el argumento <code>region</code>.</p>
+<ul>
+<li>produzca un mapa del mundo SIN los datos de las ciudades</li>
+<li>Use <code>geom_map()</code> para agregar la figura del territorio</li>
+</ul>
+</div>
+<div id="paso-5" class="section level1">
+<h1>Paso #5</h1>
+<p>Agrege la capa con las ciudades en el data set</p>
+</div>
+<div id="paso-6" class="section level1">
+<h1>Paso #6</h1>
+<ul>
+<li>Colorea de los puntos por el nombre del pais</li>
+<li>Remover la leyenda de los nombre de los paises</li>
+</ul>
+</div>
+<div id="paso-7" class="section level1">
+<h1>Paso #7</h1>
+<p>Ahora seleciona solamente las ciudades que tienen poblaciones mayor de 1 million, y haga un grafico de su distribucion y colorea por pais.</p>
+<p>En que pais se ve mayor numero de ciudades con población de 1 million?</p>
+</div>
+<div id="paso-8" class="section level1">
+<h1>Paso #8</h1>
+<p>Selecciona cualquier pais latino americano, y mapea todas las ciudades de este pais</p>
+<ul>
+<li>Cada estudiante seleccionará un pais diferente (no le diga a nadie cual pais seleccionaste)</li>
+</ul>
+</div>
+<div id="paso-9-bono" class="section level1">
+<h1>Paso #9 Bono</h1>
+<ul>
+<li>Cambia el tamaño del punto de las ciudades que corresponde al tamaño poblacional</li>
+</ul>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,253 @@
+---
+title: "Cherry_Blossum"
+author: "RLT"
+date: "4/5/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# For the Story of Cherry Blossum see
+
+https://edition.cnn.com/2021/04/05/asia/japan-cherry-blossoms-climate-change-intl-hnk-scn/index.html
+
+
+```{r}
+library(tidyverse)
+```
+
+See the following link for an analysis of the time of blossom of the Cherry Blossom trees in Tokyo, Japan from year 801 to this year.
+
+The objective of this excecise to to put in practice the functions different files and try and replicate some of the figures that have been published in newspapers.   
+
+See the following websites
+1. 
+https://edition.cnn.com/2021/04/05/asia/japan-cherry-blossoms-climate-change-intl-hnk-scn/index.html
+
+2. 
+
+https://www.yahoo.com/gma/numbers-japan-cherry-blossoms-hit-214535221.html
+
+3. 
+
+https://www.meteored.com.ar/noticias/actualidad/sorpresa-en-japon-por-la-temprana-floracion-de-los-cerezos.html
+
+
+
+You will find 4 original files from the authors with the references, ect.
+
+1. 759TempW.xls
+2. KyotoFullFlowerW.xls
+3. TempReconsWFinal.xls
+4. CO2_r0.csv
+
+
+# Step 1.
+
+a. Remove all unnesecary information for each Excel file
+b. Convert files as .csv
+
+# Step 2
+Load files in a RMarkdown document (make certain they are readible)
+
+# Step 3 
+## (5 points)
+
+Merge all three file in one file, "show script and the last 6 lines" (make it clean, remove unnessary information, not the rows but the unnessary columns)
+ a. Show the names of tghe columns in the new dataframe
+
+# Step 4 
+## (5 points)
+  Replace all -999.9 and -99.9 with NA within R.  (Do not do this in Excel, show the script):
+ a. show the head and tail of the new data frame.
+  
+  Use the following website to find an appropriate script
+  https://cran.r-project.org/web/packages/naniar/vignettes/replace-with-na.html
+  
+
+# Step 5 
+## (3 and 2 points)
+ a. Calculate the running average of the flowering time for 10 years prior to time t. 
+ b. Show the last 10 lines of the data frame
+
+
+# Step 6 
+## (3 points)
+
+a. Create a point diagram of the date (x axis) and time of "Full Flowering date DOY" 
+
+# Step 7 
+## (3 and 2 points)
+
+ a. Add a linear regression to the above figure
+ b. Does this show a pattern of earlier flowering time?
+  
+# Step 8 
+## (2, 3 and 2 points)
+
+a. Now redo the analysis using an analysis called LOESS regression, this is the default geom_smooth model, geom_smooth(). 
+b. Explain what LOESS regression model does?  
+c. Now does this show a pattern of change and flowering period?
+
+# Step 9
+## (3 and 2 points)
+
+Using the mean "running average of the day of blossom" you calculated above. Use 10 year running average.
+ a. Now plot the the rolling average of Blossom Day (10 year average) on your graph.
+ b. Porque la linea no se extiende antes del año 1300? comparando al step 7.
+
+# Step 10 
+## Bonus (5 points)
+
+a. Join the file with the CO2 data and do an analysis to evaluate the relationship between Average temperature in Tokyo and average CO2 (Rolling average of 10 years). 
+
+ b. Explain how your hypothesis and how this may support or not evidence for climate change
+
+
+
+
+
+# Imported Files
+```{r}
+library(readr)
+X759TempW_mod <- read_csv("Cherry_Blossom/759TempW_mod.csv")
+F1=X759TempW_mod
+head(F1)
+
+KyotoFullFlowerW_mod <- read_csv("Cherry_Blossom/KyotoFullFlowerW_mod.csv")
+F2=KyotoFullFlowerW_mod
+head(F2)
+
+TempReconstWFinal_mod <- read_csv("Cherry_Blossom/TempReconstWFinal_mod.csv")
+F3=TempReconstWFinal_mod
+head(F3)
+
+```
+
+Join the three files and show the head and tail of the new data frame
+
+
+```{r}
+Cherry_B=F1 %>% 
+full_join(F2) %>% 
+  full_join(F3)
+
+
+```
+
+```{r}
+Cherry_B
+```
+
+# Remove the -999.9 and -99.9.
+ and show the head and tail of the new data frame
+
+```{r}
+library(naniar)
+CB=Cherry_B %>% 
+replace_with_na(replace = list(TEMP = c(-999.9),
+                             Obs_Temp = c(-999.9),
+                             Temp_3_31= c(-99.99),
+                             Temp_3_31_1 = c(-99.99),
+                             TemP_3_22 = c(-99.99),
+                             Conf_CI_low = c(-99.99),
+                             Conf_CI_High = c(-99.99)))
+head(CB)
+```
+
+
+# Create a point diagram of the date (x axis) and time of "Full Flowering date DOY" 
+
+
+```{r}
+ggplot(CB, aes(AD, Full_flow_date_DOY))+
+  geom_point()
+```
+
+# Add a linear regression to the above figure
+  Does this show a pattern of earlier flowering time?
+
+```{r}
+ggplot(CB, aes(AD, Full_flow_date_DOY))+
+  geom_point()+
+  geom_smooth(method="lm")
+```
+
+
+
+Now redo the analysis using an analysis of LOESS, the default geom_smooth model. Explain hat LOESS egression model does?  Now does this show a pattern of change and flowering period?
+
+
+```{r}
+ggplot(CB, aes(AD, Full_flow_date_DOY))+
+  geom_point()+
+  geom_smooth()
+```
+
+
+
+#  Calculate the mean "running average of the day of blossom". Use 10 year running average.
+
+
+```{r}
+names(CB)
+library(zoo)
+CB=CB %>% 
+  mutate(RAB = rollmean(Full_flow_date_DOY, k = 10, fill = NA))
+```
+
+# Now plot the the rolling Blossom Day (10 year average) on your graph
+
+ Por que la linea no se extiende antes del año 1300
+
+```{r}
+ggplot(CB, aes(AD, Full_flow_date_DOY))+
+  geom_point()+
+  geom_smooth(aes(AD, RAB))
+```
+
+
+
+```{r}
+library(readr)
+CO2_Yr0 <- read_csv("Cherry_Blossom/CO2_Yr0.csv")
+
+
+CB=CB %>% 
+  right_join(CO2_Yr0 , c("AD" = "year"))
+  
+```
+
+
+Do a figure showing the relationship between mean global Co2 concentration and time of flowering. What does the patern show?.  
+
+```{r}
+ggplot(CB, aes(data_mean_global_CO2, Full_flow_date_DOY))+
+  geom_point()+
+  geom_smooth()
+```
+
+
+Now do a figure showing the mean average temperature (10 year running average) and C02 concentration. To calculate the mean running average of the temparature use the following variable, Temp_3_31_1. (which is the mean march temperature). 
+
+```{r}
+CB
+```
+
+
+```{r}
+names(CB)
+library(zoo)
+CB=CB %>% 
+  mutate(RAT = rollmean(Temp_3_31_1, k = 10, fill = NA))
+
+
+ggplot(CB, aes(data_mean_global_CO2, RAT))+
+  geom_point()+
+  geom_smooth()
+
+
+```
+

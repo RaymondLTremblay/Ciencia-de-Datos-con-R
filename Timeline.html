@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Raymond L. Tremblay" />
+
+
+<title>Timeline</title>
+
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="site_libs/datatables-binding-0.18/datatables.js"></script>
+<link href="site_libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="site_libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="site_libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">BIOL4026: Ciencia de Datos</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="Descripcion.html">Home</a>
+</li>
+<li>
+  <a href="B_schedule.html">Calendario</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Instalación básica
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="A1_Instalar-R-RStudio.html">Instalar R y RStudio</a>
+    </li>
+    <li>
+      <a href="A2_Introduccion_RMarkdown.html">RMarkdown</a>
+    </li>
+    <li>
+      <a href="A3_Codigos_basicos_en_R.html">R y Cheatsheets</a>
+    </li>
+    <li>
+      <a href="A4_R_basico.html">R Básico #2</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Los Temas
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="C_1_E8_I6_Flujo_Trabajo.html">C1 Flujo del Trabajo</a>
+    </li>
+    <li>
+      <a href="C_2_E3_I1_Visualizacion_Datos.html">C2 Visualización de Datos</a>
+    </li>
+    <li>
+      <a href="C_3_E4_I2_Flujo_Trabajo_Basico.html">C3 Flujo del Trabajo Básico</a>
+    </li>
+    <li>
+      <a href="C_4_E5_I3_Transformacion_dplyr.html">C4 Transformación: dplyr</a>
+    </li>
+    <li>
+      <a href="C5_E6_I6_Scripts.html">C5 Scripts</a>
+    </li>
+    <li>
+      <a href="C6_E7_I7_Analisis_Exploratorio.html">C6 Análisis Exploratorio</a>
+    </li>
+    <li>
+      <a href="C7_E18_I18_Pipes.html">C7a Pipes: %&gt;%</a>
+    </li>
+    <li>
+      <a href="C7b_E10_I10_Tibbles.html">C7b Tibbles</a>
+    </li>
+    <li>
+      <a href="C7c_E11_I11_Importar.html">C7c Importar Datos, readr</a>
+    </li>
+    <li>
+      <a href="C8_E8_I8_Datos_Ordenados.html">C8 Datos Ordenados: tidyr</a>
+    </li>
+    <li>
+      <a href="C9_E13_I13_Datos_Relacionados.html">C9 Datos Relacionados</a>
+    </li>
+    <li>
+      <a href="C10_E10_I10_Stringr.html">C10 Cadenas de Caracteres: stringr</a>
+    </li>
+    <li>
+      <a href="C11_E15_I15_Factores.html">C11 Factores: forcats</a>
+    </li>
+    <li>
+      <a href="C12_E16_I16_Fechas_Horas.html">C12 Fechas y Horas: lubridate</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="Datos.html">Datos</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Timeline</h1>
+<h4 class="author">Raymond L. Tremblay</h4>
+<h4 class="date">5/5/2021</h4>
+
+</div>
+
+
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.3     ✓ purrr   0.3.4
+## ✓ tibble  3.1.1     ✓ dplyr   1.0.5
+## ✓ tidyr   1.1.3     ✓ stringr 1.4.0
+## ✓ readr   1.4.0     ✓ forcats 0.5.1</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(ggplot2)
+library(scales)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;scales&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     discard</code></pre>
+<pre><code>## The following object is masked from &#39;package:readr&#39;:
+## 
+##     col_factor</code></pre>
+<pre class="r"><code>library(lubridate)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;lubridate&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     date, intersect, setdiff, union</code></pre>
+<pre class="r"><code>#df&lt;- read.csv(&#39;milestone.csv&#39;)</code></pre>
+<pre class="r"><code>df=tribble(
+  ~month, ~year,    ~milestone, ~status,
+6,  2017,   &quot;Milestone 1&quot;,  &quot;Complete&quot;,
+7,  2017,   &quot;Milestone 2&quot;,  &quot;Complete&quot;,
+10, 2017,   &quot;Milestone 3&quot;,  &quot;Complete&quot;,
+12, 2017,   &quot;Milestone 4&quot;,  &quot;Complete&quot;,
+1,  2018,   &quot;Milestone 5&quot;,  &quot;Complete&quot;,
+1,  2018,   &quot;Milestone 6&quot;,  &quot;Complete&quot;,
+2,  2018,   &quot;Milestone 7&quot;,  &quot;Complete&quot;,
+5,  2018,   &quot;Milestone 8&quot;,  &quot;Complete&quot;,
+6,  2018,   &quot;Milestone 9&quot;,  &quot;On Target&quot;,
+6,  2018,   &quot;Milestone 10&quot;, &quot;On Target&quot;,
+9,  2018,   &quot;Milestone 11&quot;, &quot;At Risk&quot;,
+11, 2018,   &quot;Milestone 12&quot;, &quot;On Target&quot;,
+12, 2018,   &quot;Milestone 13&quot;, &quot;On Target&quot;,
+12, 2018,   &quot;Milestone 14&quot;, &quot;On Target&quot;,
+12, 2018,   &quot;Milestone 15&quot;, &quot;At Risk&quot;,
+4,  2019,   &quot;Milestone 16&quot;, &quot;Critical&quot;,
+7,  2019,   &quot;Milestone 17&quot;, &quot;On Target&quot;,
+7,  2019,   &quot;Milestone 18&quot;, &quot;On Target&quot;,
+9,  2019,   &quot;Milestone 19&quot;, &quot;On Target&quot;,
+10, 2019,   &quot;Milestone 20&quot;, &quot;At Risk&quot;,
+10, 2019,   &quot;Milestone 21&quot;, &quot;On Target&quot;,
+12, 2019,   &quot;Milestone 22&quot;, &quot;Critical&quot;
+)</code></pre>
+<pre class="r"><code>library(DT)
+datatable(df)</code></pre>
+<div id="htmlwidget-5e6e4ff9f795e5d646fd" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5e6e4ff9f795e5d646fd">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22"],[6,7,10,12,1,1,2,5,6,6,9,11,12,12,12,4,7,7,9,10,10,12],[2017,2017,2017,2017,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2019,2019,2019,2019,2019,2019,2019],["Milestone 1","Milestone 2","Milestone 3","Milestone 4","Milestone 5","Milestone 6","Milestone 7","Milestone 8","Milestone 9","Milestone 10","Milestone 11","Milestone 12","Milestone 13","Milestone 14","Milestone 15","Milestone 16","Milestone 17","Milestone 18","Milestone 19","Milestone 20","Milestone 21","Milestone 22"],["Complete","Complete","Complete","Complete","Complete","Complete","Complete","Complete","On Target","On Target","At Risk","On Target","On Target","On Target","At Risk","Critical","On Target","On Target","On Target","At Risk","On Target","Critical"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>month<\/th>\n      <th>year<\/th>\n      <th>milestone<\/th>\n      <th>status<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="create-a-data-column" class="section level1">
+<h1>Create a Data column</h1>
+<pre class="r"><code>df$date &lt;- with(df, ymd(sprintf(&#39;%04d%02d%02d&#39;, year, month, 1)))
+df &lt;- df[with(df, order(date)), ]
+head(df)</code></pre>
+<pre><code>## # A tibble: 6 x 5
+##   month  year milestone   status   date      
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;    &lt;date&gt;    
+## 1     6  2017 Milestone 1 Complete 2017-06-01
+## 2     7  2017 Milestone 2 Complete 2017-07-01
+## 3    10  2017 Milestone 3 Complete 2017-10-01
+## 4    12  2017 Milestone 4 Complete 2017-12-01
+## 5     1  2018 Milestone 5 Complete 2018-01-01
+## 6     1  2018 Milestone 6 Complete 2018-01-01</code></pre>
+</div>
+<div id="ordinal-variable" class="section level1">
+<h1>Ordinal variable</h1>
+</div>
+<div id="color-change-levels" class="section level1">
+<h1>color change levels</h1>
+<pre class="r"><code>status_levels &lt;- c(&quot;Complete&quot;, &quot;On Target&quot;, &quot;At Risk&quot;, &quot;Critical&quot;)
+status_colors &lt;- c(&quot;#0070C0&quot;, &quot;#00B050&quot;, &quot;#FFC000&quot;, &quot;#C00000&quot;)
+
+df$status &lt;- factor(df$status, levels=status_levels, ordered=TRUE)</code></pre>
+<pre class="r"><code>positions &lt;- c(0.5, -0.5, 1.0, -1.0, 1.5, -1.5)
+directions &lt;- c(1, -1)
+
+line_pos &lt;- data.frame(
+    &quot;date&quot;=unique(df$date),
+    &quot;position&quot;=rep(positions, length.out=length(unique(df$date))),
+    &quot;direction&quot;=rep(directions, length.out=length(unique(df$date)))
+)
+
+df &lt;- merge(x=df, y=line_pos, by=&quot;date&quot;, all = TRUE)
+df &lt;- df[with(df, order(date, status)), ]
+
+head(df)</code></pre>
+<pre><code>##         date month year   milestone   status position direction
+## 1 2017-06-01     6 2017 Milestone 1 Complete      0.5         1
+## 2 2017-07-01     7 2017 Milestone 2 Complete     -0.5        -1
+## 3 2017-10-01    10 2017 Milestone 3 Complete      1.0         1
+## 4 2017-12-01    12 2017 Milestone 4 Complete     -1.0        -1
+## 5 2018-01-01     1 2018 Milestone 5 Complete      1.5         1
+## 6 2018-01-01     1 2018 Milestone 6 Complete      1.5         1</code></pre>
+</div>
+<div id="offset-position-of-the-lenght-of-the-lines" class="section level1">
+<h1>Offset position of the lenght of the lines</h1>
+<pre class="r"><code>text_offset &lt;- 0.05
+
+df$month_count &lt;- ave(df$date==df$date, df$date, FUN=cumsum)
+df$text_position &lt;- (df$month_count * text_offset * df$direction) + df$position
+head(df)</code></pre>
+<pre><code>##         date month year   milestone   status position direction month_count
+## 1 2017-06-01     6 2017 Milestone 1 Complete      0.5         1           1
+## 2 2017-07-01     7 2017 Milestone 2 Complete     -0.5        -1           1
+## 3 2017-10-01    10 2017 Milestone 3 Complete      1.0         1           1
+## 4 2017-12-01    12 2017 Milestone 4 Complete     -1.0        -1           1
+## 5 2018-01-01     1 2018 Milestone 5 Complete      1.5         1           1
+## 6 2018-01-01     1 2018 Milestone 6 Complete      1.5         1           2
+##   text_position
+## 1          0.55
+## 2         -0.55
+## 3          1.05
+## 4         -1.05
+## 5          1.55
+## 6          1.60</code></pre>
+</div>
+<div id="month-minimum-and-maximum" class="section level1">
+<h1>month minimum and maximum</h1>
+<pre class="r"><code>month_buffer &lt;- 2
+
+month_date_range &lt;- seq(min(df$date) - months(month_buffer), 
+                        max(df$date) + months(month_buffer), by=&#39;month&#39;)
+month_format &lt;- format(month_date_range, &#39;%b&#39;)
+month_df &lt;- data.frame(month_date_range, month_format)</code></pre>
+</div>
+<div id="year-minimum-and-maximum" class="section level1">
+<h1>Year minimum and maximum</h1>
+<pre class="r"><code>year_date_range &lt;- seq(min(df$date) - months(month_buffer), max(df$date) + months(month_buffer), by=&#39;year&#39;)
+year_date_range &lt;- as.Date(
+    intersect(
+        ceiling_date(year_date_range, unit=&quot;year&quot;),
+        floor_date(year_date_range, unit=&quot;year&quot;)
+    ),  origin = &quot;1970-01-01&quot;
+)
+year_format &lt;- format(year_date_range, &#39;%Y&#39;)
+year_df &lt;- data.frame(year_date_range, year_format)</code></pre>
+</div>
+<div id="plot-the-results" class="section level1">
+<h1>Plot the results</h1>
+<p>Now that we’ve got our data in a state ready to be plotted, we can put together our plot.</p>
+<pre class="r"><code>timeline_plot&lt;-ggplot(df,aes(x=date,y=0, col=status, label=milestone))
+timeline_plot&lt;-timeline_plot+labs(col=&quot;Milestones&quot;)
+timeline_plot&lt;-timeline_plot+scale_color_manual(values=status_colors, labels=status_levels, drop = FALSE)
+timeline_plot&lt;-timeline_plot+theme_classic()
+timeline_plot</code></pre>
+<p><img src="Timeline_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<pre class="r"><code># Plot horizontal black line for timeline
+timeline_plot&lt;-timeline_plot+geom_hline(yintercept=0, 
+                color = &quot;black&quot;, size=0.3)
+
+timeline_plot</code></pre>
+<p><img src="Timeline_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<pre class="r"><code># Plot vertical segment lines for milestones
+timeline_plot&lt;-timeline_plot+geom_segment(data=df[df$month_count == 1,], aes(y=position,yend=0,xend=date), color=&#39;black&#39;, size=0.2)
+timeline_plot</code></pre>
+<p><img src="Timeline_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<pre class="r"><code># Plot scatter points at zero and date
+timeline_plot&lt;-timeline_plot+geom_point(aes(y=0), size=3)
+timeline_plot</code></pre>
+<p><img src="Timeline_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<pre class="r"><code>timeline_plot&lt;-timeline_plot+theme(axis.line.y=element_blank(),
+                 axis.text.y=element_blank(),
+                 axis.title.x=element_blank(),
+                 axis.title.y=element_blank(),
+                 axis.ticks.y=element_blank(),
+                 axis.text.x =element_blank(),
+                 axis.ticks.x =element_blank(),
+                 axis.line.x =element_blank(),
+                 legend.position = &quot;bottom&quot;
+                )
+timeline_plot</code></pre>
+<p><img src="Timeline_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<pre class="r"><code># Show text for each month
+timeline_plot&lt;-timeline_plot+geom_text(data=month_df, aes(x=month_date_range,y=-0.1,label=month_format),size=2.5,vjust=0.5, color=&#39;black&#39;, angle=90)
+timeline_plot</code></pre>
+<p><img src="Timeline_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<pre class="r"><code># Show year text
+timeline_plot&lt;-timeline_plot+geom_text(data=year_df, aes(x=year_date_range,y=-0.3,label=year_format, fontface=&quot;bold&quot;),size=2.5, color=&#39;black&#39;)
+timeline_plot</code></pre>
+<p><img src="Timeline_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<pre class="r"><code># Show text for each milestone
+timeline_plot&lt;-timeline_plot+geom_text(aes(y=text_position,label=milestone),size=2.5)
+print(timeline_plot)</code></pre>
+<p><img src="Timeline_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
