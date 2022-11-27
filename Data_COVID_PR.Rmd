@@ -1,0 +1,187 @@
+---
+title: "Data_COVID_PR"
+subtitle: "BIOL4026"
+author: "Raymond L. Tremblay"
+
+output:
+  html_document:
+    css: tutorial.css
+    fig_caption: yes
+    highlight: pygments
+#    theme: simplex
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message = FALSE)
+```
+
+```{=html}
+<style>
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+    background-color: #1125d9;
+}
+</style>
+```
+
+
+```{r echo=FALSE}
+
+Sys.Date()
+
+rm(list = ls()) # Remove information from the global environment
+```
+
+***
+## Enlace de Monitoreo de COVID-19 en Puerto Rico
+
+Para ver analysis de COVID -19 en PR vea este enlace
+
+https://rconnect.dfci.harvard.edu/covidpr/
+
+
+
+
+
+*** 
+COVID_PR   This is the script to get access to the most recent file of the COVID cases in PR
+
+```{r }
+library(data.table)
+url_COVID_PR=fread("https://raw.githubusercontent.com/rafalab/pr-covid/master/dashboard/data/DatosMortalidad.csv")
+
+```
+
+
+```{r}
+## This is too save the file to your computer
+#head(url_COVID_PR)
+library(utils)
+write.csv(url_COVID_PR, "Datos/url_COVID_PR.csv")
+```
+
+# Upload file from your computer (you may not need this)
+
+```{r}
+library(readr)
+url_COVID_PR <- read_csv("Datos/url_COVID_PR.csv")
+```
+
+### Look at your data
+
+Understand what each column means
+
+```{r}
+
+
+names(url_COVID_PR)
+head(url_COVID_PR)
+tail(url_COVID_PR, n=10)
+
+```
+
+***
+
+## Lubridate package
+
+## GET YOU CHEAT SHEET HERE
+
+https://rstudio.com/resources/cheatsheets/
+
+
+
+Separate the date in Years/Month/Day, each in their own column
+
+Use the library(lubridate)
+
+```{r}
+library(tidyverse)
+library(lubridate)
+```
+
+***
+
+
+```{r}
+
+
+url_COVID_PR$mdy=mdy(url_COVID_PR$Fecha)
+head(url_COVID_PR)
+```
+
+***
+## Extract Date
+
+Extract day, month and year in different column.
+Let us start with extracting the month for year data point
+
+```{r}
+url_COVID_PR$month=month(url_COVID_PR$mdy)
+
+tail(url_COVID_PR)
+
+
+
+```
+
+## Now extract "year" and the "day" in different columns
+
+
+```{r}
+
+url_COVID_PR$day=day(url_COVID_PR$mdy)
+url_COVID_PR$year=year(url_COVID_PR$mdy)
+
+head(url_COVID_PR)
+```
+
+
+
+
+## Now extract the day of the week with the function "wday".  Which number is Monday?
+
+```{r}
+url_COVID_PR$weekday=wday(url_COVID_PR$mdy)
+
+tail(url_COVID_PR)
+```
+
+***
+
+## Tarea.
+
+1. Find the day of where there was the most number of NEW COVID cases in a specific day. ( 5 points)
+
+2. Find the day of where there was the most number of New Deaths in a specific day. ( 5 points)
+
+3. Find the day where there was the most number of beds of ICU (Intensive Care Units) that were occupied "CamasICU". ( 5 points)
+
+4. Calculate the total mean number of deaths for each month. ( 8 points)
+
+5. Do a point graph of the mean number of deaths per month (y axis) and the months surveyed (x-axis) ( 5 points)
+
+6. Which day of the week is there the largest mean number of new COVID cases.  Do a figure a 7 days of the weeks and the mean number of new cases (7 points) 
+
+
+```{r}
+url_COVID_PR %>% 
+  dplyr::select(weekday, IncCasosSaludNuevo) %>% 
+  group_by(weekday) %>% 
+  summarise(mean_New_cases=mean(IncCasosSaludNuevo, na.rm=TRUE))
+```
+
+
+***
+
+Submission of work
+
+1. You will upload your file to Edmodo as a .html file.
+2. Make certain you document is clean (non long tables, easy to understand). 
+3. Answer every question. 
+
+Date of Submission of your complete work 21st of February at 11:59pm.
+
+
+
+

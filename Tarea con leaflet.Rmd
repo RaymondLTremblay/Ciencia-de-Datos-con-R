@@ -1,0 +1,80 @@
+---
+title: "Mapa con leaflet"
+author: "Yaideliz M Romero Ramos"
+date: "5/6/2021"
+output: html_document
+    toc: yes
+    toc_float: yes
+    css: tutorial.css
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message = FALSE)
+```
+
+
+#Paquetes a utilizar
+```{r}
+library(readr)
+library(janitor)
+library(tidyverse)
+library(gt)
+library(lubridate)
+library(leaflet)
+
+#R.Version()
+```
+
+
+#Accediendo a los datos
+```{r}
+library(readr)
+
+Vehicle_collision_NY_Kaggle <- read_csv("Datos/Vehicle_collision_NY_Kaggle.csv")
+
+```
+
+#Limpiando el nombre de las columnas
+```{r}
+library(janitor)
+
+vcny<- Vehicle_collision_NY_Kaggle %>%
+  clean_names()
+
+
+gt(head(vcny))
+
+#https://gt.rstudio.com/
+```
+
+#Convirtiendo la columna "fecha" en formato en fecha, usando el paquete lubridate
+```{r}
+library(lubridate)
+
+vcny$mdy=mdy(vcny$date)
+vcny$month=month(vcny$mdy)
+vcny$day=day(vcny$mdy)
+vcny$year=year(vcny$mdy)
+
+gt(head(vcny))
+```
+
+```{r}
+library(leaflet)
+
+vcny1 <- vcny%>%
+  filter(year==2015)%>%
+  filter(month==6) %>%
+  filter(day==1)
+ 
+ vcny1%>% 
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(~longitude, ~latitude)
+
+head(vcny1)
+  
+  
+```
+

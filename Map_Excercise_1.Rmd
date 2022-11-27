@@ -1,0 +1,165 @@
+---
+title: "MAP_Exercise_#1"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+```{r setup, include = FALSE}
+library(tidyverse)
+library(lubridate)
+library(leaflet)
+library(janitor)
+```
+
+
+#  Trabajo de producción de graficos.  
+
+ - Cada pregunta equivale a 5 puntos
+ 
+
+
+# Datos
+Los datos provienen de este website
+
+https://www.kaggle.com
+
+# Paso #1
+Seleccionar el data set de Las ciudades del mundo y haga un mapa de los tamaños de la ciudades.  
+
+
+
+```{r, C1}
+library(tidyverse)
+library(lubridate)
+library(leaflet)
+```
+
+```{r, C2}
+library(readr)
+worldcities_lat_long_pop <- read_csv("Datos/worldcities_lat_long_pop.csv")
+WC = worldcities_lat_long_pop
+head(WC)
+```
+
+
+
+```{r C3, eval=FALSE}
+
+length(WC$city)
+names(WC)
+
+```
+
+# Paso #2
+
+- Limpia los nombres de las columnas
+- Cambia los nombres de las columnas correspondiente a longitud y latitud
+
+
+El paquete `janitor` se puede usar para limpiar los nombres de las columnas
+
+```{r C4, eval=FALSE}
+library(janitor)
+
+WC <- WC %>%
+  clean_names() %>%
+  rename(longitud = lng, latitud = lat)
+
+WC
+```
+
+# Paso #3
+
+Haga un geom_point de todas las ciudades de todo el data set
+
+```{r C5, eval=FALSE}
+WC %>%
+  ggplot() +
+  geom_point(aes(longitud, latitud))
+```
+
+
+
+# Paso #4
+
+Usa la función `map_data()`, del paquete `ggplot2`, contiene el mapa mundial.  El mapa de "world" se puede acceder usando el argumento `region`.
+
+- produzca un mapa del mundo SIN los datos de las ciudades
+- Use `geom_map()` para agregar la figura del territorio
+
+```{r C6, eval=FALSE}
+world <- map_data("world")
+
+world
+```
+
+
+```{r C7, eval=FALSE}
+ggplot() +
+  geom_map(aes(long, lat, map_id = region), fill = "orange",  map = world, data = world) 
+```
+
+
+
+
+
+# Paso #5
+
+Agrege la capa con las ciudades en el data set
+
+```{r fig.width=12, C8, eval=FALSE}
+ggplot() +
+  geom_map(aes(long, lat, map_id = region), fill = "grey",  map = world, data = world) + 
+  geom_point(aes(longitud, latitud), data = WC)
+```
+
+# Paso #6
+
+- Colorea de los puntos por el nombre del pais
+- Remover la leyenda de los nombre de los paises
+
+```{r C9, fig.width=12}
+names(WC)
+ggplot() +
+  geom_map(aes(long, lat, map_id = region), fill = "grey",  map = world, data = world) + 
+  geom_point(aes(longitud, latitud, color=country), data = WC)+
+  theme(legend.position = "none")
+
+
+```
+
+# Paso #7
+
+Ahora seleciona solamente las ciudades que tienen poblaciones mayor de 1 million, y haga un grafico de su distribucion y colorea por pais.
+
+En que pais se ve mayor numero de ciudades con población de 1 million?
+
+
+```{r C10}
+names(WC)
+WCpop=WC %>% 
+  filter(population > 1000000)
+
+ggplot() +
+  geom_map(aes(long, lat, map_id = region), fill = "grey",  map = world, data = world) + 
+  geom_point(aes(longitud, latitud, color=country), data = WCpop) +
+  theme(legend.position = "none")
+```
+
+# Paso #8
+
+Selecciona cualquier pais latino americano, y mapea todas las ciudades de este pais
+
+  - Cada estudiante seleccionará un pais diferente (no le diga a nadie cual pais seleccionaste)
+  
+
+
+
+# Paso #9 Bono
+
+- Cambia el tamaño del punto de las ciudades que corresponde al tamaño poblacional
+
+
+

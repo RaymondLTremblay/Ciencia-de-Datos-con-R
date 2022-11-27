@@ -1,0 +1,80 @@
+---
+title: "leaflet"
+author: "Raymond L. Tremblay"
+date: "4/19/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Check this out to control color and size of markers
+
+
+
+https://stackoverflow.com/questions/32940617/change-color-of-leaflet-marker
+
+
+
+
+
+```{r}
+library(dplyr)
+library(leaflet)
+data(quakes)
+quakes
+mutate(quakes, group = cut(mag, breaks = c(0, 5, 6, Inf), labels = c("blue", "green", "orange"))) -> mydf
+```
+### I edit this png file and created my own marker.
+### https://raw.githubusercontent.com/lvoogdt/Leaflet.awesome-markers/master/dist/images/markers-soft.png
+
+```{r}
+quakeIcons <- iconList(blue = makeIcon("/Users/jazzurro/Documents/Stack Overflow/blue.png", iconWidth = 24, iconHeight =32),
+                       green = makeIcon("/Users/jazzurro/Documents/Stack Overflow/green.png", iconWidth = 24, iconHeight =32),
+                       orange = makeIcon("/Users/jazzurro/Documents/Stack Overflow/orange.png", iconWidth = 24, iconHeight =32))
+
+
+leaflet(data = mydf[1:100,]) %>% 
+addTiles() %>%
+addMarkers(icon = ~quakeIcons[group])
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+
+last$BeatHomeLvl <- cut(last$BeatHome, 
+                        c(0,.5,1,2,3,5,100), include.lowest = T,
+                        labels = c('<.5x', '.5-1x', '1-2x', '2-3x', '3-5x','5x+'))
+
+beatCol <- colorFactor(palette = 'RdYlGn', last$BeatHomeLvl)
+m1 <- leaflet() %>%
+  addTiles() %>%
+  addProviderTiles(providers$OpenStreetMap, group = 'Open SM')  %>%
+  addProviderTiles(providers$Stamen.Toner, group = 'Toner')  %>%
+  addProviderTiles(providers$Esri.NatGeoWorldMap, group = 'NG World') %>%
+  setView(lng = -72, lat = 41, zoom = 8) %>%
+
+      addCircleMarkers(data = Jun, lat = ~Lat, lng = ~Lon,
+                       color = ~beatCol(BeatHomeLvl), popup = Jun$Popup,
+                       radius = ~sqrt(BeatHome*50), group = 'Home - Jun') %>%
+#At the end of your code add a legend. I added some formatting.
+
+  addLegend('bottomright', pal = beatCol, values = last$BeatHomeLvl,
+            title = 'Compare Home<br>Quote Count to<br>3Mos State Avg',
+            opacity = 1)
+
+```

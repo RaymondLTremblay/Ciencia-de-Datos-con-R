@@ -8,183 +8,108 @@
 
 
 <url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/index.html</loc>
-  <lastmod>2020-10-29T00:52:56+00:00</lastmod>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/schedule.html</loc>
-  <lastmod>2020-10-29T00:52:56+00:00</lastmod>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/index.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/Instalar-R-RStudio.html</loc>
-  <lastmod>2020-10-29T00:52:56+00:00</lastmod>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/Descripcion.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/Introduccion_RMarkdown.html</loc>
-  <lastmod>2020-10-29T00:52:56+00:00</lastmod>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/B_schedule.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/Codigos_basicos_en_R.html</loc>
-  <lastmod>2020-10-29T00:52:55+00:00</lastmod>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/A1_Instalar-R-RStudio.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/R_basico.html</loc>
-  <lastmod>2020-10-29T00:52:56+00:00</lastmod>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/A2_Introduccion_RMarkdown.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/T1_Intro.html</loc>
-  <lastmod>2020-10-29T00:52:56+00:00</lastmod>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/A3_Codigos_basicos_en_R.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/T1a_Poblacion_Muestra.html</loc>
-  <lastmod>2020-10-29T00:52:56+00:00</lastmod>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/A4_R_basico.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/T1b_Inferencias_hipotesis.html</loc>
-  <lastmod>2020-10-29T00:52:56+00:00</lastmod>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/C_1_E8_I6_Flujo_Trabajo.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/T2_Historia.html</loc>
-  <lastmod>2020-10-29T00:52:56+00:00</lastmod>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/C_2_E3_I1_Visualizacion_Datos.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/T3_Medidas_tendencia_central.html</loc>
-  <lastmod>2020-10-29T00:52:56+00:00</lastmod>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/C_3_E4_I2_Flujo_Trabajo_Basico.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/T4_Medidas_dispersion.html</loc>
-  <lastmod>2020-10-29T00:52:56+00:00</lastmod>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/C_4_E5_I3_Transformacion_dplyr.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/T4a_Estadistica_descriptiva.html</loc>
-  <lastmod>2020-10-29T00:52:56+00:00</lastmod>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/C5_E6_I6_Scripts.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/T5_Graficos.html</loc>
-  <lastmod>2020-10-29T00:52:56+00:00</lastmod>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/C6_E7_I7_Analisis_Exploratorio.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/T6_supuestos.html</loc>
-  <lastmod>2020-10-29T00:52:56+00:00</lastmod>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/C7_E18_I18_Pipes.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/T7_Frecuencias.html</loc>
-  <lastmod>2020-10-29T00:52:56+00:00</lastmod>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/C7b_E10_I10_Tibbles.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/T8_Distribucion_Normal.html</loc>
-  <lastmod>2020-10-29T00:52:56+00:00</lastmod>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/C7c_E11_I11_Importar.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/T9_Pruebas_una_muestra.html</loc>
-  <lastmod>2020-10-29T00:52:56+00:00</lastmod>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/C8_E8_I8_Datos_Ordenados.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/T9a_Pruebas_t-Pareados.html</loc>
-  <lastmod>2020-10-29T00:52:56+00:00</lastmod>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/C9_E13_I13_Datos_Relacionados.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/T10_Pruebas_t_Independiente.html</loc>
-  <lastmod>2020-10-29T00:52:56+00:00</lastmod>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/C10_E10_I10_Stringr.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/T11_ANOVA.html</loc>
-  <lastmod>2020-10-29T00:52:56+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/T13_Correlacion.html</loc>
-  <lastmod>2020-10-29T00:52:56+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/T14_Regression.html</loc>
-  <lastmod>2020-10-29T00:52:56+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/T14a_Regression_logistica.html</loc>
-  <lastmod>2020-10-29T00:52:56+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/T15_Selecionar_Pruebas.html</loc>
-  <lastmod>2020-10-29T00:52:56+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/T16_AKAIKE.html</loc>
-  <lastmod>2020-10-29T00:52:56+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/Ejerc_1_R4DS.html</loc>
-  <lastmod>2020-10-29T00:52:55+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/Ejerc_2_R4DS.html</loc>
-  <lastmod>2020-10-29T00:52:55+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/Ejerc_3_Intro.html</loc>
-  <lastmod>2020-10-29T00:52:55+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/Ejerc_4_ANOVA.html</loc>
-  <lastmod>2020-10-29T00:52:55+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/Ejerc_Tend_Central_Dispersion.html</loc>
-  <lastmod>2020-10-29T00:52:55+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/Exam1.html</loc>
-  <lastmod>2020-10-29T00:52:55+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/Norm7.html</loc>
-  <lastmod>2020-10-29T00:52:56+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/Ejercicio_Pruebas_Frecu.html</loc>
-  <lastmod>2020-10-29T00:52:55+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/Archivos_de_Datos.html</loc>
-  <lastmod>2020-10-29T00:52:55+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://estadisticafacil.github.io/BIOL3740/COVID-19.html</loc>
-  <lastmod>2020-10-29T00:52:55+00:00</lastmod>
+  <loc>https://raymondltremblay.github.io/Ciencia-de-Datos-con-R/C11_E15_I15_Factores.html</loc>
+  <lastmod>2021-01-14T00:35:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 

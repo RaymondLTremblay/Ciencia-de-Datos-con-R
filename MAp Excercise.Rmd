@@ -1,0 +1,242 @@
+---
+title: "Map_excercise"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include = FALSE}
+library(tidyverse)
+library(lubridate)
+library(leaflet)
+library(janitor)
+```
+
+# IMPORTANTE
+
+Usar el paquete "gt" para todos cuando enseña datos 
+
+
+# Datos
+Los datos provienen de este website
+
+https://www.kaggle.com
+
+
+
+
+
+## leaflet
+
+Leaflet (https://leafletjs.com/) es una librería de JavaScript que se utiliza para hacer mapas interactivos.  Es la más usada hoy en día.  El paquete de R llamado `leaflet` permite la integración con esta librería.  
+
+En lugar de usar `+`, `leaflet` utiliza el pipe (`%>%`) para crear las visualizaciones.  Se necesita `addTiles()` para agregar el mapa, y después algún tipo de puntos geográficos.
+
+```{r}
+library(leaflet)
+
+library(readr)
+Vehicle_collision_NY_Kaggle <- read_csv("Datos/Vehicle_collision_NY_Kaggle.csv")
+VC=Vehicle_collision_NY_Kaggle
+head(VC)
+```
+
+# Ejercicio de Mapa conb Leaflet
+## IMPORTANTE
+
+Usar el paquete "gt" a cda vez que van a enseña datos (data frame)
+# Datos
+Los datos provienen de este website
+
+https://www.kaggle.com
+
+## leaflet
+
+Leaflet (https://leafletjs.com/) es una librería de JavaScript que se utiliza para hacer mapas interactivos.  Es la más usada hoy en día.  El paquete de R llamado `leaflet` permite la integración con esta librería.  
+
+Los datos son sobre accidentes de carro en la ciudad de New York. Evaluan el Data frame bien
+
+Vehicle_collision_NY_Kaggle.csv
+
+
+## 1. Clean Names of columns (1 POINT)
+## 2. Show head using "gt" package (1 point)
+## 3. Convert date to a "DATE Format" with lubridate (2 points)
+## 4. Haga un primer mapa de "leaflet" usando solemanete un año (por ejemplo 2016), un mes (por ejemplo marzo), y una hora especifica (por ejemplo las 3 de las tarde). (3 puntos)
+## 5. Selecciona solamente los primeros 50 datos del archivo y usalo con parte 4. (2 puntos)
+## 6. Añadir un popup a parte 5 ( 3 puntos)
+Ya que son interactivos, se pueden agregar nombres que salen cuando se hace un click al punto, agrega al "popup" la información tipo de "vehiculo_1_type" que estuvo en el accidente.  Usa el chunk anterior que incluye solamente las primeras filas. 
+## 7. Añade la opción de Clusters con el grafico #4 (3 puntos) 
+## 8  Seleciona solamente los acidentes que tuvieron un acidente que alguien fallecio y rehaces el analisis #7. (3 puntos)
+## 9. Cambie al icono de los puntos con un icono de ambulancia con la libreria "fa."  (2 puntos)
+ http://rstudio.github.io/leaflet/markers.html
+ https://fontawesome.com/v4.7.0/icons/
+## BONO. (5 puntos)
+Miran a ver si pueden usar los datos de los "borough" que son basicamente regiones de la ciudad, y cambiar el color del punto para que representa el color corresponde al borough.  Pueden añadir esta función a cualquier de los analisis anteriores.  
+
+
+
+
+
+
+```{r}
+
+
+library(janitor)
+
+VC=clean_names(VC) %>% 
+  rename(longitud = longitude, latitud = latitude)
+
+library(lubridate)
+
+#as.date(VC$date)
+VC$fecha = as.Date(VC$date, "%m/%d/%y")
+VC$fecha2 = mdy(VC$date)
+head(VC$fecha)
+VC$time2 = hms(VC$time)
+
+head(VC)
+```
+
+# Haga un primer mapa de "leaflet" usando solemanete un año (por ejemplo 2016), un mes (por ejemplo marzo), y una hora especifica (por ejemplo las 3 de las tarde). 
+
+```{r}
+
+VC %>%
+  select(longitud, latitud, fecha, time) %>% 
+  filter(year(fecha) == 2015) %>% 
+  filter(month(fecha) == 1) %>%
+  filter(hour(time) == 8) %>% 
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(~longitud, ~latitud)
+
+#head(VC)
+```
+
+
+# Selecciona solamente los primeros 50 datos del archivo.   
+Busca en el web una función de tidyverse que selecciona estos primeras 50 filas. No le he enseñado esta función.  Usa el chunk anterior y añadele esta función.  
+
+```{r}
+VC %>%
+  select(longitud, latitud, fecha, time) %>% 
+  filter(year(fecha) == 2015) %>% 
+  filter(month(fecha) == 1) %>%
+  filter(hour(time) == 8) %>%
+  slice_head(n=50) %>% 
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(~longitud, ~latitud)
+
+```
+
+
+# Añadir un popup
+Ya que son interactivos, se pueden agregar nombres que salen cuando se hace un click al punto, agrega al "popup" la información tipo de "vehiculo_1_type" que estuvo en el accidente.  Usa el chunk anterior que incluye solamente las primeras filas. 
+
+```{r}
+head(VC)
+
+VC %>%
+  select(longitud, latitud, fecha, time, vehicle_1_type) %>% 
+  filter(year(fecha) == 2015) %>% 
+  filter(month(fecha) == 1) %>%
+  filter(hour(time) == 8) %>% 
+slice_head(n = 50) %>% 
+  leaflet() %>%
+  addTiles() %>%
+  addCircleMarkers(~longitud, ~latitud, popup = ~vehicle_1_type, group = "dots")
+
+
+
+
+```
+
+
+# Añade la opción de Clusters 
+
+`markerClusterOptions()` agrupa los puntos automaticamente para que la interactividad sea más fácil.
+
+Ahora selecciona los los primero 1000 valores. Cuidado donde pon la funcion de seleccionar las primeras filas en el chunk.   Deberia haber 1000 filas de datos.   
+
+```{r}
+
+
+VC %>%
+  select(longitud, latitud, fecha, time, vehicle_1_type) %>%
+  filter(year(fecha) == 2015) %>% 
+  slice_head(n = 1000) %>% 
+  leaflet() %>%
+  addTiles() %>%
+  addCircleMarkers(~longitud, ~latitud, popup = ~vehicle_1_type, 
+                   clusterOptions = markerClusterOptions())
+#slice_head(n = 5000) %>% 
+#  filter(hour(time) == 8) %>% 
+#filter(month(fecha) == 1) %>%
+```
+
+
+#  Seleciona solamente los acidentes que tuvieron un acidente que alguien fallecio.
+
+Usando todos los datos del data frame, haga un mapa de los accidentes donde hubo por lo menos una persona que fallecio.  
+
+```{r}
+
+library(viridisLite)
+
+# get domain of numeric data
+(domain <- unique(VC$borough))
+domain
+pal <- colorFactor(palette = viridis(5), domain = domain)
+
+head(VC)
+VC %>%
+  select( persons_killed, longitud, latitud, fecha, time, vehicle_1_type) %>% 
+  filter(persons_killed >0) %>% 
+  leaflet() %>%
+  addTiles() %>%
+  addCircleMarkers(~longitud, ~latitud, 
+                   popup = ~vehicle_1_type,
+                   clusterOptions = markerClusterOptions())
+```
+
+# awesomeIcons 
+
+## See these websites for markers and icons
+
+http://rstudio.github.io/leaflet/markers.html
+
+https://fontawesome.com/v4.7.0/icons/
+
+# Cambie al icono de los puntos con un icono de ambulancia 
+
+
+
+```{r}
+
+library(viridisLite)
+
+# get domain of numeric data
+(domain <- unique(VC$borough))
+domain
+pal <- colorFactor(palette = viridis(5), domain = domain)
+
+VC %>%
+  select( persons_killed, longitud, latitud, fecha, time, vehicle_1_type, borough) %>% 
+  filter(year(fecha) == 2015) %>% 
+  filter(persons_killed >0) %>% 
+  leaflet() %>%
+  addTiles() %>%
+  addAwesomeMarkers(~longitud, ~latitud, 
+                   popup = ~vehicle_1_type,
+                   clusterOptions = markerClusterOptions(), 
+                   icon = awesomeIcons(icon = "fa-ambulance", library = "fa",
+                   markerColor = 'borough'))
+
+#fa-camera-retro
+#fa-fire
+
+
+```
+

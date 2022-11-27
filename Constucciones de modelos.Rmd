@@ -1,0 +1,284 @@
+---
+title: "Construcciones_Modelos"
+author: "Raymond L. Tremblay"
+date: "5/3/2021"
+output: 
+  html_document:
+    toc: yes
+    toc_float: yes
+    css: tutorial.css
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(modelr)
+library(lubridate)
+library(datos)
+options(na.action = na.warn)
+```
+
+
+# BoxPlots
+
+Como se interpreta los box plots?
+
+linea Horizontal abajo,  1er cuartil (25),
+                          2 ndo (50= mediana) en centro
+                          3 ro  (75)
+                          
+                          
+                          whiskers, bigotes del gato 5 y 95
+                          outliers
+
+
+```{r}
+ggplot(diamantes, aes(corte, precio)) + geom_boxplot()
+
+
+ggplot(diamantes, aes(color, precio)) + geom_boxplot()
+ggplot(diamantes, aes(claridad, precio)) + geom_boxplot()
+
+
+ggplot(diamantes, aes(claridad, precio)) + geom_violin()
+```
+
+
+
+
+```{r}
+
+g=rnorm(100000, mean=10, sd=1)
+head(g)
+dfg=as_tibble(g)
+head(dfg)
+
+#ggplot(dfg, aes(x=1, value)) +
+#geom_histogram()
+
+data <- data.frame(
+  name=c( rep("A",500), rep("B",500), rep("B",500), rep("C",20), rep('D', 100)  ),
+  value=c( rnorm(500, 10, 5), rnorm(500, 13, 1), rnorm(500, 18, 1), rnorm(20, 25, 4), rnorm(100, 12, 1) ) %>% round(2)
+)
+
+data
+
+ggplot(data, aes(x=name, y=value, fill=name)) + 
+  geom_violin()
+```
+
+
+Dot PLots
+
+En este caso se usa hex, cada hex es de color diferente por la cantidad de datos en cada uno de los puntos
+
+```{r}
+ggplot(diamantes, aes(quilate, precio)) + 
+  geom_hex(bins = 20)
+
+```
+
+
+
+
+
+Foco en los diamantes más pequeños que 2.5 quilates (99.7% de los datos).
+Haz una transformación logarítmica de las variables quilates y precio
+
+```{r}
+diamantes2 <- diamantes %>%
+  filter(quilate <= 2.5) %>% 
+  mutate(log_precio = log2(precio), log_quilates = log2(quilate))
+```
+
+
+```{r}
+ggplot(diamantes2, aes(log_quilates, log_precio)) + 
+  geom_hex(bins = 50)
+```
+
+
+
+## Construir un modelo lineal de relación entre quilate y precio
+
+```{r}
+mod_diamantes <- lm(log_precio ~ log_quilates, data = diamantes2)
+```
+
+
+
+```{r}
+cuadricula <- diamantes2 %>% 
+  data_grid(quilate = seq_range(quilate, 20)) %>% 
+  mutate(log_quilates = log2(quilate)) %>% 
+  add_predictions(mod_diamantes, "log_precio") %>% 
+  mutate(precio = 2 ^ log_precio)
+```
+
+## Visualizar el modelo
+
+```{r}
+
+ggplot(diamantes2, aes(quilate, precio)) + 
+  geom_hex(bins = 50) + 
+  geom_line(data = cuadricula, colour = "red", size = 1)
+```
+
+
+## Add residuals
+
+
+
+```{r}
+diamantes2 <- diamantes2 %>% 
+  add_residuals(mod_diamantes, "lresid")
+
+ggplot(diamantes2, aes(log_quilates, lresid)) + 
+  geom_hex(bins = 50)
+```
+
+
+# Como añadir ecuaciones en los ejes
+
+Usar el siguiente website para LATEX FORMULA
+
+
+```{r}
+df <- tibble(
+  x = runif(10),
+  y = runif(10)
+)
+df
+
+
+ggplot(df, aes(x, y)) +
+  geom_point() +
+  labs(
+    x = quote(sum(x[i]^2, i == 1, n)),
+    y = quote(alpha + beta + frac(delta, theta))
+  )
+
+```
+
+
+```{r}
+?plotmath
+ggplot(df, aes(x, y)) +
+  geom_point() +
+  labs(
+    x = quote(sum(x[i]^2, i == 1, n)),
+    y = quote(text(int_[a]^b (x)+ frac(x,y) + ln[10]))
+  )
+
+
+
+ggplot(df, aes(x, y)) +
+  geom_point() +
+labs(x=expression(Production~rate~~~~~~~~~~~~mu~moles~NO[3]^{textstyle("-")}-N %.% Kg^{-1}),
+     y=expression(Concentration~mg~L^{-1}))
+
+
+
+
+ggplot(df, aes(x, y)) +
+  geom_point() +
+xlab(expression(beta +frac(miles, gallon)))
+
+
+
+
+
+
+
+```
+
+
+```{r}
+library(latex2exp)
+```
+
+
+
+
+```{r}
+x <- seq(0, 4, length.out=100)
+alpha <- 1:5
+data <- map_df(alpha, ~ tibble(v=.*x^., x=x, alpha=.))
+data
+
+p <- ggplot(data, aes(x=x, y=v, color=as.factor(alpha))) +
+    geom_line() + 
+    ylab(TeX(r'($\alpha  x^\alpha$, where $\alpha \in 1\ldots 5$)')) +
+   xlab(TeX(r'($\sum_{n=i}^n=x_i +...x_n$)')) +
+    ggtitle(TeX(r'(Using $\LaTeX$ for plotting in ggplot2. I $\heartsuit$ ggplot!)')) +
+    coord_cartesian(ylim=c(-1, 10)) +
+    guides(color=guide_legend(title=NULL)) +
+    scale_color_discrete(labels=lapply(sprintf(r'($\alpha = %d$)', alpha), TeX)) 
+     
+ p 
+```
+ 
+
+ 
+## Use the following website to create a Latex equation
+ 
+ https://www.latex4technics.com
+ 
+### Para los nombres de los diferentes simbolos a utilizar con TeX
+ 
+ https://www.tutorialspoint.com/tex_commands/omega1.htm
+ 
+ 
+### Vea este para otras alternativas
+
+https://www.stat.auckland.ac.nz/~paul/R/CM/AdobeSym.html
+
+
+Este es la firmula del promedio $\overline{x}=(\sum_i^n x_{i})/n$
+
+$$\overline{x}=\sum_i^n x_{i}/n$$
+ 
+ 
+```{r} 
+ q <- ggplot(data, aes(x=x, y=v, color=as.factor(alpha))) +
+    geom_line() + 
+    ylab(TeX(r'($\bar{x}=\sum_i^n x_{i}/n+ \psi$)')) +
+   xlab(TeX(r'($\int_{a}^{b} f(x)dx = F(b) - F(a)$)'))+
+    ggtitle(TeX(r'(Using $\LaTeX$ for plotting in ggplot2. I $\heartsuit$ ggplot!)')) +
+    coord_cartesian(ylim=c(-1, 10)) +
+    guides(color=guide_legend(title=NULL)) +
+    scale_color_discrete(labels=lapply(sprintf(r'($\alpha = %d$)', alpha), TeX)) 
+ 
+ 
+q
+```
+
+
+
+# \sigma^2=\sum_i^n(x_{i}+\overline{x})^2/(n-1)
+
+$\sigma^{2}= \Sigma(x_{i} - \overline{x})  / (n-1) +  \Omega$
+
+$\sigma^{2}= \Sigma(x_{i} - \bar{x})  / (n-1) +  \Omega$
+
+
+```{r}
+r <- ggplot(data, aes(x=x, y=v, color=as.factor(alpha))) +
+    geom_line() + 
+    ylab(TeX(r'($\sigma^{2}= \Sigma(x_{i} - \bar{x})  / (n-1) +  \Omega$)')) +
+   xlab(TeX(r'($\int_{a}^{b} f(x)dx = F(b) - F(a)$)'))+
+    ggtitle(TeX(r'(Using $\LaTeX$ for plotting in ggplot2. I $\heartsuit$ $\clubsuit$ $\arcsin(x)$ ggplot!)')) +
+    coord_cartesian(ylim=c(-1, 10)) +
+    guides(color=guide_legend(title=NULL)) +
+    scale_color_discrete(labels=lapply(sprintf(r'($\alpha = %d$)', alpha), TeX)) 
+ 
+
+r
+```
+
+
+

@@ -1,0 +1,80 @@
+---
+title: "Calendario, Segundo semestre 2020-21"
+subtitle: "BIOL4026"
+author: "Raymond L. Tremblay"
+
+output:
+  html_document:
+    css: tutorial.css
+    fig_caption: yes
+    highlight: pygments
+#    theme: simplex
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message = FALSE)
+```
+
+```{=html}
+<style>
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+    background-color: #11c1d9;
+}
+</style>
+```
+
+
+Fecha de la ultima revisión
+```{r echo=FALSE}
+
+Sys.Date()
+```
+
+
+```{r, echo=FALSE, fig.show = "hold", out.width = "20%", fig.align = "default"}
+#knitr::include_graphics(c("Graficos/hex_ggversa.png", "Graficos/hex_error.png"))
+```
+
+
+```{r, echo=FALSE}
+library(huxtable)
+library(knitr)
+library(tidyverse)
+```
+
+***
+
+
+
+# Favor mirar el calendario regularmente, ya que este puede cambiar!
+
+```{r include=FALSE}
+
+courseSchedule <- read.csv("B_Schedule_2021.csv")
+
+
+```
+
+```{r results='asis', echo=FALSE}
+#knitr::kable(courseSchedule,caption="Calendario tentativo")
+```
+
+
+
+```{r, echo=FALSE}
+huxtable(courseSchedule)%>%
+  theme_article(header_col = FALSE)%>%
+  set_position("left") %>%
+set_bottom_border(row = 1, col = everywhere, value = 2) %>%
+set_caption("Calendario tentativo")%>%
+
+      set_background_color(1:1, 1:1, "#11c1d9")%>% 
+      set_background_color(1:1, 2:2, "#11c1d9")%>% 
+      set_background_color(1:1, 3:3, "#11c1d9")%>% 
+      set_background_color(1:1, 4:4, "#11c1d9")%>% 
+      set_background_color(1:1, 5:5, "#11c1d9")%>%
+      set_text_color(1:1, 1:5, "white")
+```
+

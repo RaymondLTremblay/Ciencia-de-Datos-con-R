@@ -1,0 +1,95 @@
+---
+title: "scholar"
+author: "Raymond L. Tremblay"
+date: "4/28/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(scholar)
+```
+
+
+```{r}
+
+#https://myaccount.google.com/personal-info?rapt=AEjHL4O7vjj8zGiZ04ukfk_2uyzJ_XzsdGq6U2JOBwwagrf1LAIO7TJYxiWpOR0ybbYMgMm6Uxf5ef2MK-VcOsgSNg-3CbSPXQ
+
+#https://scholar.google.com/citations?user=tnR58sAAAAAJ&hl=en&authuser=1 # RL TREMBLAY
+id<-'tnR58sAAAAAJ&hl'
+get_profile(id)
+```
+
+
+
+
+```{r}
+p <- get_publications(id)
+head(p, 3)
+```
+
+
+
+```{r}
+## Get his citation history, i.e. citations to his work in a given year
+ct <- get_citation_history(id)
+
+## Plot citation trend
+library(ggplot2)
+ggplot(ct, aes(year, cites)) + geom_line() + geom_point()
+```
+
+
+```{r}
+as.character(p$title[2])
+## Get article citation history
+ach <- get_article_cite_history(id, p$pubid[2])
+ach
+## Plot citation trend
+ggplot(ach, aes(year, cites)) +
+    geom_segment(aes(xend = year, yend = 0), size=1, color='darkgrey') +
+    geom_point(size=3, color='firebrick')
+```
+
+
+
+```{r}
+
+library(rvest)
+library(xml2)
+library(selectr)
+library(stringr)
+library(jsonlite)
+#url_name <- 'https://scholar.google.com/scholar?hl=en&as_sdt=0%2C38&q=apex+predator+conservation&btnG=&oq=apex+predator+c'
+#url_name <- 'https://scholar.google.com/scholar?hl=en&as_sdt=0%2C38&q=apex+predator+conservation&btnG=&oq=apex+predator+c'
+url_name <-'https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&authuser=1&q=orchidaceae+%26+pollination&btnG=&oq=orchidaceae'
+wp <- xml2::read_html(url_name)
+
+# Extract raw data
+titles <- rvest::html_text(rvest::html_nodes(wp, '.gs_rt'))
+authors_years <- rvest::html_text(rvest::html_nodes(wp, '.gs_a'))
+
+# Process data
+authors <- gsub('^(.*?)\\W+-\\W+.*', '\\1', authors_years, perl = TRUE)
+years <- gsub('^.*(\\d{4}).*', '\\1', authors_years, perl = TRUE)   
+
+# Make data frame
+df <- data.frame(titles = titles, authors = authors, years = years, stringsAsFactors = FALSE)
+df
+```
+
+
+
+```{r}
+library(rvest)
+library(ggplot2)
+
+page <- read_html("https://scholar.google.com/citations?user=sTR9SIQAAAAJ&hl=en&oi=ao")
+
+```
+
+

@@ -1,44 +1,75 @@
 --- 
-name: "BIOL4026"
+name: BIOL4026
 navbar: 
   left: 
     - 
       href: Descripcion.html
       text: Home
     - 
-      href: schedule.html
+      href: B_schedule.html
       text: Calendario
     - 
       menu: 
         - 
-          href: Instalar-R-RStudio.html
+          href: A1_Instalar-R-RStudio.html
           text: "Instalar R y RStudio"
         - 
-          href: Introduccion_RMarkdown.html
+          href: A2_Introduccion_RMarkdown.html
           text: RMarkdown
         - 
-          href: Codigos_basicos_en_R.html
+          href: A3_Codigos_basicos_en_R.html
           text: "R y Cheatsheets"
         - 
-          href: R_basico.html
+          href: A4_R_basico.html
           text: "R Básico #2"
       text: "Instalación básica"
     - 
       menu: 
         - 
-          href: T1_Intro.html
-          text: "T1 Introducción a la Estadística"
+          href: C_1_E8_I6_Flujo_Trabajo.html
+          text: "C1 Flujo del Trabajo"
         - 
-          href: T1a_Poblacion_Muestra.html
-          text: "T1a Población, Muestreo y Sesgo"
+          href: C_2_E3_I1_Visualizacion_Datos.html
+          text: "C2 Visualización de Datos"
+        - 
+          href: C_3_E4_I2_Flujo_Trabajo_Basico.html
+          text: "C3 Flujo del Trabajo Básico"
+        - 
+          href: C_4_E5_I3_Transformacion_dplyr.html
+          text: "C4 Transformación: dplyr"
+        - 
+          href: C5_E6_I6_Scripts.html
+          text: "C5 Scripts"
+        - 
+          href: C6_E7_I7_Analisis_Exploratorio.html
+          text: "C6 Análisis Exploratorio"
+        - 
+          href: C7_E18_I18_Pipes.html
+          text: "C7a Pipes: %>%"
+        - 
+          href: C7b_E10_I10_Tibbles.html
+          text: "C7b Tibbles"
+        - 
+          href: C7c_E11_I11_Importar.html
+          text: "C7c Importar Datos, readr"
+        - 
+          href: C8_E8_I8_Datos_Ordenados.html
+          text: "C8 Datos Ordenados: tidyr"
+        - 
+          href: C9_E13_I13_Datos_Relacionados.html
+          text: "C9 Datos Relacionados"
+        - 
+          href: C10_E10_I10_Stringr.html
+          text: "C10 Cadenas de Caracteres: stringr"
+        - 
+          href: C11_E15_I15_Factores.html
+          text: "C11 Factores: forcats"
+        - 
+          href: C12_E16_I16_Fechas_Horas.html
+          text: "C12 Fechas y Horas: lubridate"
       text: "Los Temas"
     - 
-      menu: 
-
-      text: Ejercicio
-    - 
-      menu: 
-  
-      text: "Los Datos"
-  title: "BIOL3740:Biometria"
+      href: Datos.html
+      text: Datos
+  title: "BIOL4026: Ciencia de Datos"
 output_dir: "."
