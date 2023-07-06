@@ -65,7 +65,7 @@ library(DT)
 
 
 
-datatable(head(dlf), n=8)) # Use the DT package and the "datatable" function 
+head(dlf, n=8) # Use the DT package and the "datatable" function 
 tail(dlf)
 
 summary(dlf)

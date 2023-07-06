@@ -70,12 +70,12 @@ library(readr)
 Newborn_Karn_Penrose <- read_csv("Datos/Newborn_Karn_Penrose.csv")
 
 
-library(readxl)
-Newborn_Karn_Penrose1 <- read_excel("~/Google Drive/GitHub_Google_Drive/GitHub/Vintage_DATA/DATA/Human_Birth_Weight/Newborn_Karn_Penrose.xlsx", sheet = 3)
+#library(readxl)
+#Newborn_Karn_Penrose1 <- read_excel("~/Google Drive/GitHub_Google_Drive/GitHub/Vintage_DATA/DATA/Human_Birth_Weight/Newborn_Karn_Penrose.xlsx", sheet = 3)
 
 head(Newborn_Karn_Penrose)
 
-Newborn_Karn_Penrose1
+
 ```
  
 Hacer una columna de la proporción de los niños que no sobrevivieron.
@@ -90,7 +90,7 @@ mutate(Perc_sobrevivieron = Count_Non_survivors/Count_Total_Birth)
 
 ```{r}
 
-Newborn_Karn_Penrose1 %>% 
+Newborn_Karn_Penrose %>% 
   mutate(Percent_Decease = Count_Non_survivors/Count_Total_Birth)
 
 ```
@@ -106,7 +106,7 @@ geom_smooth()
 
 
 ```{r}
-Newborn_Karn_Penrose1 %>% 
+Newborn_Karn_Penrose %>% 
   mutate(Percent_Decease = Count_Non_survivors/Count_Total_Birth) %>% 
   ggplot(aes(Birth_weight, Percent_Decease)) + 
   geom_point() +
@@ -117,7 +117,7 @@ Newborn_Karn_Penrose1 %>%
 
 
 ```{r}
-Newborn_Karn_Penrose1 %>% 
+Newborn_Karn_Penrose %>% 
   mutate(Percent_Decease = Count_Non_survivors/Count_Total_Birth) %>% 
   ggplot(aes(Birth_weight, Percent_Decease)) + 
   geom_point() +
@@ -127,7 +127,7 @@ Newborn_Karn_Penrose1 %>%
 
 ```{r}
 
-Newborn_Karn_Penrose1 %>% 
+Newborn_Karn_Penrose %>% 
   mutate(Percent_Decease = Count_Non_survivors/Count_Total_Birth) %>% 
   ggplot(aes(Birth_weight, Percent_Decease, color=Mother_age)) + 
   geom_point(aes(color=factor(Mother_age))) +

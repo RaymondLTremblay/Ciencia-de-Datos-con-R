@@ -14,8 +14,8 @@
 
 <title>Cherry_Blossum</title>
 
-<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.22/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -61,6 +61,7 @@ if (window.hljs) {
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -81,6 +82,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -138,11 +142,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -171,8 +179,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -180,16 +188,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -233,7 +234,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -249,7 +250,7 @@ $(document).ready(function () {
   <a href="B_schedule.html">Calendario</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Instalación básica
      
     <span class="caret"></span>
@@ -270,7 +271,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Los Temas
      
     <span class="caret"></span>
@@ -344,28 +345,32 @@ $(document).ready(function () {
 
 <div id="for-the-story-of-cherry-blossum-see" class="section level1">
 <h1>For the Story of Cherry Blossum see</h1>
-<p><a href="https://edition.cnn.com/2021/04/05/asia/japan-cherry-blossoms-climate-change-intl-hnk-scn/index.html" class="uri">https://edition.cnn.com/2021/04/05/asia/japan-cherry-blossoms-climate-change-intl-hnk-scn/index.html</a></p>
+<p><a
+href="https://edition.cnn.com/2021/04/05/asia/japan-cherry-blossoms-climate-change-intl-hnk-scn/index.html"
+class="uri">https://edition.cnn.com/2021/04/05/asia/japan-cherry-blossoms-climate-change-intl-hnk-scn/index.html</a></p>
 <pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
-<pre><code>## ✓ ggplot2 3.3.3     ✓ purrr   0.3.4
-## ✓ tibble  3.1.0     ✓ dplyr   1.0.5
-## ✓ tidyr   1.1.3     ✓ stringr 1.4.0
-## ✓ readr   1.4.0     ✓ forcats 0.5.1</code></pre>
-<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()</code></pre>
-<p>See the following link for an analysis of the time of blossom of the Cherry Blossom trees in Tokyo, Japan from year 801 to this year.</p>
-<p>The objective of this excecise to to put in practice the functions different files and try and replicate some of the figures that have been published in newspapers.</p>
-<p>See the following websites 1. <a href="https://edition.cnn.com/2021/04/05/asia/japan-cherry-blossoms-climate-change-intl-hnk-scn/index.html" class="uri">https://edition.cnn.com/2021/04/05/asia/japan-cherry-blossoms-climate-change-intl-hnk-scn/index.html</a></p>
+<p>See the following link for an analysis of the time of blossom of the
+Cherry Blossom trees in Tokyo, Japan from year 801 to this year.</p>
+<p>The objective of this excecise to to put in practice the functions
+different files and try and replicate some of the figures that have been
+published in newspapers.</p>
+<p>See the following websites 1. <a
+href="https://edition.cnn.com/2021/04/05/asia/japan-cherry-blossoms-climate-change-intl-hnk-scn/index.html"
+class="uri">https://edition.cnn.com/2021/04/05/asia/japan-cherry-blossoms-climate-change-intl-hnk-scn/index.html</a></p>
 <ol start="2" style="list-style-type: decimal">
 <li></li>
 </ol>
-<p><a href="https://www.yahoo.com/gma/numbers-japan-cherry-blossoms-hit-214535221.html" class="uri">https://www.yahoo.com/gma/numbers-japan-cherry-blossoms-hit-214535221.html</a></p>
+<p><a
+href="https://www.yahoo.com/gma/numbers-japan-cherry-blossoms-hit-214535221.html"
+class="uri">https://www.yahoo.com/gma/numbers-japan-cherry-blossoms-hit-214535221.html</a></p>
 <ol start="3" style="list-style-type: decimal">
 <li></li>
 </ol>
-<p><a href="https://www.meteored.com.ar/noticias/actualidad/sorpresa-en-japon-por-la-temprana-floracion-de-los-cerezos.html" class="uri">https://www.meteored.com.ar/noticias/actualidad/sorpresa-en-japon-por-la-temprana-floracion-de-los-cerezos.html</a></p>
-<p>You will find 4 original files from the authors with the references, ect.</p>
+<p><a
+href="https://www.meteored.com.ar/noticias/actualidad/sorpresa-en-japon-por-la-temprana-floracion-de-los-cerezos.html"
+class="uri">https://www.meteored.com.ar/noticias/actualidad/sorpresa-en-japon-por-la-temprana-floracion-de-los-cerezos.html</a></p>
+<p>You will find 4 original files from the authors with the references,
+ect.</p>
 <ol style="list-style-type: decimal">
 <li>759TempW.xls</li>
 <li>KyotoFullFlowerW.xls</li>
@@ -382,21 +387,29 @@ $(document).ready(function () {
 </div>
 <div id="step-2" class="section level1">
 <h1>Step 2</h1>
-<p>Load files in a RMarkdown document (make certain they are readible)</p>
+<p>Load files in a RMarkdown document (make certain they are
+readible)</p>
 </div>
 <div id="step-3" class="section level1">
 <h1>Step 3</h1>
 <div id="points" class="section level2">
 <h2>(5 points)</h2>
-<p>Merge all three file in one file, “show script and the last 6 lines” (make it clean, remove unnessary information, not the rows but the unnessary columns) a. Show the names of tghe columns in the new dataframe</p>
+<p>Merge all three file in one file, “show script and the last 6 lines”
+(make it clean, remove unnessary information, not the rows but the
+unnessary columns) a. Show the names of tghe columns in the new
+dataframe</p>
 </div>
 </div>
 <div id="step-4" class="section level1">
 <h1>Step 4</h1>
 <div id="points-1" class="section level2">
 <h2>(5 points)</h2>
-<p>Replace all -999.9 and -99.9 with NA within R. (Do not do this in Excel, show the script): a. show the head and tail of the new data frame.</p>
-<p>Use the following website to find an appropriate script <a href="https://cran.r-project.org/web/packages/naniar/vignettes/replace-with-na.html" class="uri">https://cran.r-project.org/web/packages/naniar/vignettes/replace-with-na.html</a></p>
+<p>Replace all -999.9 and -99.9 with NA within R. (Do not do this in
+Excel, show the script): a. show the head and tail of the new data
+frame.</p>
+<p>Use the following website to find an appropriate script <a
+href="https://cran.r-project.org/web/packages/naniar/vignettes/replace-with-na.html"
+class="uri">https://cran.r-project.org/web/packages/naniar/vignettes/replace-with-na.html</a></p>
 </div>
 </div>
 <div id="step-5" class="section level1">
@@ -404,7 +417,8 @@ $(document).ready(function () {
 <div id="and-2-points" class="section level2">
 <h2>(3 and 2 points)</h2>
 <ol style="list-style-type: lower-alpha">
-<li>Calculate the running average of the flowering time for 10 years prior to time t.</li>
+<li>Calculate the running average of the flowering time for 10 years
+prior to time t.</li>
 <li>Show the last 10 lines of the data frame</li>
 </ol>
 </div>
@@ -414,7 +428,8 @@ $(document).ready(function () {
 <div id="points-2" class="section level2">
 <h2>(3 points)</h2>
 <ol style="list-style-type: lower-alpha">
-<li>Create a point diagram of the date (x axis) and time of “Full Flowering date DOY”</li>
+<li>Create a point diagram of the date (x axis) and time of “Full
+Flowering date DOY”</li>
 </ol>
 </div>
 </div>
@@ -433,7 +448,8 @@ $(document).ready(function () {
 <div id="and-2-points-2" class="section level2">
 <h2>(2, 3 and 2 points)</h2>
 <ol style="list-style-type: lower-alpha">
-<li>Now redo the analysis using an analysis called LOESS regression, this is the default geom_smooth model, geom_smooth().</li>
+<li>Now redo the analysis using an analysis called LOESS regression,
+this is the default geom_smooth model, geom_smooth().</li>
 <li>Explain what LOESS regression model does?<br />
 </li>
 <li>Now does this show a pattern of change and flowering period?</li>
@@ -444,7 +460,10 @@ $(document).ready(function () {
 <h1>Step 9</h1>
 <div id="and-2-points-3" class="section level2">
 <h2>(3 and 2 points)</h2>
-<p>Using the mean “running average of the day of blossom” you calculated above. Use 10 year running average. a. Now plot the the rolling average of Blossom Day (10 year average) on your graph. b. Porque la linea no se extiende antes del año 1300? comparando al step 7.</p>
+<p>Using the mean “running average of the day of blossom” you calculated
+above. Use 10 year running average. a. Now plot the the rolling average
+of Blossom Day (10 year average) on your graph. b. Porque la linea no se
+extiende antes del año 1300? comparando al step 7.</p>
 </div>
 </div>
 <div id="step-10" class="section level1">
@@ -452,121 +471,34 @@ $(document).ready(function () {
 <div id="bonus-5-points" class="section level2">
 <h2>Bonus (5 points)</h2>
 <ol style="list-style-type: lower-alpha">
-<li><p>Join the file with the CO2 data and do an analysis to evaluate the relationship between Average temperature in Tokyo and average CO2 (Rolling average of 10 years).</p></li>
-<li><p>Explain how your hypothesis and how this may support or not evidence for climate change</p></li>
+<li><p>Join the file with the CO2 data and do an analysis to evaluate
+the relationship between Average temperature in Tokyo and average CO2
+(Rolling average of 10 years).</p></li>
+<li><p>Explain how your hypothesis and how this may support or not
+evidence for climate change</p></li>
 </ol>
 </div>
 </div>
 <div id="imported-files" class="section level1">
 <h1>Imported Files</h1>
 <pre class="r"><code>library(readr)
-X759TempW_mod &lt;- read_csv(&quot;Cherry_Blossom/759TempW_mod.csv&quot;)</code></pre>
-<pre><code>## 
-## ── Column specification ────────────────────────────────────────────────────────
-## cols(
-##   AD = col_double(),
-##   TEMP = col_double(),
-##   Obs_Temp = col_double()
-## )</code></pre>
-<pre class="r"><code>F1=X759TempW_mod
-head(F1)</code></pre>
-<pre><code>## # A tibble: 6 x 3
-##      AD  TEMP Obs_Temp
-##   &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
-## 1   801 -999.    -999.
-## 2   802 -999.    -999.
-## 3   803 -999.    -999.
-## 4   804 -999.    -999.
-## 5   805 -999.    -999.
-## 6   806 -999.    -999.</code></pre>
-<pre class="r"><code>KyotoFullFlowerW_mod &lt;- read_csv(&quot;Cherry_Blossom/KyotoFullFlowerW_mod.csv&quot;)</code></pre>
-<pre><code>## 
-## ── Column specification ────────────────────────────────────────────────────────
-## cols(
-##   AD = col_double(),
-##   Full_flow_date_DOY = col_double(),
-##   Full_flowering_date = col_double(),
-##   Source_code = col_double(),
-##   Reference_Name = col_character()
-## )</code></pre>
-<pre><code>## Warning: 7 parsing failures.
-##  row col               expected                                                                                                  actual                                      file
-## 1213  AD a double               Source code                                                                                             &#39;Cherry_Blossom/KyotoFullFlowerW_mod.csv&#39;
-## 1214  AD no trailing characters 1; Reported by Taguchi (1939), J. Marine Meteorol. Soc. (Umi to Sora), 19, 217-227                      &#39;Cherry_Blossom/KyotoFullFlowerW_mod.csv&#39;
-## 1215  AD no trailing characters 2; Added by Sekiguchi (1969), Tokyo Geography Papers, 13, 175-190.                                      &#39;Cherry_Blossom/KyotoFullFlowerW_mod.csv&#39;
-## 1216  AD no trailing characters 3; Found and analyzed by Aono and Omoto (1994), J. Agric. Meteorol., 49, 263-272.                       &#39;Cherry_Blossom/KyotoFullFlowerW_mod.csv&#39;
-## 1217  AD no trailing characters 4; Found and analyzed by Aono and Kazui (2008), Int. J. Climatol., 28, 905-914 (doi: 10.1002/joc.1594). &#39;Cherry_Blossom/KyotoFullFlowerW_mod.csv&#39;
-## .... ... ...................... ....................................................................................................... .........................................
-## See problems(...) for more details.</code></pre>
-<pre class="r"><code>F2=KyotoFullFlowerW_mod
-head(F2)</code></pre>
-<pre><code>## # A tibble: 6 x 5
-##      AD Full_flow_date_DOY Full_flowering_date Source_code Reference_Name
-##   &lt;dbl&gt;              &lt;dbl&gt;               &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;         
-## 1   801                 NA                  NA          NA -             
-## 2   802                 NA                  NA          NA -             
-## 3   803                 NA                  NA          NA -             
-## 4   804                 NA                  NA          NA -             
-## 5   805                 NA                  NA          NA -             
-## 6   806                 NA                  NA          NA -</code></pre>
-<pre class="r"><code>TempReconstWFinal_mod &lt;- read_csv(&quot;Cherry_Blossom/TempReconstWFinal_mod.csv&quot;)</code></pre>
-<pre><code>## Warning: Duplicated column names deduplicated: &#39;Temp_3_31&#39; =&gt; &#39;Temp_3_31_1&#39; [3]</code></pre>
-<pre><code>## 
-## ── Column specification ────────────────────────────────────────────────────────
-## cols(
-##   AD = col_double(),
-##   Temp_3_31 = col_double(),
-##   Temp_3_31_1 = col_double(),
-##   TemP_3_22 = col_double(),
-##   Actual_Temp = col_logical(),
-##   Urban_Effect_31 = col_logical(),
-##   Conf_CI_low = col_double(),
-##   Conf_CI_High = col_double()
-## )</code></pre>
-<pre><code>## Warning: 185 parsing failures.
-##  row         col           expected actual                                       file
-## 1096 Actual_Temp 1/0/T/F/TRUE/FALSE   6.16 &#39;Cherry_Blossom/TempReconstWFinal_mod.csv&#39;
-## 1097 Actual_Temp 1/0/T/F/TRUE/FALSE   6.24 &#39;Cherry_Blossom/TempReconstWFinal_mod.csv&#39;
-## 1098 Actual_Temp 1/0/T/F/TRUE/FALSE   6.21 &#39;Cherry_Blossom/TempReconstWFinal_mod.csv&#39;
-## 1099 Actual_Temp 1/0/T/F/TRUE/FALSE   6.32 &#39;Cherry_Blossom/TempReconstWFinal_mod.csv&#39;
-## 1100 Actual_Temp 1/0/T/F/TRUE/FALSE   6.31 &#39;Cherry_Blossom/TempReconstWFinal_mod.csv&#39;
-## .... ........... .................. ...... ..........................................
-## See problems(...) for more details.</code></pre>
-<pre class="r"><code>F3=TempReconstWFinal_mod
+X759TempW_mod &lt;- read_csv(&quot;Cherry_Blossom/759TempW_mod.csv&quot;)
+F1=X759TempW_mod
+head(F1)
+
+KyotoFullFlowerW_mod &lt;- read_csv(&quot;Cherry_Blossom/KyotoFullFlowerW_mod.csv&quot;)
+F2=KyotoFullFlowerW_mod
+head(F2)
+
+TempReconstWFinal_mod &lt;- read_csv(&quot;Cherry_Blossom/TempReconstWFinal_mod.csv&quot;)
+F3=TempReconstWFinal_mod
 head(F3)</code></pre>
-<pre><code>## # A tibble: 6 x 8
-##      AD Temp_3_31 Temp_3_31_1 TemP_3_22 Actual_Temp Urban_Effect_31 Conf_CI_low
-##   &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;lgl&gt;       &lt;lgl&gt;                 &lt;dbl&gt;
-## 1   801     -100.       -100.     -100. NA          NA                    -100.
-## 2   802     -100.       -100.     -100. NA          NA                    -100.
-## 3   803     -100.       -100.     -100. NA          NA                    -100.
-## 4   804     -100.       -100.     -100. NA          NA                    -100.
-## 5   805     -100.       -100.     -100. NA          NA                    -100.
-## 6   806     -100.       -100.     -100. NA          NA                    -100.
-## # … with 1 more variable: Conf_CI_High &lt;dbl&gt;</code></pre>
-<p>Join the three files and show the head and tail of the new data frame</p>
+<p>Join the three files and show the head and tail of the new data
+frame</p>
 <pre class="r"><code>Cherry_B=F1 %&gt;% 
 full_join(F2) %&gt;% 
   full_join(F3)</code></pre>
-<pre><code>## Joining, by = &quot;AD&quot;
-## Joining, by = &quot;AD&quot;</code></pre>
 <pre class="r"><code>Cherry_B</code></pre>
-<pre><code>## # A tibble: 1,309 x 14
-##       AD  TEMP Obs_Temp Full_flow_date_DOY Full_flowering_date Source_code
-##    &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;              &lt;dbl&gt;               &lt;dbl&gt;       &lt;dbl&gt;
-##  1   801 -999.    -999.                 NA                  NA          NA
-##  2   802 -999.    -999.                 NA                  NA          NA
-##  3   803 -999.    -999.                 NA                  NA          NA
-##  4   804 -999.    -999.                 NA                  NA          NA
-##  5   805 -999.    -999.                 NA                  NA          NA
-##  6   806 -999.    -999.                 NA                  NA          NA
-##  7   807 -999.    -999.                 NA                  NA          NA
-##  8   808 -999.    -999.                 NA                  NA          NA
-##  9   809 -999.    -999.                 NA                  NA          NA
-## 10   810 -999.    -999.                 NA                  NA          NA
-## # … with 1,299 more rows, and 8 more variables: Reference_Name &lt;chr&gt;,
-## #   Temp_3_31 &lt;dbl&gt;, Temp_3_31_1 &lt;dbl&gt;, TemP_3_22 &lt;dbl&gt;, Actual_Temp &lt;lgl&gt;,
-## #   Urban_Effect_31 &lt;lgl&gt;, Conf_CI_low &lt;dbl&gt;, Conf_CI_High &lt;dbl&gt;</code></pre>
 </div>
 <div id="remove-the--999.9-and--99.9." class="section level1">
 <h1>Remove the -999.9 and -99.9.</h1>
@@ -581,117 +513,66 @@ replace_with_na(replace = list(TEMP = c(-999.9),
                              Conf_CI_low = c(-99.99),
                              Conf_CI_High = c(-99.99)))
 head(CB)</code></pre>
-<pre><code>## # A tibble: 6 x 14
-##      AD  TEMP Obs_Temp Full_flow_date_DOY Full_flowering_date Source_code
-##   &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;              &lt;dbl&gt;               &lt;dbl&gt;       &lt;dbl&gt;
-## 1   801    NA       NA                 NA                  NA          NA
-## 2   802    NA       NA                 NA                  NA          NA
-## 3   803    NA       NA                 NA                  NA          NA
-## 4   804    NA       NA                 NA                  NA          NA
-## 5   805    NA       NA                 NA                  NA          NA
-## 6   806    NA       NA                 NA                  NA          NA
-## # … with 8 more variables: Reference_Name &lt;chr&gt;, Temp_3_31 &lt;dbl&gt;,
-## #   Temp_3_31_1 &lt;dbl&gt;, TemP_3_22 &lt;dbl&gt;, Actual_Temp &lt;lgl&gt;,
-## #   Urban_Effect_31 &lt;lgl&gt;, Conf_CI_low &lt;dbl&gt;, Conf_CI_High &lt;dbl&gt;</code></pre>
 </div>
-<div id="create-a-point-diagram-of-the-date-x-axis-and-time-of-full-flowering-date-doy" class="section level1">
-<h1>Create a point diagram of the date (x axis) and time of “Full Flowering date DOY”</h1>
+<div
+id="create-a-point-diagram-of-the-date-x-axis-and-time-of-full-flowering-date-doy"
+class="section level1">
+<h1>Create a point diagram of the date (x axis) and time of “Full
+Flowering date DOY”</h1>
 <pre class="r"><code>ggplot(CB, aes(AD, Full_flow_date_DOY))+
   geom_point()</code></pre>
-<pre><code>## Warning: Removed 524 rows containing missing values (geom_point).</code></pre>
-<p><img src="Cherry-Blossum-Merge-and-analysis_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
-<div id="add-a-linear-regression-to-the-above-figure" class="section level1">
+<div id="add-a-linear-regression-to-the-above-figure"
+class="section level1">
 <h1>Add a linear regression to the above figure</h1>
 <p>Does this show a pattern of earlier flowering time?</p>
 <pre class="r"><code>ggplot(CB, aes(AD, Full_flow_date_DOY))+
   geom_point()+
   geom_smooth(method=&quot;lm&quot;)</code></pre>
-<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<pre><code>## Warning: Removed 524 rows containing non-finite values (stat_smooth).</code></pre>
-<pre><code>## Warning: Removed 524 rows containing missing values (geom_point).</code></pre>
-<p><img src="Cherry-Blossum-Merge-and-analysis_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<p>Now redo the analysis using an analysis of LOESS, the default geom_smooth model. Explain hat LOESS egression model does? NOw does this show a pattern of change and flowering period?</p>
+<p>Now redo the analysis using an analysis of LOESS, the default
+geom_smooth model. Explain hat LOESS egression model does? Now does this
+show a pattern of change and flowering period?</p>
 <pre class="r"><code>ggplot(CB, aes(AD, Full_flow_date_DOY))+
   geom_point()+
   geom_smooth()</code></pre>
-<pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
-<pre><code>## Warning: Removed 524 rows containing non-finite values (stat_smooth).</code></pre>
-<pre><code>## Warning: Removed 524 rows containing missing values (geom_point).</code></pre>
-<p><img src="Cherry-Blossum-Merge-and-analysis_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 </div>
-<div id="calculate-the-mean-running-average-of-the-day-of-blossom.-use-10-year-running-average." class="section level1">
-<h1>Calculate the mean “running average of the day of blossom”. Use 10 year running average.</h1>
-<pre class="r"><code>names(CB)</code></pre>
-<pre><code>##  [1] &quot;AD&quot;                  &quot;TEMP&quot;                &quot;Obs_Temp&quot;           
-##  [4] &quot;Full_flow_date_DOY&quot;  &quot;Full_flowering_date&quot; &quot;Source_code&quot;        
-##  [7] &quot;Reference_Name&quot;      &quot;Temp_3_31&quot;           &quot;Temp_3_31_1&quot;        
-## [10] &quot;TemP_3_22&quot;           &quot;Actual_Temp&quot;         &quot;Urban_Effect_31&quot;    
-## [13] &quot;Conf_CI_low&quot;         &quot;Conf_CI_High&quot;</code></pre>
-<pre class="r"><code>library(zoo)</code></pre>
-<pre><code>## 
-## Attaching package: &#39;zoo&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     as.Date, as.Date.numeric</code></pre>
-<pre class="r"><code>CB=CB %&gt;% 
+<div
+id="calculate-the-mean-running-average-of-the-day-of-blossom.-use-10-year-running-average."
+class="section level1">
+<h1>Calculate the mean “running average of the day of blossom”. Use 10
+year running average.</h1>
+<pre class="r"><code>names(CB)
+library(zoo)
+CB=CB %&gt;% 
   mutate(RAB = rollmean(Full_flow_date_DOY, k = 10, fill = NA))</code></pre>
 </div>
-<div id="now-plot-the-the-rolling-blossom-day-10-year-average-on-your-graph" class="section level1">
-<h1>Now plot the the rolling Blossom Day (10 year average) on your graph</h1>
+<div
+id="now-plot-the-the-rolling-blossom-day-10-year-average-on-your-graph"
+class="section level1">
+<h1>Now plot the the rolling Blossom Day (10 year average) on your
+graph</h1>
 <p>Por que la linea no se extiende antes del año 1300</p>
 <pre class="r"><code>ggplot(CB, aes(AD, Full_flow_date_DOY))+
   geom_point()+
   geom_smooth(aes(AD, RAB))</code></pre>
-<pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
-<pre><code>## Warning: Removed 966 rows containing non-finite values (stat_smooth).</code></pre>
-<pre><code>## Warning: Removed 524 rows containing missing values (geom_point).</code></pre>
-<p><img src="Cherry-Blossum-Merge-and-analysis_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <pre class="r"><code>library(readr)
-CO2_Yr0 &lt;- read_csv(&quot;Cherry_Blossom/CO2_Yr0.csv&quot;)</code></pre>
-<pre><code>## 
-## ── Column specification ────────────────────────────────────────────────────────
-## cols(
-##   year = col_double(),
-##   data_mean_global_CO2 = col_double()
-## )</code></pre>
-<pre class="r"><code>CB=CB %&gt;% 
+CO2_Yr0 &lt;- read_csv(&quot;Cherry_Blossom/CO2_Yr0.csv&quot;)
+
+
+CB=CB %&gt;% 
   right_join(CO2_Yr0 , c(&quot;AD&quot; = &quot;year&quot;))</code></pre>
-<p>Do a figure showing the relationship between mean global Co2 concentration and time of flowering. What does the patern show?.</p>
+<p>Do a figure showing the relationship between mean global Co2
+concentration and time of flowering. What does the patern show?.</p>
 <pre class="r"><code>ggplot(CB, aes(data_mean_global_CO2, Full_flow_date_DOY))+
   geom_point()+
   geom_smooth()</code></pre>
-<pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
-<pre><code>## Warning: Removed 1230 rows containing non-finite values (stat_smooth).</code></pre>
-<pre><code>## Warning: Removed 1230 rows containing missing values (geom_point).</code></pre>
-<p><img src="Cherry-Blossum-Merge-and-analysis_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
-<p>Now do a figure showing the mean average temperature (10 year running average) and C02 concentration. To calculate the mean running average of the temparature use the following variable, Temp_3_31_1. (which is the mean march temperature).</p>
+<p>Now do a figure showing the mean average temperature (10 year running
+average) and C02 concentration. To calculate the mean running average of
+the temparature use the following variable, Temp_3_31_1. (which is the
+mean march temperature).</p>
 <pre class="r"><code>CB</code></pre>
-<pre><code>## # A tibble: 2,015 x 16
-##       AD  TEMP Obs_Temp Full_flow_date_DOY Full_flowering_date Source_code
-##    &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;              &lt;dbl&gt;               &lt;dbl&gt;       &lt;dbl&gt;
-##  1   801    NA       NA                 NA                  NA          NA
-##  2   802    NA       NA                 NA                  NA          NA
-##  3   803    NA       NA                 NA                  NA          NA
-##  4   804    NA       NA                 NA                  NA          NA
-##  5   805    NA       NA                 NA                  NA          NA
-##  6   806    NA       NA                 NA                  NA          NA
-##  7   807    NA       NA                 NA                  NA          NA
-##  8   808    NA       NA                 NA                  NA          NA
-##  9   809    NA       NA                 NA                  NA          NA
-## 10   810    NA       NA                 NA                  NA          NA
-## # … with 2,005 more rows, and 10 more variables: Reference_Name &lt;chr&gt;,
-## #   Temp_3_31 &lt;dbl&gt;, Temp_3_31_1 &lt;dbl&gt;, TemP_3_22 &lt;dbl&gt;, Actual_Temp &lt;lgl&gt;,
-## #   Urban_Effect_31 &lt;lgl&gt;, Conf_CI_low &lt;dbl&gt;, Conf_CI_High &lt;dbl&gt;, RAB &lt;dbl&gt;,
-## #   data_mean_global_CO2 &lt;dbl&gt;</code></pre>
-<pre class="r"><code>names(CB)</code></pre>
-<pre><code>##  [1] &quot;AD&quot;                   &quot;TEMP&quot;                 &quot;Obs_Temp&quot;            
-##  [4] &quot;Full_flow_date_DOY&quot;   &quot;Full_flowering_date&quot;  &quot;Source_code&quot;         
-##  [7] &quot;Reference_Name&quot;       &quot;Temp_3_31&quot;            &quot;Temp_3_31_1&quot;         
-## [10] &quot;TemP_3_22&quot;            &quot;Actual_Temp&quot;          &quot;Urban_Effect_31&quot;     
-## [13] &quot;Conf_CI_low&quot;          &quot;Conf_CI_High&quot;         &quot;RAB&quot;                 
-## [16] &quot;data_mean_global_CO2&quot;</code></pre>
-<pre class="r"><code>library(zoo)
+<pre class="r"><code>names(CB)
+library(zoo)
 CB=CB %&gt;% 
   mutate(RAT = rollmean(Temp_3_31_1, k = 10, fill = NA))
 
@@ -699,10 +580,6 @@ CB=CB %&gt;%
 ggplot(CB, aes(data_mean_global_CO2, RAT))+
   geom_point()+
   geom_smooth()</code></pre>
-<pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
-<pre><code>## Warning: Removed 1284 rows containing non-finite values (stat_smooth).</code></pre>
-<pre><code>## Warning: Removed 1284 rows containing missing values (geom_point).</code></pre>
-<p><img src="Cherry-Blossum-Merge-and-analysis_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 </div>
 
 
