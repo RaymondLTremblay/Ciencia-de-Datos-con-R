@@ -26,46 +26,46 @@ navbar:
     - 
       menu: 
         - 
-          href: C_1_E8_I6_Flujo_Trabajo.html
+          href: 1_Flujo_Trabajo.html
           text: "C1 Flujo del Trabajo"
         - 
-          href: C_2_E3_I1_Visualizacion_Datos.html
+          href: 2_Visualizacion_Datos.html
           text: "C2 Visualización de Datos"
         - 
-          href: C_3_E4_I2_Flujo_Trabajo_Basico.html
+          href: 3_Flujo_Trabajo_Basico.html
           text: "C3 Flujo del Trabajo Básico"
         - 
-          href: C_4_E5_I3_Transformacion_dplyr.html
+          href: 4_Transformacion_dplyr.html
           text: "C4 Transformación: dplyr"
         - 
-          href: C5_E6_I6_Scripts.html
+          href: 5_Scripts.html
           text: "C5 Scripts"
         - 
-          href: C6_E7_I7_Analisis_Exploratorio.html
+          href: 6_Analisis_Exploratorio.html
           text: "C6 Análisis Exploratorio"
         - 
-          href: C7_E18_I18_Pipes.html
+          href: 7_Pipes.html
           text: "C7a Pipes: %>%"
         - 
-          href: C7b_E10_I10_Tibbles.html
+          href: 7b_Tibbles.html
           text: "C7b Tibbles"
         - 
-          href: C7c_E11_I11_Importar.html
+          href: 7c_Importar.html
           text: "C7c Importar Datos, readr"
         - 
-          href: C8_E12_I8_Datos_Ordenados.html
+          href: 8_Datos_Ordenados.html
           text: "C8 Datos Ordenados: tidyr"
         - 
-          href: C9_E13_I13_Datos_Relacionados.html
+          href: 9_Datos_Relacionados.html
           text: "C9 Datos Relacionados"
         - 
-          href: C10_E10_I10_Stringr.html
+          href: 10_Stringr.html
           text: "C10 Cadenas de Caracteres: stringr"
         - 
-          href: C11_E15_I15_Factores.html
+          href: 11_Factores.html
           text: "C11 Factores: forcats"
         - 
-          href: C12_E16_I16_Fechas_Horas.html
+          href: 12_Fechas_Horas.html
           text: "C12 Fechas y Horas: lubridate"
       text: "Los Temas"
     - 

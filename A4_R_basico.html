@@ -445,46 +445,46 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="C_1_E8_I6_Flujo_Trabajo.html">C1 Flujo del Trabajo</a>
+      <a href="1_Flujo_Trabajo.html">C1 Flujo del Trabajo</a>
     </li>
     <li>
-      <a href="C_2_E3_I1_Visualizacion_Datos.html">C2 Visualización de Datos</a>
+      <a href="2_Visualizacion_Datos.html">C2 Visualización de Datos</a>
     </li>
     <li>
-      <a href="C_3_E4_I2_Flujo_Trabajo_Basico.html">C3 Flujo del Trabajo Básico</a>
+      <a href="3_Flujo_Trabajo_Basico.html">C3 Flujo del Trabajo Básico</a>
     </li>
     <li>
-      <a href="C_4_E5_I3_Transformacion_dplyr.html">C4 Transformación: dplyr</a>
+      <a href="4_Transformacion_dplyr.html">C4 Transformación: dplyr</a>
     </li>
     <li>
-      <a href="C5_E6_I6_Scripts.html">C5 Scripts</a>
+      <a href="5_Scripts.html">C5 Scripts</a>
     </li>
     <li>
-      <a href="C6_E7_I7_Analisis_Exploratorio.html">C6 Análisis Exploratorio</a>
+      <a href="6_Analisis_Exploratorio.html">C6 Análisis Exploratorio</a>
     </li>
     <li>
-      <a href="C7_E18_I18_Pipes.html">C7a Pipes: %&gt;%</a>
+      <a href="7_Pipes.html">C7a Pipes: %&gt;%</a>
     </li>
     <li>
-      <a href="C7b_E10_I10_Tibbles.html">C7b Tibbles</a>
+      <a href="7b_Tibbles.html">C7b Tibbles</a>
     </li>
     <li>
-      <a href="C7c_E11_I11_Importar.html">C7c Importar Datos, readr</a>
+      <a href="7c_Importar.html">C7c Importar Datos, readr</a>
     </li>
     <li>
-      <a href="C8_E8_I8_Datos_Ordenados.html">C8 Datos Ordenados: tidyr</a>
+      <a href="8_Datos_Ordenados.html">C8 Datos Ordenados: tidyr</a>
     </li>
     <li>
-      <a href="C9_E13_I13_Datos_Relacionados.html">C9 Datos Relacionados</a>
+      <a href="9_Datos_Relacionados.html">C9 Datos Relacionados</a>
     </li>
     <li>
-      <a href="C10_E10_I10_Stringr.html">C10 Cadenas de Caracteres: stringr</a>
+      <a href="10_Stringr.html">C10 Cadenas de Caracteres: stringr</a>
     </li>
     <li>
-      <a href="C11_E15_I15_Factores.html">C11 Factores: forcats</a>
+      <a href="11_Factores.html">C11 Factores: forcats</a>
     </li>
     <li>
-      <a href="C12_E16_I16_Fechas_Horas.html">C12 Fechas y Horas: lubridate</a>
+      <a href="12_Fechas_Horas.html">C12 Fechas y Horas: lubridate</a>
     </li>
   </ul>
 </li>
@@ -819,8 +819,8 @@ class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="#cb1
 <div class="sourceCode" id="cb122"><pre
 class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" tabindex="-1"></a>Distancia_del_trabajo<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">10</span>)</span>
 <span id="cb122-2"><a href="#cb122-2" tabindex="-1"></a>Distancia_del_trabajo</span></code></pre></div>
-<pre><code>##  [1] 114.40480  92.80424 106.70978  95.78052 103.78220  83.33414  94.91797
-##  [8] 104.43382  82.00613  93.82048</code></pre>
+<pre><code>##  [1] 102.34975 110.59592 114.58441 105.35697  92.46809  97.23447  98.48073
+##  [8]  95.99518  95.11158  98.74918</code></pre>
 <div class="sourceCode" id="cb124"><pre
 class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1" tabindex="-1"></a>Ciudad<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;Fajardo&quot;</span>, <span class="st">&quot;Carolina&quot;</span>, <span class="st">&quot;Luquillo&quot;</span>,<span class="st">&quot;Gurabo&quot;</span>, <span class="st">&quot;Rio_Grande&quot;</span>, <span class="st">&quot;Ceiba&quot;</span>,<span class="st">&quot;Las_Piedras&quot;</span>, <span class="st">&quot;Caguas&quot;</span>,<span class="st">&quot;Maunabo&quot;</span>, <span class="st">&quot;Sturgeon_Falls&quot;</span>)</span>
 <span id="cb124-2"><a href="#cb124-2" tabindex="-1"></a>Ciudad</span></code></pre></div>
@@ -831,16 +831,16 @@ class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="#cb1
 class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1" tabindex="-1"></a>misDatos<span class="ot">=</span><span class="fu">data.frame</span>(Edad,Distancia_del_trabajo,Ciudad)  <span class="co"># La función de unir las listas en un data frame</span></span>
 <span id="cb126-2"><a href="#cb126-2" tabindex="-1"></a>misDatos</span></code></pre></div>
 <pre><code>##    Edad Distancia_del_trabajo         Ciudad
-## 1    10             114.40480        Fajardo
-## 2     9              92.80424       Carolina
-## 3     8             106.70978       Luquillo
-## 4     7              95.78052         Gurabo
-## 5     6             103.78220     Rio_Grande
-## 6     5              83.33414          Ceiba
-## 7     4              94.91797    Las_Piedras
-## 8     3             104.43382         Caguas
-## 9     2              82.00613        Maunabo
-## 10    1              93.82048 Sturgeon_Falls</code></pre>
+## 1    10             102.34975        Fajardo
+## 2     9             110.59592       Carolina
+## 3     8             114.58441       Luquillo
+## 4     7             105.35697         Gurabo
+## 5     6              92.46809     Rio_Grande
+## 6     5              97.23447          Ceiba
+## 7     4              98.48073    Las_Piedras
+## 8     3              95.99518         Caguas
+## 9     2              95.11158        Maunabo
+## 10    1              98.74918 Sturgeon_Falls</code></pre>
 </div>
 <div id="funciones-comunes" class="section level1">
 <h1>Funciones comunes</h1>
@@ -865,32 +865,32 @@ class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="#cb1
 <div class="sourceCode" id="cb140"><pre
 class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1" tabindex="-1"></a><span class="fu">head</span>(misDatos)   <span class="co"># ver las primeras 6 filas </span></span></code></pre></div>
 <pre><code>##   Edad Distancia_del_trabajo     Ciudad
-## 1   10             114.40480    Fajardo
-## 2    9              92.80424   Carolina
-## 3    8             106.70978   Luquillo
-## 4    7              95.78052     Gurabo
-## 5    6             103.78220 Rio_Grande
-## 6    5              83.33414      Ceiba</code></pre>
+## 1   10             102.34975    Fajardo
+## 2    9             110.59592   Carolina
+## 3    8             114.58441   Luquillo
+## 4    7             105.35697     Gurabo
+## 5    6              92.46809 Rio_Grande
+## 6    5              97.23447      Ceiba</code></pre>
 <div class="sourceCode" id="cb142"><pre
 class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1" tabindex="-1"></a><span class="fu">tail</span>(misDatos)   <span class="co"># ver las ultimas 6 filas</span></span></code></pre></div>
 <pre><code>##    Edad Distancia_del_trabajo         Ciudad
-## 5     6             103.78220     Rio_Grande
-## 6     5              83.33414          Ceiba
-## 7     4              94.91797    Las_Piedras
-## 8     3             104.43382         Caguas
-## 9     2              82.00613        Maunabo
-## 10    1              93.82048 Sturgeon_Falls</code></pre>
+## 5     6              92.46809     Rio_Grande
+## 6     5              97.23447          Ceiba
+## 7     4              98.48073    Las_Piedras
+## 8     3              95.99518         Caguas
+## 9     2              95.11158        Maunabo
+## 10    1              98.74918 Sturgeon_Falls</code></pre>
 <div class="sourceCode" id="cb144"><pre
 class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="#cb144-1" tabindex="-1"></a><span class="fu">head</span>(misDatos, <span class="at">n=</span><span class="dv">8</span>)   <span class="co"># ver las primeras 8 filas</span></span></code></pre></div>
 <pre><code>##   Edad Distancia_del_trabajo      Ciudad
-## 1   10             114.40480     Fajardo
-## 2    9              92.80424    Carolina
-## 3    8             106.70978    Luquillo
-## 4    7              95.78052      Gurabo
-## 5    6             103.78220  Rio_Grande
-## 6    5              83.33414       Ceiba
-## 7    4              94.91797 Las_Piedras
-## 8    3             104.43382      Caguas</code></pre>
+## 1   10             102.34975     Fajardo
+## 2    9             110.59592    Carolina
+## 3    8             114.58441    Luquillo
+## 4    7             105.35697      Gurabo
+## 5    6              92.46809  Rio_Grande
+## 6    5              97.23447       Ceiba
+## 7    4              98.48073 Las_Piedras
+## 8    3              95.99518      Caguas</code></pre>
 <div class="sourceCode" id="cb146"><pre
 class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="#cb146-1" tabindex="-1"></a><span class="fu">class</span>(misDatos) <span class="co"># saber cual tipo de organización de datos </span></span></code></pre></div>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
