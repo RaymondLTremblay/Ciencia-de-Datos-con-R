@@ -13,8 +13,8 @@
 
 <title>MAP_Exercise_#1</title>
 
-<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.22/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -62,6 +62,7 @@ if (window.hljs) {
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -82,6 +83,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -139,11 +143,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -172,8 +180,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -181,16 +189,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -234,7 +235,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -250,7 +251,7 @@ $(document).ready(function () {
   <a href="B_schedule.html">Calendario</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Instalación básica
      
     <span class="caret"></span>
@@ -271,7 +272,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Los Temas
      
     <span class="caret"></span>
@@ -350,62 +351,69 @@ $(document).ready(function () {
 <div id="datos" class="section level1">
 <h1>Datos</h1>
 <p>Los datos provienen de este website</p>
-<p><a href="https://www.kaggle.com" class="uri">https://www.kaggle.com</a></p>
+<p><a href="https://www.kaggle.com"
+class="uri">https://www.kaggle.com</a></p>
 </div>
 <div id="paso-1" class="section level1">
 <h1>Paso #1</h1>
-<p>Seleccionar el data set de Las ciudades del mundo y haga un mapa de los tamaños de la ciudades.</p>
+<p>Seleccionar el data set de Las ciudades del mundo y haga un mapa de
+los tamaños de la ciudades.</p>
 <pre class="r"><code>library(tidyverse)
 library(lubridate)
 library(leaflet)</code></pre>
 <pre class="r"><code>library(readr)
-worldcities_lat_long_pop &lt;- read_csv(&quot;Datos/worldcities_lat_long_pop.csv&quot;)</code></pre>
-<pre><code>## 
-## ── Column specification ────────────────────────────────────────────────────────
-## cols(
-##   city = col_character(),
-##   city_ascii = col_character(),
-##   lat = col_double(),
-##   lng = col_double(),
-##   country = col_character(),
-##   iso2 = col_character(),
-##   iso3 = col_character(),
-##   admin_name = col_character(),
-##   capital = col_character(),
-##   population = col_double(),
-##   id = col_double()
-## )</code></pre>
-<pre class="r"><code>WC = worldcities_lat_long_pop
+worldcities_lat_long_pop &lt;- read_csv(&quot;Datos/worldcities_lat_long_pop.csv&quot;)
+WC = worldcities_lat_long_pop
 head(WC)</code></pre>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["city"],"name":[1],"type":["chr"],"align":["left"]},{"label":["city_ascii"],"name":[2],"type":["chr"],"align":["left"]},{"label":["lat"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["lng"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["country"],"name":[5],"type":["chr"],"align":["left"]},{"label":["iso2"],"name":[6],"type":["chr"],"align":["left"]},{"label":["iso3"],"name":[7],"type":["chr"],"align":["left"]},{"label":["admin_name"],"name":[8],"type":["chr"],"align":["left"]},{"label":["capital"],"name":[9],"type":["chr"],"align":["left"]},{"label":["population"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["id"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"Tokyo","2":"Tokyo","3":"35.6897","4":"139.6922","5":"Japan","6":"JP","7":"JPN","8":"Tōkyō","9":"primary","10":"37977000","11":"1392685764"},{"1":"Jakarta","2":"Jakarta","3":"-6.2146","4":"106.8451","5":"Indonesia","6":"ID","7":"IDN","8":"Jakarta","9":"primary","10":"34540000","11":"1360771077"},{"1":"Delhi","2":"Delhi","3":"28.6600","4":"77.2300","5":"India","6":"IN","7":"IND","8":"Delhi","9":"admin","10":"29617000","11":"1356872604"},{"1":"Mumbai","2":"Mumbai","3":"18.9667","4":"72.8333","5":"India","6":"IN","7":"IND","8":"Mahārāshtra","9":"admin","10":"23355000","11":"1356226629"},{"1":"Manila","2":"Manila","3":"14.5958","4":"120.9772","5":"Philippines","6":"PH","7":"PHL","8":"Manila","9":"primary","10":"23088000","11":"1608618140"},{"1":"Shanghai","2":"Shanghai","3":"31.1667","4":"121.4667","5":"China","6":"CN","7":"CHN","8":"Shanghai","9":"admin","10":"22120000","11":"1156073548"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+<pre class="r"><code>length(WC$city)
+names(WC)</code></pre>
 </div>
 <div id="paso-2" class="section level1">
 <h1>Paso #2</h1>
 <ul>
 <li>Limpia los nombres de las columnas</li>
-<li>Cambia los nombres de las columnas correspondiente a longitud y latitud</li>
+<li>Cambia los nombres de las columnas correspondiente a longitud y
+latitud</li>
 </ul>
-<p>El paquete <code>janitor</code> se puede usar para limpiar los nombres de las columnas</p>
+<p>El paquete <code>janitor</code> se puede usar para limpiar los
+nombres de las columnas</p>
+<pre class="r"><code>library(janitor)
+
+WC &lt;- WC %&gt;%
+  clean_names() %&gt;%
+  rename(longitud = lng, latitud = lat)
+
+WC</code></pre>
 </div>
 <div id="paso-3" class="section level1">
 <h1>Paso #3</h1>
 <p>Haga un geom_point de todas las ciudades de todo el data set</p>
+<pre class="r"><code>WC %&gt;%
+  ggplot() +
+  geom_point(aes(longitud, latitud))</code></pre>
 </div>
 <div id="paso-4" class="section level1">
 <h1>Paso #4</h1>
-<p>Usa la función <code>map_data()</code>, del paquete <code>ggplot2</code>, contiene el mapa mundial. El mapa de “world” se puede acceder usando el argumento <code>region</code>.</p>
+<p>Usa la función <code>map_data()</code>, del paquete
+<code>ggplot2</code>, contiene el mapa mundial. El mapa de “world” se
+puede acceder usando el argumento <code>region</code>.</p>
 <ul>
 <li>produzca un mapa del mundo SIN los datos de las ciudades</li>
-<li>Use <code>geom_map()</code> para agregar la figura del territorio</li>
+<li>Use <code>geom_map()</code> para agregar la figura del
+territorio</li>
 </ul>
+<pre class="r"><code>world &lt;- map_data(&quot;world&quot;)
+
+world</code></pre>
+<pre class="r"><code>ggplot() +
+  geom_map(aes(long, lat, map_id = region), fill = &quot;orange&quot;,  map = world, data = world) </code></pre>
 </div>
 <div id="paso-5" class="section level1">
 <h1>Paso #5</h1>
 <p>Agrege la capa con las ciudades en el data set</p>
+<pre class="r"><code>ggplot() +
+  geom_map(aes(long, lat, map_id = region), fill = &quot;grey&quot;,  map = world, data = world) + 
+  geom_point(aes(longitud, latitud), data = WC)</code></pre>
 </div>
 <div id="paso-6" class="section level1">
 <h1>Paso #6</h1>
@@ -413,23 +421,42 @@ head(WC)</code></pre>
 <li>Colorea de los puntos por el nombre del pais</li>
 <li>Remover la leyenda de los nombre de los paises</li>
 </ul>
+<pre class="r"><code>names(WC)
+ggplot() +
+  geom_map(aes(long, lat, map_id = region), fill = &quot;grey&quot;,  map = world, data = world) + 
+  geom_point(aes(longitud, latitud, color=country), data = WC)+
+  theme(legend.position = &quot;none&quot;)</code></pre>
 </div>
 <div id="paso-7" class="section level1">
 <h1>Paso #7</h1>
-<p>Ahora seleciona solamente las ciudades que tienen poblaciones mayor de 1 million, y haga un grafico de su distribucion y colorea por pais.</p>
-<p>En que pais se ve mayor numero de ciudades con población de 1 million?</p>
+<p>Ahora seleciona solamente las ciudades que tienen poblaciones mayor
+de 1 million, y haga un grafico de su distribucion y colorea por
+pais.</p>
+<p>En que pais se ve mayor numero de ciudades con población de 1
+million?</p>
+<pre class="r"><code>names(WC)
+WCpop=WC %&gt;% 
+  filter(population &gt; 1000000)
+
+ggplot() +
+  geom_map(aes(long, lat, map_id = region), fill = &quot;grey&quot;,  map = world, data = world) + 
+  geom_point(aes(longitud, latitud, color=country), data = WCpop) +
+  theme(legend.position = &quot;none&quot;)</code></pre>
 </div>
 <div id="paso-8" class="section level1">
 <h1>Paso #8</h1>
-<p>Selecciona cualquier pais latino americano, y mapea todas las ciudades de este pais</p>
+<p>Selecciona cualquier pais latino americano, y mapea todas las
+ciudades de este pais</p>
 <ul>
-<li>Cada estudiante seleccionará un pais diferente (no le diga a nadie cual pais seleccionaste)</li>
+<li>Cada estudiante seleccionará un pais diferente (no le diga a nadie
+cual pais seleccionaste)</li>
 </ul>
 </div>
 <div id="paso-9-bono" class="section level1">
 <h1>Paso #9 Bono</h1>
 <ul>
-<li>Cambia el tamaño del punto de las ciudades que corresponde al tamaño poblacional</li>
+<li>Cambia el tamaño del punto de las ciudades que corresponde al tamaño
+poblacional</li>
 </ul>
 </div>
 

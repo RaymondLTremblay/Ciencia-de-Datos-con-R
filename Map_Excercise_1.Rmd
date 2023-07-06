@@ -6,7 +6,12 @@ output:
   pdf_document: default
 ---
 
-```{r setup, include = FALSE}
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
+```
+
+
+```{r include = FALSE}
 library(tidyverse)
 library(lubridate)
 library(leaflet)
