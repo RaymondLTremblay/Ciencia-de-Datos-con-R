@@ -9,11 +9,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Raymond L. Tremblay" />
 
 
 <title>Descripción</title>
 
-<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.22/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -29,7 +30,7 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
@@ -42,6 +43,7 @@
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
     </style>
+
 
 
 
@@ -72,6 +74,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -129,11 +134,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -162,8 +171,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -171,16 +180,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -297,12 +299,12 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">BIOL3740:Biometria</a>
+      <a class="navbar-brand" href="index.html">BIOL4026: Ciencia de Datos</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -310,46 +312,83 @@ div.tocify {
   <a href="Descripcion.html">Home</a>
 </li>
 <li>
-  <a href="schedule.html">Calendario</a>
+  <a href="B_schedule.html">Calendario</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Instalación básica
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="Instalar-R-RStudio.html">Instalar R y RStudio</a>
+      <a href="A1_Instalar-R-RStudio.html">Instalar R y RStudio</a>
     </li>
     <li>
-      <a href="Introduccion_RMarkdown.html">RMarkdown</a>
+      <a href="A2_Introduccion_RMarkdown.html">RMarkdown</a>
     </li>
     <li>
-      <a href="Codigos_basicos_en_R.html">R y Cheatsheets</a>
+      <a href="A3_Codigos_basicos_en_R.html">R y Cheatsheets</a>
     </li>
     <li>
-      <a href="R_basico.html">R Básico #2</a>
+      <a href="A4_R_basico.html">R Básico #2</a>
     </li>
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Los Temas
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="T1_Intro.html">T1 Introducción a la Estadística</a>
+      <a href="1_Flujo_Trabajo.html">C1 Flujo del Trabajo</a>
     </li>
     <li>
-      <a href="T1a_Poblacion_Muestra.html">T1a Población, Muestreo y Sesgo</a>
+      <a href="2_Visualizacion_Datos.html">C2 Visualización de Datos</a>
+    </li>
+    <li>
+      <a href="3_Flujo_Trabajo_Basico.html">C3 Flujo del Trabajo Básico</a>
+    </li>
+    <li>
+      <a href="4_Transformacion_dplyr.html">C4 Transformación: dplyr</a>
+    </li>
+    <li>
+      <a href="5_Scripts.html">C5 Scripts</a>
+    </li>
+    <li>
+      <a href="6_Analisis_Exploratorio.html">C6 Análisis Exploratorio</a>
+    </li>
+    <li>
+      <a href="7_Pipes.html">C7a Pipes: %&gt;%</a>
+    </li>
+    <li>
+      <a href="7b_Tibbles.html">C7b Tibbles</a>
+    </li>
+    <li>
+      <a href="7c_Importar.html">C7c Importar Datos, readr</a>
+    </li>
+    <li>
+      <a href="8_Datos_Ordenados.html">C8 Datos Ordenados: tidyr</a>
+    </li>
+    <li>
+      <a href="9_Datos_Relacionados.html">C9 Datos Relacionados</a>
+    </li>
+    <li>
+      <a href="10_Stringr.html">C10 Cadenas de Caracteres: stringr</a>
+    </li>
+    <li>
+      <a href="11_Factores.html">C11 Factores: forcats</a>
+    </li>
+    <li>
+      <a href="12_Fechas_Horas.html">C12 Fechas y Horas: lubridate</a>
     </li>
   </ul>
 </li>
-<li class="dropdown-header">Ejercicio</li>
-<li class="dropdown-header">Los Datos</li>
+<li>
+  <a href="Datos.html">Datos</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -363,59 +402,52 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Descripción</h1>
+<h3 class="subtitle">BIOL4026</h3>
+<h4 class="author">Raymond L. Tremblay</h4>
 
 </div>
 
 
+<style>
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+    background-color: #11c1d9;
+}
+</style>
 <p>Fecha de la ultima revisión</p>
-<pre><code>## [1] &quot;2022-02-11&quot;</code></pre>
-<div id="biol3740" class="section level2">
-<h2>BIOL3740</h2>
-<p>Este sitio es una guía para el curso de Biometría, BIOL3740 en la Universidad de Puerto Rico en Humacao. El objetivo de este sitio es presentar una organización simple y básica para el curso de estadística con ejemplos diversos.</p>
-<p>El curso hará énfasis en los supuestos de las pruebas paramétricas y no-paramétricas.</p>
+<pre><code>## [1] &quot;2023-07-06&quot;</code></pre>
+<div id="biol4026-ciencia-de-datos-con-r" class="section level2">
+<h2>BIOL4026: Ciencia de Datos con R</h2>
+<p>Este sitio es una guía para el curso de Ciencia de Datos con R,
+BIOL4026 en la Universidad de Puerto Rico en Humacao. El objetivo de
+este sitio es presentar ejemplos de como manipular datos para sus
+analisis en R, presentar documentos profesionales para la ciencia y
+estadística intermedia.</p>
 </div>
-<div id="pruebas-paramétricas" class="section level2">
-<h2>Pruebas Paramétricas</h2>
+<div id="manipulando-datos-tidyverse-y-presentaciones"
+class="section level2">
+<h2>Manipulando Datos, Tidyverse y presentaciones</h2>
 <ul>
-<li>Prueba de Z</li>
-<li>Prueba de t</li>
-<li>Prueba de t con datos pareados</li>
-<li>ANOVA</li>
-<li>Regresión lineal</li>
-<li>Regresión logística</li>
-</ul>
-</div>
-<div id="pruebas-no-paramétricas" class="section level2">
-<h2>Pruebas no Paramétricas</h2>
+<li><p>Visualización de datos con ggplot2</p></li>
+<li><p>dplyr: Transformación de datos</p></li>
+<li><p>Importar datos de diferentes clases</p></li>
+<li><p>Limpieza de datos con tidyr</p></li>
+<li><p>Trabajando con mapas</p></li>
+<li><p>Datos relacionados con dplyr</p></li>
+<li><p>stringr para datos en string</p></li>
+<li><p>Trabajando con factores con forcats</p></li>
+<li><p>Trabajando con fechas con lubridate</p></li>
+<li><p>El “pipe” con margritt</p></li>
+<li><p>Vectors de datos</p></li>
+<li><p>Modelos basicos con modelr</p></li>
+<li><p>Muchos modelos con purrr and broom</p></li>
+<li><p>El YAML header para modificar la aprencia del documento</p></li>
+<li><p>Estadística intermedia</p>
 <ul>
-<li>Prueba de Mann-Whitney U</li>
-<li>Prueba de Wilcoxon (datos pareados)</li>
-<li>Prueba de Kruskal-Wallis</li>
-<li>Bondad de Ajuste</li>
-<li>Tabla de Contingencia</li>
-</ul>
-</div>
-<div id="metodos-y-pruebas-para-evaluar-los-supuestos" class="section level2">
-<h2>Metodos y Pruebas para evaluar los supuestos</h2>
-<ul>
-<li>Supuestos de normalidad
-<ul>
-<li>Shapiro-Wilks</li>
-<li>Histograma</li>
-<li>qqplot</li>
-</ul></li>
-<li>Supuestos de Igualdad de Varianza
-<ul>
-<li>Los residuales</li>
-<li>Prueba de Levene</li>
-</ul></li>
-<li>Reconocer datos sesgados (outliers)
-<ul>
-<li>Gráficos de caja (boxplots)</li>
-<li>Distancia de Cook’s</li>
+<li>Selección de modelos</li>
+<li>Regresión multiples</li>
+<li>Regresión beta</li>
 </ul></li>
 </ul>
-<p>Flujo grama de las selecciones de pruebas y en cual de los módulos se encuentra las pruebas</p>
 </div>
 
 

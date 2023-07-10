@@ -5,7 +5,13 @@ output:
     df_print: paged
 ---
 
-```{r setup, include = FALSE}
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
+```
+
+
+
+```{r}
 library(tidyverse)
 library(lubridate)
 library(leaflet)

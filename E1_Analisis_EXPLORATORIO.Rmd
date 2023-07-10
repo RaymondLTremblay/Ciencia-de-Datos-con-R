@@ -14,7 +14,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message = FALSE)
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message = FALSE, eval = FALSE)
 ```
 
 ```{=html}
@@ -124,8 +124,9 @@ Haz un gráfico del promedio de nuevos casos (IncCasosSaludNuevo) por el día de
 df=url_COVID_PR %>% 
   select(IncCasosSaludNuevo,weekday) %>% 
   group_by(weekday) %>% 
-  drop_na () %>% 
-  summarize(meanCV=mean(IncCasosSaludNuevo)) 
+  drop_na() %>% 
+  summarize(meanCV=mean(IncCasosSaludNuevo))
+
 df
 
 ggplot(df, aes(weekday, meanCV)) +

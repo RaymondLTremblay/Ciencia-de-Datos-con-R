@@ -14,20 +14,7 @@ knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message = FALSE)
 ```
 
 
-```{r, eval=TRUE, echo=FALSE}
-colorize <- function(x, color) {
-  if (knitr::is_latex_output()) {
-    sprintf("\\textcolor{%s}{%s}", color, x)
-  } else if (knitr::is_html_output()) {
-    sprintf("<span style='color: %s;'>%s</span>", color, 
-      x)
-  } else x
-}
 
-#`r colorize("some words in red", "red")`
-
-
-```
 
 Fecha de la ultima revisión
 ```{r echo=FALSE}
@@ -65,7 +52,7 @@ library(DT)
 
 
 
-datatable(head(dlf), n=8)) # Use the DT package and the "datatable" function 
+head(dlf, n=8) # Use the DT package and the "datatable" function 
 tail(dlf)
 
 summary(dlf)
