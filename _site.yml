@@ -67,9 +67,13 @@ navbar:
         - 
           href: 12_Fechas_Horas.html
           text: "C12 Fechas y Horas: lubridate"
+        - 
+          href: mapas.html
+          text: "Mapas interactivos"         
+          
       text: "Los Temas"
     - 
       href: Datos.html
       text: Datos
-  title: "BIOL4026: Ciencia de Datos"
+  title: "Ciencia de Datos con R"
 output_dir: "."
