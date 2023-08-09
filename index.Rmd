@@ -1,5 +1,5 @@
 ---
-title: "Un titulo"
+title: "Ciencia de Datos con R"
 output:
   html_document:
     css: tutorial.css
@@ -10,7 +10,7 @@ output:
     toc_float: yes
 ---
 
-# Ciencia de Datos con R
+
 
 ***
 **Instructor:** Raymond L. Tremblay, PhD   
