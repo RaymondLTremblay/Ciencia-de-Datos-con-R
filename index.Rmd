@@ -10,7 +10,7 @@ output:
     toc_float: yes
 ---
 
-## Ciencia de Datos con R
+# Ciencia de Datos con R
 
 ***
 **Instructor:** Raymond L. Tremblay, PhD   
