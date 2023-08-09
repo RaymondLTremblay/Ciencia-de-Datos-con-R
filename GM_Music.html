@@ -9,9 +9,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Raymond L. Tremblay" />
 
 
-<title>Mapas</title>
+<title>GM _Music</title>
 
 <script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -32,8 +33,6 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
-<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -240,7 +239,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Ciencia de Datos con R</a>
+      <a class="navbar-brand" href="index.html">BIOL4026: Ciencia de Datos</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -320,9 +319,6 @@ $(document).ready(function () {
     <li>
       <a href="12_Fechas_Horas.html">C12 Fechas y Horas: lubridate</a>
     </li>
-    <li>
-      <a href="mapas.html">Mapas interactivos</a>
-    </li>
   </ul>
 </li>
 <li>
@@ -340,196 +336,34 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Mapas</h1>
+<h1 class="title toc-ignore">GM _Music</h1>
+<h4 class="author">Raymond L. Tremblay</h4>
+<h4 class="date">4/28/2021</h4>
 
 </div>
 
 
-<pre class="r"><code>library(tidyverse)
-library(lubridate)
-library(leaflet)
-library(janitor)</code></pre>
-<div id="datos" class="section level1">
-<h1>Datos</h1>
-<p>Los datos provistos por esta aplicación constituyen estadísticas
-operacionales de la Policía de Puerto Rico. Su finalidad es única y
-exclusivamente como medio informativo y pueden no reflejar los
-porcentajes actuales. <a
-href="https://data.pr.gov/en/Seguridad-P-blica/Incidencia-Crime-Map/3fy3-2bc5"
-class="uri">https://data.pr.gov/en/Seguridad-P-blica/Incidencia-Crime-Map/3fy3-2bc5</a>.
-Una copia parcial está disponible en el folder <code>datos/</code>.</p>
-<pre class="r"><code>library(readr)
-crimen_pr &lt;- read_csv(&quot;Datos/crimen_pr.csv&quot;)
-crimen = crimen_pr
-head(crimen)
-length(crimen$Fecha)
+<p>3 You must install the software “MUSESCORE” prior to using this
+package</p>
+<pre class="r"><code>library(gm)
 
+#devtools::install_github(&quot;flujoo/gm&quot;)</code></pre>
+<pre class="r"><code>m &lt;- Music()</code></pre>
+<pre class="r"><code>m &lt;- m +
+  # add a 4/4 time signature
+  Meter(4, 4) +
+  # add a musical line of a C5 whole note
+  Line(pitches = list(&quot;C5&quot;), durations = list(&quot;whole&quot;))
+m</code></pre>
+<pre class="r"><code>show(m, to = c(&quot;score&quot;, &quot;audio&quot;))</code></pre>
+<pre class="r"><code>m &lt;- m + Line(
+  pitches = list(c(&quot;E4&quot;, &quot;G4&quot;), c(&quot;D4&quot;, &quot;F4&quot;), c(&quot;F4&quot;, &quot;A4&quot;), c(&quot;E4&quot;, &quot;G4&quot;)),
+  durations = list(&quot;quarter&quot;, &quot;quarter&quot;, &quot;quarter&quot;, &quot;quarter&quot;),
+  as = &quot;voice&quot;,
+  to = 1
+)
 
-library(readr)
-Incidencia_Crime_Map_2019 &lt;- read_csv(&quot;Incidencia_Crime_Map_2019.csv&quot;)
-crimen_2019 = Incidencia_Crime_Map_2019
-head(crimen_2019)</code></pre>
-<p>El paquete <code>janitor</code> se puede usar para limpiar los
-nombres de las columnas</p>
-<pre class="r"><code>library(janitor)
-
-crm &lt;- crimen_2019 %&gt;%
-  clean_names() %&gt;%
-  rename(longitud = point_y, latitud = point_x)
-
-crm</code></pre>
-<p>Use una gráfica para verificar si hay coordenadas afuera del
-perímetro de la isla</p>
-<pre class="r"><code>crm %&gt;%
-  ggplot() +
-  geom_point(aes(longitud, latitud))</code></pre>
-<p>Con el comando <code>filter()</code> remueva las coordenadas que son
-inválidas</p>
-<pre class="r"><code>crm &lt;- crimen %&gt;%
-  clean_names() %&gt;%
-  filter(!is.na(point_x), point_x != 0) %&gt;%
-  rename(longitud = point_y, latitud = point_x)</code></pre>
-<p>Chequee otra vez que las coordenads están dentro de los limites</p>
-<pre class="r"><code>crm %&gt;%
-  ggplot() +
-  geom_point(aes(longitud, latitud))</code></pre>
-<p>La función <code>map_data()</code>, del paquete <code>ggplot2</code>,
-contiene el mapa mundial. El mapa de Puerto Rico se puede acceder usando
-el argumento <code>region</code>.</p>
-<pre class="r"><code>unique(crm$area_policiaca)
-
-crm %&gt;%
-  filter(area_policiaca==&quot;Caguas&quot;) %&gt;% 
-  ggplot() +
-  geom_point(aes(longitud, latitud))</code></pre>
-<pre class="r"><code>pr &lt;- map_data(&quot;world&quot;, region = &quot;Puerto Rico&quot;)
-
-pr</code></pre>
-<p>Use <code>geom_map()</code> para agregar la figura del territorio</p>
-<pre class="r"><code>ggplot() +
-  geom_map(aes(long, lat, map_id = region), fill = &quot;orange&quot;,  map = pr, data = pr) </code></pre>
-</div>
-<div id="mapa-de-otro-pais" class="section level1">
-<h1>Mapa de otro pais…</h1>
-<p>vea tambien <a
-href="https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html"
-class="uri">https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html</a></p>
-<pre class="r"><code>Vi &lt;- map_data(&quot;world&quot;, region = &quot;Virgin Islands&quot;, subregion = &quot;US&quot;)
-Vi</code></pre>
-<pre class="r"><code>ggplot() +
-  geom_map(aes(long, lat, map_id = region), fill = &quot;gray&quot;,  map = Vi, data = Vi) 
-
-#ggplot(fr, aes(x = long, y = lat, group = group)) +
-#  geom_polygon(fill = &quot;gray&quot;)</code></pre>
-<pre class="r"><code>world_map &lt;- map_data(&quot;world&quot;)
-fr &lt;- map_data(&quot;world&quot;, region = &quot;France&quot;)
-ggplot(world_map, aes(x = long, y = lat, group = group)) +
-  geom_polygon(fill=&quot;lightgray&quot;, colour = &quot;white&quot;)</code></pre>
-</div>
-<div id="list-of-countries-in-the-database-of-map_data"
-class="section level1">
-<h1>List of countries in the database of map_data</h1>
-<pre class="r"><code>sort(unique(map_data(&quot;world&quot;)$region))</code></pre>
-<p>Agrege la capa con los datos de crimen</p>
-<pre class="r"><code>ggplot() +
-  geom_map(aes(long, lat, map_id = region), fill = &quot;grey&quot;,  map = pr, data = pr)+ 
-  geom_point(aes(longitud, latitud), data = crm)</code></pre>
-<p><code>theme_void()</code> remueve la información alrededor del
-mapa</p>
-<pre class="r"><code>ggplot() +
-  geom_map(aes(long, lat, map_id = region), fill = &quot;gray&quot;,  map = pr, data = pr) +
-  geom_point(aes(longitud, latitud), color = &quot;red&quot;, size = 0.1, data = crm) +
-  theme_void() </code></pre>
-<p>Los colores de los puntos se pueden</p>
-<pre class="r"><code>names(crm)
-head(crm)
-
-ggplot() +
-  geom_map(aes(long, lat, map_id = region), fill = &quot;gray&quot;,  map = pr, data = pr) +
-  geom_point(aes(longitud, latitud, color = delitos_code), size = 0.5, data = crm) +
-  theme_void() +
-  theme(legend.position = &quot;bottom&quot;)</code></pre>
-<p><code>facet_wrap()</code> permite crear una “mini” gráfica por cada
-segmento de los datos. En este caso, <code>area_policiaca</code></p>
-<pre class="r"><code>ggplot() +
-  geom_map(aes(long, lat, map_id = region), fill = &quot;gray&quot;,  map = pr, data = pr) +
-  geom_point(aes(longitud, latitud, color = area_policiaca), size = 0.2, data = crm) +
-  theme_void() +
-  facet_wrap(~delitos_code)</code></pre>
-<p>Ajustes se pueden hacer a los colores para obtener una mejor vista de
-la información.</p>
-<pre class="r"><code>ggplot() +
-  geom_map(aes(long, lat, map_id = region), fill = &quot;black&quot;,  map = pr, data = pr) +
-  geom_point(aes(longitud, latitud), alpha = 0.2, size = 0.1, color = &quot;#95ff00&quot;, data = crm) +
-  theme_void() +
-  theme(panel.background = element_rect(fill = &quot;#333333&quot;)) +
-  facet_wrap(~delitos_code)</code></pre>
-<div id="leaflet" class="section level2">
-<h2>leaflet</h2>
-<p>Leaflet (<a href="https://leafletjs.com/"
-class="uri">https://leafletjs.com/</a>) es una librería de JavaScript
-que se utiliza para hacer mapas interactivos. Es la más usada hoy en
-día. El paquete de R llamado <code>leaflet</code> permite la integración
-con esta librería.</p>
-<p>En lugar de usar <code>+</code>, <code>leaflet</code> utiliza el pipe
-(<code>%&gt;%</code>) para crear las visualizaciones. Se necesita
-<code>addTiles()</code> para agregar el mapa, y después algún tipo de
-puntos geográficos.</p>
-<pre class="r"><code>library(leaflet)
-
-head(crm)
-
-crm %&gt;%
-  filter(month(fecha) == 8) %&gt;%
-  leaflet() %&gt;%
-  addTiles() %&gt;%
-  addMarkers(~longitud, ~latitud)</code></pre>
-<p>Ya que son interactivos, se pueden agregar nombres que salen cuando
-se hace un click al punto</p>
-<pre class="r"><code>crm %&gt;%
-  filter(month(fecha) == 8) %&gt;%
-  leaflet() %&gt;%
-  addTiles() %&gt;%
-  addMarkers(~longitud, ~latitud, popup = ~delitos_code)</code></pre>
-<p>popup = ~delitos_code</p>
-<pre class="r"><code>crm %&gt;%
-  filter(month(fecha) == 8) %&gt;%
-  leaflet() %&gt;%
-  addTiles() %&gt;%
-  addMarkers(~longitud, ~latitud, popup = ~paste0(&quot;Delito: &quot;,delitos_code))</code></pre>
-<p><code>markerClusterOptions()</code> agrupa los puntos automaticamente
-para que la interactividad sea más fácil</p>
-<pre class="r"><code>crm %&gt;%
-  leaflet() %&gt;%
-  addTiles() %&gt;%
-  addMarkers(~longitud, ~latitud,  popup = ~paste0(&quot;Delito: &quot;,delitos_code), clusterOptions = markerClusterOptions())</code></pre>
-<pre class="r"><code>crm %&gt;%
-  filter(delitos_code == &quot;Vehiculo Hurtado&quot;) %&gt;%
-  leaflet() %&gt;%
-  addTiles() %&gt;%
-  addMarkers(~longitud, ~latitud,  popup = ~paste0(&quot;Delito: &quot;,delitos_code), clusterOptions = markerClusterOptions())</code></pre>
-</div>
-</div>
-<div id="awesomeicons" class="section level1">
-<h1>awesomeIcons</h1>
-<div id="see-these-websites-for-markers-and-icons"
-class="section level2">
-<h2>See these websites for markers and icons</h2>
-<p><a href="http://rstudio.github.io/leaflet/markers.html"
-class="uri">http://rstudio.github.io/leaflet/markers.html</a></p>
-<p><a href="https://fontawesome.com/v4.7.0/icons/"
-class="uri">https://fontawesome.com/v4.7.0/icons/</a></p>
-<pre class="r"><code>crm %&gt;%
-  filter(delitos_code == &quot;Vehiculo Hurtado&quot;) %&gt;%
-  leaflet() %&gt;%
-  addTiles() %&gt;%
-  addAwesomeMarkers(~longitud, ~latitud,  popup = ~paste0(&quot;Delito: &quot;,delitos_code), clusterOptions = markerClusterOptions(), 
-                    icon = awesomeIcons(icon = &quot;fa-ambulance&quot;, library = &quot;fa&quot;))
-
-#fa-camera-retro
-#fa-fire</code></pre>
-</div>
-</div>
+show(m, to = c(&quot;score&quot;, &quot;audio&quot;))</code></pre>
 
 
 
