@@ -3,7 +3,7 @@ name: BIOL4026
 navbar: 
   left: 
     - 
-      href: Descripcion.html
+      href: index.html
       text: Home
     - 
       href: B_schedule.html
