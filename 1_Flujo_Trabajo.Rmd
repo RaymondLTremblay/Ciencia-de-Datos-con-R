@@ -26,8 +26,8 @@ knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message = FALSE)
 ```
 
 
-Fecha de la ultima revisión
-```{r echo=FALSE}
+Fecha de la ultima revisión, NOta que para que se imprime la fecha del trabajo use **Sys.Date()**
+```{r }
 
 Sys.Date()
 ```

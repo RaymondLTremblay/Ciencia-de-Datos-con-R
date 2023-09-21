@@ -5,20 +5,25 @@ date: "4/28/2021"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
+```{r setup, eval=FALSE, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
 ```
 
 
 3 You must install the software "MUSESCORE" prior to using this package
 ```{r}
+library(tidyverse)
 library(gm)
 
 #devtools::install_github("flujoo/gm")
 ```
+
+
 ```{r}
 m <- Music()
 ```
+
+
 
 ```{r}
 m <- m +
@@ -28,6 +33,8 @@ m <- m +
   Line(pitches = list("C5"), durations = list("whole"))
 m
 ```
+
+
 
 ```{r}
 show(m, to = c("score", "audio"))

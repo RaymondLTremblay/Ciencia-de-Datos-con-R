@@ -24,11 +24,6 @@ Los datos provistos por esta aplicación constituyen estadísticas operacionales
 
 
 
-```{r}
-library(tidyverse)
-library(lubridate)
-library(leaflet)
-```
 
 ```{r}
 library(readr)
@@ -203,10 +198,7 @@ library(leaflet)
 head(crm)
 
 crm %>%
-  filter(month(fecha) == 8) 
-
-
-%>%
+  filter(month(fecha) == 8) %>%
   leaflet() %>%
   addTiles() %>%
   addMarkers(~longitud, ~latitud)

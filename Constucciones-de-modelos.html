@@ -14,7 +14,7 @@
 
 <title>Construcciones_Modelos</title>
 
-<script src="site_libs/header-attrs-2.22/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -320,12 +320,12 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">BIOL4026: Ciencia de Datos</a>
+      <a class="navbar-brand" href="index.html">Ciencia de Datos con R</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="Descripcion.html">Home</a>
+  <a href="index.html">Home</a>
 </li>
 <li>
   <a href="B_schedule.html">Calendario</a>
@@ -399,6 +399,9 @@ div.tocify {
     </li>
     <li>
       <a href="12_Fechas_Horas.html">C12 Fechas y Horas: lubridate</a>
+    </li>
+    <li>
+      <a href="mapas.html">Mapas interactivos</a>
     </li>
   </ul>
 </li>
@@ -3738,8 +3741,7 @@ cantidad de datos en cada uno de los puntos</p>
   geom_hex(bins = 20)</code></pre>
 <pre><code>## Warning: Computation failed in `stat_binhex()`
 ## Caused by error in `compute_group()`:
-## ! The package &quot;hexbin&quot; is required for
-##   `stat_binhex()`</code></pre>
+## ! The package &quot;hexbin&quot; is required for `stat_binhex()`</code></pre>
 <p><img src="Constucciones-de-modelos_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Foco en los diamantes más pequeños que 2.5 quilates (99.7% de los
 datos). Haz una transformación logarítmica de las variables quilates y
@@ -3751,8 +3753,7 @@ precio</p>
   geom_hex(bins = 50)</code></pre>
 <pre><code>## Warning: Computation failed in `stat_binhex()`
 ## Caused by error in `compute_group()`:
-## ! The package &quot;hexbin&quot; is required for
-##   `stat_binhex()`</code></pre>
+## ! The package &quot;hexbin&quot; is required for `stat_binhex()`</code></pre>
 <p><img src="Constucciones-de-modelos_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <div id="construir-un-modelo-lineal-de-relación-entre-quilate-y-precio"
 class="section level2">
@@ -3769,16 +3770,14 @@ class="section level2">
 <pre class="r"><code>ggplot(diamantes2, aes(quilate, precio)) + 
   geom_hex(bins = 50) + 
   geom_line(data = cuadricula, colour = &quot;red&quot;, size = 1)</code></pre>
-<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in
-## ggplot2 3.4.0.
+<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 ## ℹ Please use `linewidth` instead.
 ## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see
-## where this warning was generated.</code></pre>
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
 <pre><code>## Warning: Computation failed in `stat_binhex()`
 ## Caused by error in `compute_group()`:
-## ! The package &quot;hexbin&quot; is required for
-##   `stat_binhex()`</code></pre>
+## ! The package &quot;hexbin&quot; is required for `stat_binhex()`</code></pre>
 <p><img src="Constucciones-de-modelos_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
 <div id="add-residuals" class="section level2">
@@ -3790,8 +3789,7 @@ ggplot(diamantes2, aes(log_quilates, lresid)) +
   geom_hex(bins = 50)</code></pre>
 <pre><code>## Warning: Computation failed in `stat_binhex()`
 ## Caused by error in `compute_group()`:
-## ! The package &quot;hexbin&quot; is required for
-##   `stat_binhex()`</code></pre>
+## ! The package &quot;hexbin&quot; is required for `stat_binhex()`</code></pre>
 <p><img src="Constucciones-de-modelos_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 </div>
 </div>
